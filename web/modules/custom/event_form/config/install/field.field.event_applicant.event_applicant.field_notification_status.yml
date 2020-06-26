@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.event_applicant.field_notification_status
+  module:
+    - event_form
+    - options
+id: event_applicant.event_applicant.field_notification_status
+field_name: field_notification_status
+entity_type: event_applicant
+bundle: event_applicant
+label: 'Notification status'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: pending
+default_value_callback: ''
+settings: {  }
+field_type: list_string

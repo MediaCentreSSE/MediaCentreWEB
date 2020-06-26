@@ -1,0 +1,6 @@
+services:
+  twig_addons.twig_addons:
+    class: Drupal\twig_addons\Twig\TwigAddons
+    arguments: ['@language_manager', '@entity_type.manager', '@entity.form_builder', '@renderer']
+    tags:
+      - { name: twig.extension }

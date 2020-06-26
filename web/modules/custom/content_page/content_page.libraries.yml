@@ -1,0 +1,21 @@
+subscription_form:
+  js:
+    js/subscription_form.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+
+custom_contact_form:
+  js:
+    js/custom_contact_form.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/jquery.ui.datepicker
+
+gallery:
+  js:
+    js/gallery.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal

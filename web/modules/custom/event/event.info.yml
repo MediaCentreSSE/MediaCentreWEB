@@ -1,0 +1,31 @@
+name: Event
+description: 'Provides Event content type and related configuration. Contains event page information.'
+type: module
+core: 8.x
+package: Custom
+dependencies:
+  - block_content
+  - category_page
+  - content_page
+  - datetime
+  - entity_reference_revisions
+  - event_archive
+  - event_form
+  - event_list
+  - field
+  - field_group
+  - frontpage
+  - image
+  - language
+  - menu_ui
+  - metatag
+  - news
+  - node
+  - options
+  - paragraphs
+  - path
+  - research
+  - site_settings
+  - svg_image
+  - text
+  - user

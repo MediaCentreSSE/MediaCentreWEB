@@ -1,0 +1,152 @@
+<?php
+
+/**
+ * @file
+ * Contains event_form.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Render\Markup;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\block_content\BlockContentForm;
+use Drupal\block_content\Entity\BlockContent;
+use Drupal\node\Entity\Node;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_help().
+ */
+function event_form_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the event_form module.
+    case 'help.page.event_form':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Contains event form output/features/services.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function event_form_theme($existing, $type, $theme, $path) {
+  return [
+    'event_form_block' => [
+      'variables' => [
+        'form' => NULL,
+        'message' => '',
+        'content' => [],
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_mail().
+ */
+function event_form_mail($key, &$message, $params) {
+  switch ($key) {
+    case 'event_form_admin_notification':
+      $message['headers']['Content-Type'] = 'text/html';
+      $message['subject'] = $params['subject'];
+      $message['params']['files'] = $params['files'];
+      $message['body'][] = Markup::create($params['body']);
+      break;
+
+    case 'event_form_confirmation':
+    case 'event_form_applicant_notification':
+      $message['headers']['Content-Type'] = 'text/html';
+      $message['subject'] = $params['subject'];
+      $message['body'][] = Markup::create($params['body']);
+      break;
+
+    default:
+      break;
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ *
+ * @param array $form
+ *   The form.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   The form state.
+ * @param string $form_id
+ *   The form identifier.
+ */
+function event_form_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $admin_context = Drupal::service('router.admin_context');
+  if (
+    $admin_context->isAdminRoute()
+    && ($form_object = $form_state->getFormObject())
+    && ($form_object instanceof BlockContentForm)
+    && ($entity = $form_object->getEntity())
+    && ($entity instanceof BlockContent)
+    && $entity->id()
+    && $entity->get('type')->target_id == 'event_form'
+  ) {
+    $entity_type_manager = Drupal::service('entity_type.manager');
+    $node_query = $entity_type_manager->getStorage('node')->getQuery();
+    $event_ids = $node_query
+      ->condition('type', 'event')
+      ->condition('field_event_form', $entity->id())
+      ->execute();
+
+    if (count($event_ids)) {
+      $form['info']['#suffix'] = '<div><strong>Current event form used in the following events:</strong><ul>';
+      foreach ($event_ids as $event_id) {
+        $event = Node::load($event_id);
+        $applicant_query = $entity_type_manager->getStorage('event_applicant')->getQuery();
+        $applicant_ids = $applicant_query
+          ->condition('field_event', $event_id)
+          ->condition('field_event_form', $entity->id())
+          ->execute();
+        $applicant_count = count($applicant_ids);
+
+        $applicant_limit = $entity->get('field_max_number_of_applicants')->value;
+        $form['info']['#suffix'] .= '<li>' . $event->title->value . ' (' . $applicant_count . ($applicant_limit ? '/' . $applicant_limit : '') . ' applicants)</li>';
+      }
+      $form['info']['#suffix'] .= '</div></ul>';
+    }
+  }
+
+  if ($form_id == 'views_exposed_form' && strpos($form['#id'], 'event-applicants') !== FALSE) {
+    $form['actions']['submit']['#attributes']['class'] = ['button--primary'];
+
+    $form['action'] = [
+      '#type' => 'hidden',
+      '#value' => '',
+    ];
+
+    $form['actions']['reset'] = [
+      '#name' => '',
+      '#type' => 'submit',
+      '#value' => 'Reset',
+      '#id' => 'edit-reset-event-applicants',
+    ];
+
+    $form['actions']['export'] = [
+      '#name' => '',
+      '#type' => 'submit',
+      '#value' => 'Export filtered applicants',
+      '#id' => 'edit-export-event-applicants',
+    ];
+
+    $form['#attached']['library'][] = 'event_form/event_applicant_list_admin';
+
+    // If result export required, redirect to controller with filter values.
+    $request = Drupal::request();
+    if ($request->query->get('action') == 'export') {
+      $url = Url::fromRoute('event_form.event_applicant_export')->toString();
+      $query = $request->query->all();
+      unset($query['action']);
+      $response = new RedirectResponse($url . '?' . http_build_query($query));
+      $form_state->setResponse($response);
+    }
+  }
+}

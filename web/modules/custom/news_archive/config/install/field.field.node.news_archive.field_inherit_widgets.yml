@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_inherit_widgets
+    - node.type.news_archive
+id: node.news_archive.field_inherit_widgets
+field_name: field_inherit_widgets
+entity_type: node
+bundle: news_archive
+label: 'Inherit widgets'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

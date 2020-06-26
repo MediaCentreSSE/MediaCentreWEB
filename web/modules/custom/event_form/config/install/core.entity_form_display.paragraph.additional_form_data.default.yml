@@ -1,0 +1,32 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.additional_form_data.field_field_name
+    - field.field.paragraph.additional_form_data.field_field_value
+    - paragraphs.paragraphs_type.additional_form_data
+id: paragraph.additional_form_data.default
+targetEntityType: paragraph
+bundle: additional_form_data
+mode: default
+content:
+  field_field_name:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_field_value:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

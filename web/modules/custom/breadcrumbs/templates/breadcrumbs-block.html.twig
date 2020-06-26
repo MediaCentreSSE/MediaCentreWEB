@@ -1,0 +1,16 @@
+<div class="breadcrumbs-wrapper">
+    <div class="main-content-width centered padded">
+        <nav class="breadcrumbs">
+            <ul class="clearfix">
+                <li><a href="{{ path('<front>') }}">{{ 'Home'|trans({}, {context: 'breadcrumbs'}) }}</a></li>
+                {% for item in items %}
+                    {% if item.unlinkable is defined %}
+                        <li><a>{{ item.title.value }}</a></li>
+                    {% else %}
+                        <li><a href="{{ path('entity.node.canonical', {node: item.id}) }}">{{ item.title.value }}</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </nav>
+    </div>
+</div>

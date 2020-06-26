@@ -1,0 +1,5 @@
+services:
+  site_settings.manager:
+    class: Drupal\site_settings\SiteSettingsManager
+    arguments: ['@config.factory']
+

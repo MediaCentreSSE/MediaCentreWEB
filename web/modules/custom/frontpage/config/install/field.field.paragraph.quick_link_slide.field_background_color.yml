@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_background_color
+    - paragraphs.paragraphs_type.quick_link_slide
+  module:
+    - options
+id: paragraph.quick_link_slide.field_background_color
+field_name: field_background_color
+entity_type: paragraph
+bundle: quick_link_slide
+label: 'Background color'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: blue
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,5 @@
+name: 'Content Migration'
+type: module
+description: 'Commands for migrating content to current site'
+core: 8.x
+package: 'Custom'

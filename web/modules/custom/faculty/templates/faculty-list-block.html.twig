@@ -1,0 +1,31 @@
+<div class="search-block">
+    <h1>Faculty</h1>
+    <div class="inputblock">
+        <label class="inputblock-label">{{ 'Search by name or position…'|trans({}, {context: 'faculty'}) }}</label>
+        <div class="inputblock-input">
+            <input type="text" id="faculty-filter"/>
+        </div>
+    </div>
+</div>
+
+<div id="faculty-list" class="accordeon-block">
+    <div class="accordeon-items">
+        {% for item in items %}
+            <div class="accordeon-item" data-department="{{ loop.index }}">
+                <a href="#" class="accordeon-title"><h2>{{ item.department.name.value }}</h2></a>
+                <div class="accordeon-content">
+                    <div class="accordeon-content-inner">
+                        <div class="rowed-info-block">
+                            {% for member in item.staff %}
+                                <a href="{{ path('entity.node.canonical', {node: member.id}) }}">
+                                    <div class="name" data-id="name">{{ member.title.value }}</div>
+                                    <div class="position" data-id="position">{{ member.field_position.value }}</div>
+                                </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

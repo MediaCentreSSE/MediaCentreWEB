@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.printed_matter
+id: node.printed_matter
+target_entity_type_id: node
+target_bundle: printed_matter
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,359 @@
+<?php
+
+/**
+ * @file
+ * Functions to support theming in the sseriga theme.
+ */
+
+use Drupal\content_page\ContentPageManager;
+use Drupal\Core\Url;
+use Drupal\file\Entity\File;
+use Drupal\node\Entity\Node;
+use Drupal\paragraphs\Entity\Paragraph;
+
+/**
+ * Alter page suggestions.
+ *
+ * @param array $suggestions
+ *   Array of current suggestions.
+ * @param array $variables
+ *   Page variables.
+ * @param string $hook
+ *   Hook name.
+ */
+function sseriga_theme_suggestions_page_alter(array &$suggestions, array $variables, $hook) {
+  $request = Drupal::request();
+  $route = $request->attributes->get('_route');
+  $node = $request->attributes->get('node');
+
+  if ($node) {
+    $suggestions[] = 'page__' . $node->getType();
+  }
+
+  if ($route == 'system.404' || $route == 'system.403' || $route == 'system.401') {
+    $suggestions[] = 'page__error';
+  }
+}
+
+/**
+ * Alter form suggestions.
+ *
+ * @param array $suggestions
+ *   Array of current suggestions.
+ * @param array $variables
+ *   Page variables.
+ * @param string $hook
+ *   Hook name.
+ */
+function sseriga_theme_suggestions_form_alter(array &$suggestions, array $variables, $hook) {
+  if (isset($variables['element']['#form_id']) && $variables['element']['#form_id'] == 'user_login_form') {
+    $suggestions[] = 'form__user_login';
+  }
+}
+
+/**
+ * Alter form element suggestions.
+ *
+ * @param array $suggestions
+ *   Array of current suggestions.
+ * @param array $variables
+ *   Page variables.
+ * @param string $hook
+ *   Hook name.
+ */
+function sseriga_theme_suggestions_form_element_alter(array &$suggestions, array $variables, $hook) {
+  if (isset($variables['element']['#type'])) {
+    $suggestions[] = 'form_element__' . $variables['element']['#type'];
+  }
+}
+
+/**
+ * Alter main menu suggestions.
+ *
+ * @param array $suggestions
+ *   Array of current suggestions.
+ * @param array $variables
+ *   Page variables.
+ * @param string $hook
+ *   Hook name.
+ */
+function sseriga_theme_suggestions_menu_alter(array &$suggestions, array $variables, $hook) {
+  if ($variables['attributes']['footer'] ?? FALSE) {
+    $suggestions[] = 'menu__footer';
+  }
+}
+
+/**
+ * Preprocess block content.
+ *
+ * @param array $variables
+ *   The variables.
+ */
+function sseriga_preprocess_block(array &$variables) {
+  if ($variables['elements']['#id'] == 'footer') {
+    $variables['content']['#attributes'] = [
+      'footer' => TRUE
+    ];
+  }
+
+  if ($variables['elements']['#id'] == 'footer' || $variables['elements']['#id'] == 'sseriga_main_menu') {
+    foreach ($variables['content']['#items'] as $key => $item) {
+      // Remove links to category pages; pages required only as hierarchy items.
+      if ($item['url']->isRouted()) {
+        $parameters = $item['url']->getRouteParameters();
+        $node = isset($parameters['node']) ? Node::load($parameters['node']) : NULL;
+        if ($node && $node->getType() == ContentPageManager::CONTENT_TYPE_CATEGORY_PAGE) {
+          $variables['content']['#items'][$key]['url'] = Url::fromRoute('<none>');
+        }
+      }
+
+      $item['attributes']->addClass('title');
+      $level3_exists = FALSE;
+
+      foreach ($item['below'] as $item2) {
+        if (count($item2['below'])) {
+          $level3_exists = TRUE;
+          break;
+        }
+      }
+
+      if ($level3_exists) {
+        foreach ($item['below'] as $item2) {
+          $item2['attributes']->addClass('subtitle');
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Preprocess html content.
+ *
+ * @param array $variables
+ *   The variables.
+ */
+function sseriga_preprocess_html(array &$variables) {
+  $tags = $variables['page']['#attached']['html_head'];
+
+  // dump($node);
+  // die();
+
+  // og:type (required)
+  $tags[] = [
+    [
+      '#tag' => 'meta',
+      '#attributes' => [
+        'property' => 'og:type',
+        'content' => 'website',
+      ],
+    ],
+    'og:type',
+  ];
+
+  // og:title (required)
+  $title_tag = sseriga_find_meta_tag($tags, 'title');
+  $tags[] = [
+    [
+      '#tag' => 'meta',
+      '#attributes' => [
+        'property' => 'og:title',
+        'content' => $title_tag ? $title_tag['content'] : '',
+      ],
+    ],
+    'og:title',
+  ];
+
+  // og:description
+  $description_tag = sseriga_find_meta_tag($tags, 'description');
+  if ($description_tag) {
+    $tags[] = [
+      [
+        '#tag' => 'meta',
+        '#attributes' => [
+          'property' => 'og:description',
+          'content' => $description_tag['content'],
+        ],
+      ],
+      'og:description',
+    ];
+  }
+
+  // og:url (required)
+  $tags[] = [
+    [
+      '#tag' => 'meta',
+      '#attributes' => [
+        'property' => 'og:url',
+        'content' => Drupal::request()->getUri(),
+      ],
+    ],
+    'og:url',
+  ];
+
+  // og:image (required)
+  $tags[] = [
+    [
+      '#tag' => 'meta',
+      '#attributes' => [
+        'property' => 'og:image',
+        'content' => sseriga_get_og_image(),
+      ],
+    ],
+    'og:image',
+  ];
+
+  $variables['page']['#attached']['html_head'] = $tags;
+}
+
+function sseriga_find_meta_tag($tags, $name) {
+  foreach ($tags as $tag) {
+    if (($tag[0]['#tag'] ?? '') == 'meta' && ($tag[0]['#attributes']['name'] ?? '') == $name) {
+      return $tag[0]['#attributes'];
+    }
+  }
+
+  return NULL;
+}
+
+function sseriga_get_og_image() {
+  $node = Drupal::routeMatch()->getParameter('node');
+  $image = NULL;
+
+  // Get first gallery image.
+  if ($node && $node->hasField('field_gallery_images')) {
+    $value = $node->get('field_gallery_images')->getValue();
+    if (isset($value[0]['target_id'])) {
+      $paragraph = Paragraph::load($value[0]['target_id']);
+      $image = $paragraph->get('field_image')->target_id ? $paragraph->get('field_image')->entity : NULL;
+    }
+  }
+
+  // Get banner image.
+  if (!$image && $node && $node->hasField('field_banner')) {
+    $image = $node->get('field_banner')->target_id ? $node->get('field_banner')->entity : NULL;
+  }
+
+  // Get staff image.
+  if (!$image && $node && $node->hasField('field_image')) {
+    $image = $node->get('field_image')->target_id ? $node->get('field_image')->entity : NULL;
+  }
+
+  // Get default image.
+  if (!$image) {
+    $config = Drupal::config('system.site');
+    $image = $config->get('og_image') ? File::load($config->get('og_image')[0]) : NULL;
+  }
+
+  // Give up.
+  if (!$image) {
+    return '';
+  }
+
+  return file_create_url($image->getFileUri());
+}
+
+/**
+ * Preprocess node variables.
+ *
+ * @param array $variables
+ *   Array of node variables.
+ */
+function sseriga_preprocess_node(array &$variables) {
+  $node = $variables['node'];
+
+  // Default values.
+  $variables['contact_form'] = NULL;
+  $variables['event_form'] = NULL;
+
+  // Add sharing variables/config.
+  if ($node->hasField('field_show_share_button') && $node->get('field_show_share_button')->value) {
+    $social_network_settings = Drupal::config('social_network.settings');
+    $variables['add_this_id'] = $social_network_settings->get('add_this_id');
+
+    $site_settings = Drupal::config('system.site');
+    $variables['site_name'] = $site_settings->get('name');
+
+    $current_url = Url::fromRoute('<current>', [], ['absolute' => 'true']);
+    $variables['current_path'] = $current_url->toString();
+  }
+
+  // Add gallery libraries.
+  if ($node->hasField('field_gallery_images') && count($node->get('field_gallery_images'))) {
+    $variables['#attached']['library'][] = 'content_page/gallery';
+  }
+
+  // Insert contact form block in the middle of content node.
+  if ($node->hasField('field_contact_form') && $node->get('field_contact_form')->target_id) {
+    $block_manager = Drupal::service('plugin.manager.block');
+    $contact_form_block = $block_manager->createInstance('contact_form_block', ['node' => $node]);
+    $variables['contact_form'] = $contact_form_block->build();
+  }
+
+  // Insert contact form block in the middle of event node.
+  if ($node->hasField('field_event_form') && $node->get('field_event_form')->target_id) {
+    $block_manager = Drupal::service('plugin.manager.block');
+    $event_form_block = $block_manager->createInstance('event_form_block', ['node' => $node]);
+    $variables['event_form'] = $event_form_block->build();
+  }
+
+  // Add contact page libraries.
+  if ($node->getType() == 'contacts') {
+    $variables['#attached']['library'][] = 'contacts/gmap';
+  }
+
+  // Load linked events.
+  if ($node->hasField('field_linked_events')) {
+    $variables['linked_events'] = $node->get('field_linked_events')->referencedEntities();
+  }
+}
+
+/**
+ * Preprocess main menu variables.
+ *
+ * @param array $variables
+ *   Array of menu variables.
+ */
+function sseriga_preprocess_menu__main(array &$variables) {
+  $request = Drupal::request();
+  $node = $request->attributes->get('node');
+
+  if ($node && $node->getType() == ContentPageManager::CONTENT_TYPE_SEARCH_RESULTS) {
+    $variables['open'] = TRUE;
+  }
+}
+
+/**
+ * Alter form.
+ *
+ * @param array $variables
+ *   Page variables.
+ */
+function sseriga_form_user_login_form_alter(array &$variables) {
+  if (isset($variables['name'])) {
+    $variables['name']['#prefix'] = '<div class="inputblock share-block">';
+    $variables['name']['#suffix'] = '</div>';
+    unset($variables['name']['#description']);
+  }
+  if (isset($variables['pass'])) {
+    $variables['pass']['#prefix'] = '<div class="inputblock share-block">';
+    $variables['pass']['#suffix'] = '</div>';
+    unset($variables['pass']['#description']);
+  }
+  if (isset($variables['actions']['submit'])) {
+    $variables['actions']['submit']['#prefix'] = '<div class="">';
+    $variables['actions']['submit']['#suffix'] = '</div>';
+  }
+}
+
+/**
+ * Preprocess poll meter display value.
+ *
+ * @param array $variables
+ *   Poll meter variables.
+ */
+function sseriga_preprocess_poll_meter(array &$variables) {
+  if ($variables['display_value'] ?? '') {
+    $display_value_parts = explode('%', $variables['display_value']);
+    $variables['display_value'] = array_shift($display_value_parts) . '%';
+  }
+}

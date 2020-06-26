@@ -1,0 +1,61 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.promo_slide.field_description
+    - field.field.paragraph.promo_slide.field_image
+    - field.field.paragraph.promo_slide.field_link
+    - field.field.paragraph.promo_slide.field_slide_style
+    - field.field.paragraph.promo_slide.field_title_long
+    - image.style.thumbnail
+    - paragraphs.paragraphs_type.promo_slide
+  module:
+    - image
+    - link
+id: paragraph.promo_slide.default
+targetEntityType: paragraph
+bundle: promo_slide
+mode: default
+content:
+  field_description:
+    weight: 1
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  field_image:
+    weight: 2
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+  field_link:
+    weight: 3
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_slide_style:
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_title_long:
+    weight: 0
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

@@ -1,0 +1,53 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.calendar_month.field_events
+    - field.field.paragraph.calendar_month.field_title
+    - paragraphs.paragraphs_type.calendar_month
+  module:
+    - field_group
+    - paragraphs
+third_party_settings:
+  field_group:
+    group_events:
+      children:
+        - field_events
+      parent_name: ''
+      weight: 1
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: true
+      label: Events
+id: paragraph.calendar_month.default
+targetEntityType: paragraph
+bundle: calendar_month
+mode: default
+content:
+  field_events:
+    type: entity_reference_paragraphs
+    weight: 2
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
+  field_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

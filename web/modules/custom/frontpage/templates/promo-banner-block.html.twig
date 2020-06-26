@@ -1,0 +1,35 @@
+{% if node and node.field_promo_slides|length %}
+    <div class="headline-block headline-block-big row-space">
+        <div class="slider-block headlines-slider loading">
+            <div class="slider-holder">
+                {% for slide in node.field_promo_slides %}
+                    {% set slide = slide.entity %}
+                    <div class="slider-item {{ slide.field_slide_style.value }}">
+                        <div class="slider-item-bg" style="background-image: url('{{ slide.field_image.target_id|style('promo_frontpage') }}');"></div>
+                        <div class="slider-item-content">
+                            <div class="container">
+                                <div class="slider-item-content-inner">
+                                    <div class="d-table w-100">
+                                        <div class="d-table-row">
+                                            <div class="d-table-cell">
+                                                <h1>{{ slide.field_title_long.value|nl2br }}</h1>
+                                                <div class="description">
+                                                    {{ slide.field_description.value|nl2br }}
+                                                </div>
+                                            </div>
+                                            {% if slide.field_link.0.url %}
+                                                <div class="d-table-cell align-bottom">
+                                                    <a target="_blank" href="{{ slide.field_link.0.url }}" class="button">{{ slide.field_link.title }}</a>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endif %}

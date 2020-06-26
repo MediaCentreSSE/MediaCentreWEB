@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.event_form
+id: block_content.event_form
+target_entity_type_id: block_content
+target_bundle: event_form
+default_langcode: site_default
+language_alterable: false

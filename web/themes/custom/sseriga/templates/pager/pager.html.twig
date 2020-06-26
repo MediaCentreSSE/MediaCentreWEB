@@ -1,0 +1,40 @@
+{% if items %}
+    <div class="pager-block cf">
+        <div class="pager-block-inner cf">
+            {# Print previous item if we are not on the first page. #}
+            {% if items.previous %}
+                <a href="{{ items.previous.href }}" class="prev" rel="prev"></a>
+            {% endif %}
+
+            {# Print first item if we are not on the first page. #}
+            {% if items.first and ((items.pages|first).href|split('=')|last) != (items.first.href|split('=')|last) %}
+                <a href="{{ items.first.href }}" {% if current == key %}class="active"{% endif %}>1</a>
+            {% endif %}
+
+            {# Add an ellipsis if there are further previous pages. #}
+            {% if ellipses.previous and ((items.pages|first).href|split('=')|last - 1) != (items.first.href|split('=')|last) %}
+                <span>...</span>
+            {% endif %}
+
+            {# Now generate the actual pager piece. #}
+            {% for key, item in items.pages %}
+                <a href="{{ item.href }}" {% if current == key %}class="active"{% endif %}>{{ key }}</a>
+            {% endfor %}
+
+            {# Add an ellipsis if there are further next pages. #}
+            {% if ellipses.next and ((items.pages|last).href|split('=')|last + 1) != (items.last.href|split('=')|last) %}
+                <span>...</span>
+            {% endif %}
+
+            {# Print last item if we are not on the last page. #}
+            {% if items.last and ((items.pages|last).href|split('=')|last) != (items.last.href|split('=')|last) %}
+                <a href="{{ items.last.href }}">{{ items.last.href|split('=')|last + 1 }}</a>
+            {% endif %}
+
+            {# Print next item if we are not on the last page. #}
+            {% if items.next %}
+                <a href="{{ items.next.href }}" class="next" rel="next"></a>
+            {% endif %}
+        </div>
+    </div>
+{% endif %}

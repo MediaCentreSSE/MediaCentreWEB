@@ -1,0 +1,25 @@
+{% if items|length %}
+    <div class="main-content-width centered">
+        <div class="slider-block notices-slider loading">
+            <div class="slider-holder">
+                {% for item in items %}
+                    <div class="slider-item {{ item.field_background_color.value }}">
+                        <a href="{{ item.field_link.0.url }}">
+                            {% if item.field_icon_type.value == 'svg' and item.field_icon_svg.target_id %}
+                                <div class="icon" style="background-image: url('{{ file_url(item.field_icon_svg.entity.uri.value) }}');"></div>
+                            {% elseif item.field_icon_type.value == 'image' and item.field_image.target_id %}
+                                <div class="icon" style="background-image: url('{{ item.field_image.target_id|style('quick_links_slide_icon') }}');"></div>
+                            {% endif %}
+                            <div class="text-content">
+                                <h2>{{ item.field_title.value }}</h2>
+                                {% if item.field_description.value %}
+                                    <h3>{{ item.field_description.value|nl2br }}</h3>
+                                {% endif %}
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endif %}

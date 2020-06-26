@@ -1,0 +1,90 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dates
+    - node.type.event
+    - paragraphs.paragraphs_type.event_date
+  module:
+    - entity_reference_revisions
+id: node.event.field_dates
+field_name: field_dates
+entity_type: node
+bundle: event
+label: Dates
+description: 'Event dates. At least 1 required. Format for fields "Time from" and "Time to" is HH:mm.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      event_date: event_date
+    target_bundles_drag_drop:
+      event_date:
+        enabled: true
+        weight: 22
+      additional_form_data:
+        weight: 23
+        enabled: false
+      calendar_event:
+        weight: 24
+        enabled: false
+      calendar_month:
+        weight: 25
+        enabled: false
+      calendar_season:
+        weight: 26
+        enabled: false
+      contact_group:
+        weight: 27
+        enabled: false
+      expandable_list_item:
+        weight: 28
+        enabled: false
+      file_attachment:
+        weight: 29
+        enabled: false
+      form_field:
+        weight: 30
+        enabled: false
+      gallery_image:
+        weight: 31
+        enabled: false
+      marker:
+        weight: 32
+        enabled: false
+      most_visited_column:
+        weight: 33
+        enabled: false
+      most_visited_row:
+        weight: 34
+        enabled: false
+      printed_matter:
+        weight: 35
+        enabled: false
+      promo_slide:
+        weight: 36
+        enabled: false
+      quick_link_grid:
+        weight: 37
+        enabled: false
+      quick_link_slide:
+        weight: 38
+        enabled: false
+      quick_link_social:
+        weight: 39
+        enabled: false
+      quick_links_promoted:
+        weight: 40
+        enabled: false
+      quote:
+        weight: 41
+        enabled: false
+      research_paper:
+        weight: 42
+        enabled: false
+field_type: entity_reference_revisions

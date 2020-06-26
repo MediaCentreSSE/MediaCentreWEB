@@ -1,0 +1,4 @@
+services:
+  event_list.manager:
+    class: Drupal\event_list\EventListManager
+    arguments: ['@entity_type.manager', '@request_stack']

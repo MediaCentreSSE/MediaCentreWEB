@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: twitter_feed
+label: 'Twitter feed'
+revision: 0
+description: 'Outputs latest tweets from a specified Twitter account.'

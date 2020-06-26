@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: contact_person
+label: 'Contact person'
+revision: 0
+description: 'Outputs contact information from staff member''s data.'

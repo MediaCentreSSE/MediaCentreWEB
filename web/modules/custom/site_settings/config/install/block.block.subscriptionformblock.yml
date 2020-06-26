@@ -1,0 +1,32 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - content_page
+    - ctools
+  theme:
+    - sseriga
+id: subscriptionformblock
+theme: sseriga
+region: content
+weight: 2
+provider: null
+plugin: subscription_form_block
+settings:
+  id: subscription_form_block
+  label: 'Subscription form block'
+  provider: content_page
+  label_display: '0'
+  context_mapping:
+    node: '@node.node_route_context:node'
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      blog: blog
+      content_page: content_page
+      event: event
+      news: news
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

@@ -1,0 +1,10 @@
+{# Output required, only if exactly 3 images uploaded #}
+{% if node.field_images_triple.value|length == 3 %}
+    <div class="row triple-images">
+        {% for image in node.field_images_triple.value %}
+            <div class="col-4">
+                <img src="{{ image.target_id|style('image_triple') }}" alt="{{ image.alt }}"/>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}

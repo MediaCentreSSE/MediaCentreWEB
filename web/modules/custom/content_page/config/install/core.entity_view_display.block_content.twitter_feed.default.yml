@@ -1,0 +1,40 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.twitter_feed
+    - field.field.block_content.twitter_feed.field_title
+    - field.field.block_content.twitter_feed.field_tweet_count
+    - field.field.block_content.twitter_feed.field_twitter_account_name
+id: block_content.twitter_feed.default
+targetEntityType: block_content
+bundle: twitter_feed
+mode: default
+content:
+  field_title:
+    weight: 2
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_tweet_count:
+    weight: 1
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  field_twitter_account_name:
+    weight: 0
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  langcode: true

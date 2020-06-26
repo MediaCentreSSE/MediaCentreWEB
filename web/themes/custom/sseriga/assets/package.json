@@ -1,0 +1,22 @@
+{
+	"name": "html-template",
+	"version": "1.0.0",
+	"dependencies": {
+		"bootstrap": "^4.3.1",
+		"jquery": "^3.3.1",
+		"js-cookie": "^2.2.0",
+		"popper.js": "^1.14.7"
+	},
+	"devDependencies": {
+		"gulp": "^4.0.0",
+		"gulp-concat": "^2.6.1",
+		"gulp-exec": "^3.0.2",
+		"gulp-inline-fonts": "^1.1.0",
+		"gulp-inline-image": "^1.0.0",
+		"gulp-rename": "^1.4.0",
+		"gulp-sass": "^4.0.2",
+		"gulp-sourcemaps": "^2.6.5",
+		"gulp-uglify": "^3.0.2",
+		"merge-stream": "^1.0.1"
+	}
+}

@@ -1,0 +1,3 @@
+custom_admin:
+  js:
+    js/custom_admin.js: {}

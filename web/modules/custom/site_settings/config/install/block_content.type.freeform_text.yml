@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: freeform_text
+label: 'Freeform text'
+revision: 0
+description: 'Outputs freeform content, editable in a wysiwyg text editor.'

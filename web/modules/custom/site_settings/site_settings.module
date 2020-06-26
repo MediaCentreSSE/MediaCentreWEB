@@ -1,0 +1,205 @@
+<?php
+
+/**
+ * @file
+ * Contains site_settings.module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\block_content\BlockContentForm;
+use Drupal\block_content\Entity\BlockContent;
+use Drupal\Core\Access\AccessResultAllowed;
+use Drupal\Core\Url;
+use Drupal\node\NodeForm;
+use Drupal\node\Entity\Node;
+use Drupal\Component\Utility\Crypt;
+use Drupal\Core\Site\Settings;
+use Drupal\file\Entity\File;
+
+/**
+ * Remove unused comment tab from /admin/content.
+ *
+ * Add footer block editing page shortcut.
+ *
+ * @param array $variables
+ *   The preprocess variables.
+ */
+function site_settings_preprocess_menu_local_tasks(&$variables) {
+  if (isset($variables['primary']['comment.admin'])) {
+    unset($variables['primary']['comment.admin']);
+  }
+
+  if (isset($variables['primary']['system.admin_content']) && isset($variables['primary']['views_view:view.widgets.page_1'])) {
+    $variables['primary']['footer.block'] = [
+      '#theme' => 'menu_local_task',
+      '#link' => [
+        'title' => 'Footer',
+        'url' => Url::fromUserInput('/block/1?destination=/admin/content'),
+        'localized_options' => [],
+      ],
+      '#active' => FALSE,
+      '#weight' => 1,
+      '#access' => new AccessResultAllowed(),
+    ];
+  }
+}
+
+/**
+ * Remove some custom block types when adding from widget page.
+ *
+ * @param array $variables
+ *   The preprocess variables.
+ */
+function site_settings_preprocess_block_content_add_list(&$variables) {
+  $query = Drupal::request()->query;
+  if ($query->has('destination') && strpos($query->get('destination'), '/admin/content/widgets') !== FALSE) {
+    $not_widgets = ['footer_block', 'contact_form', 'event_form'];
+
+    foreach ($not_widgets as $custom_block) {
+      unset($variables['types'][$custom_block]);
+      unset($variables['content'][$custom_block]);
+    }
+  }
+}
+
+/**
+ * Attach a custom css file to admin forms, to fix spacing between paragraph
+ * fields, since apparently 2 years is not enough to fix it:
+ * https://www.drupal.org/project/paragraphs/issues/2668708.
+ *
+ * Unset first empty paragraph entry for new event forms, and content pages.
+ *
+ * @param array $form
+ *   The form.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   The form state.
+ * @param string $form_id
+ *   The form identifier.
+ */
+function site_settings_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $admin_context = Drupal::service('router.admin_context');
+  if ($admin_context->isAdminRoute()) {
+    $form['#attached']['library'][] = 'site_settings/custom_admin';
+
+    // Check if form has BlockContentForm object and object has a new BlockContent entity.
+    if (
+      ($form_object = $form_state->getFormObject())
+      && ($form_object instanceof BlockContentForm)
+      && ($entity = $form_object->getEntity())
+      && ($entity instanceof BlockContent)
+      && !$entity->id()
+    ) {
+      $type = $entity->get('type')->target_id;
+
+      // Currently, only required for event forms.
+      if ($type == 'event_form') {
+        unset($form['field_additional_fields']['widget'][0]);
+      }
+    }
+
+    // Check if form has BlockContentForm object and object has a new BlockContent entity.
+    if (
+      ($form_object = $form_state->getFormObject())
+      && ($form_object instanceof NodeForm)
+      && ($entity = $form_object->getEntity())
+      && ($entity instanceof Node)
+      && !$entity->id()
+    ) {
+      unset($form['field_gallery_images']['widget'][0]);
+      unset($form['field_seasons']['widget'][0]);
+      unset($form['field_expandable_list_items']['widget'][0]);
+      unset($form['field_file_attachments']['widget'][0]);
+      unset($form['field_related_events']['widget'][0]);
+    }
+
+    // Create two paths for menu item autocomplete - STARTS WITH and CONTAINS.
+    if ($form['#id'] == 'menu-link-content-menu-link-content-form') {
+      $parameters = [
+        'target_type' => 'node',
+        'selection_handler' => 'default',
+      ];
+
+      $data = serialize(['match_operator' => 'STARTS_WITH']) . $parameters['target_type'] . $parameters['selection_handler'];
+      $selection_settings_key = Crypt::hmacBase64($data, Settings::getHashSalt());
+      $parameters['selection_settings_key'] = $selection_settings_key;
+      $autocomplete_starts_with = Url::fromRoute('system.entity_autocomplete', $parameters)->toString(TRUE)->getGeneratedUrl();
+      $form['link']['widget'][0]['uri']['#attributes']['data-autocomplete-path-starts'] = $autocomplete_starts_with;
+
+      $data = serialize(['match_operator' => 'CONTAINS']) . 'node' . 'default';
+      $selection_settings_key = Crypt::hmacBase64($data, Settings::getHashSalt());
+      $parameters['selection_settings_key'] = $selection_settings_key;
+      $autocomplete_contains = Url::fromRoute('system.entity_autocomplete', $parameters)->toString(TRUE)->getGeneratedUrl();
+      $form['link']['widget'][0]['uri']['#attributes']['data-autocomplete-path-contains'] = $autocomplete_contains;
+
+      // $form['link_type'] = [
+      //   '#type' => 'radios',
+      //   '#title' => '',
+      //   '#title_display' => 'none',
+      //   '#required' => FALSE,
+      //   '#weight' => -2,
+      //   '#options' => [
+      //     'starts' => 'Starts with',
+      //     'contains' => 'Contains',
+      //   ],
+      //   '#default_value' => 'contains',
+      // ];
+    }
+
+    // strpos() required for validation/submission, when a form token gets
+    // appended to form id.
+    if (strpos($form['#id'], 'system-site-information-settings') !== FALSE) {
+      $request_context = Drupal::service('router.request_context');
+      $config = Drupal::config('system.site');
+
+      $form['#tree'] = FALSE;
+
+      $form['additional_pages'] = [
+        '#type' => 'details',
+        '#title' => t('Additional pages'),
+        '#open' => TRUE,
+      ];
+      $form['additional_pages']['privacy_policy_page'] = [
+        '#type' => 'textfield',
+        '#title' => t('Privacy policy page'),
+        '#default_value' => $config->get('privacy_policy_page') ?: '/',
+        '#size' => 40,
+        '#field_prefix' => $request_context->getCompleteBaseUrl(),
+        '#description' => t('Used in cookie notification description and in newsletter subscription forms.'),
+      ];
+
+      $form['metadata_defaults'] = [
+        '#type' => 'details',
+        '#title' => t('Metadata defaults'),
+        '#open' => TRUE,
+      ];
+      $form['metadata_defaults']['og_image'] = [
+        '#type' => 'managed_file',
+        '#upload_validators' => [
+          'file_validate_extensions' => ['jpeg jpg png gif'],
+        ],
+        '#upload_location' => 'public://',
+        '#title' => t('Default og:image'),
+        '#required' => TRUE,
+        '#description' => t('Open Graph (<a target="_blank" href="http://ogp.me/">http://ogp.me/</a>) requires for the og:image tag to always be present. For pages where no applicable content image found, this default will be used.'),
+        '#default_value' => $config->get('og_image') ?: NULL,
+      ];
+
+      $form['#submit'][] = 'site_settings_process_settings_form';
+    }
+  }
+}
+
+function site_settings_process_settings_form(&$form, FormStateInterface $form_state) {
+  $config = Drupal::configFactory()->getEditable('system.site');
+  $config->set('privacy_policy_page', $form_state->getValue('privacy_policy_page'));
+
+  $image = $form_state->getValue('og_image');
+  if ($image) {
+    $file = File::load($image[0]);
+    $file->setPermanent();
+    $file->save();
+    $config->set('og_image', $form_state->getValue('og_image'));
+  }
+
+  $config->save();
+}

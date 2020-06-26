@@ -1,0 +1,22 @@
+# Event applicant routing definition
+event_applicant.settings_tab:
+  route_name: event_applicant.settings
+  title: 'Settings'
+  base_route: event_applicant.settings
+
+entity.event_applicant.canonical:
+  route_name: entity.event_applicant.canonical
+  base_route: entity.event_applicant.canonical
+  title: 'View'
+
+entity.event_applicant.edit_form:
+  route_name: entity.event_applicant.edit_form
+  base_route: entity.event_applicant.canonical
+  title: 'Edit'
+
+entity.event_applicant.delete_form:
+  route_name:  entity.event_applicant.delete_form
+  base_route:  entity.event_applicant.canonical
+  title: Delete
+  weight: 10
+

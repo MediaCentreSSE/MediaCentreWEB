@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: file_attachment
+label: 'File attachment'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

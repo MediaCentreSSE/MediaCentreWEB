@@ -1,0 +1,18 @@
+services:
+  content_migration.content_migration_import_page_tree:
+    class: Drupal\content_migration\Command\ImportPageTreeCommand
+    arguments: ['@content_migration.manager']
+    tags:
+      - { name: drupal.command }
+
+  content_migration.content_migration_import_staff:
+    class: Drupal\content_migration\Command\ImportStaffCommand
+    arguments: ['@content_migration.manager']
+    tags:
+      - { name: drupal.command }
+
+  content_migration.content_migration_import_all:
+    class: Drupal\content_migration\Command\ImportAllCommand
+    arguments: ['@content_migration.manager']
+    tags:
+      - { name: drupal.command }

@@ -1,0 +1,127 @@
+langcode: en
+status: true
+dependencies: {  }
+id: content_editor
+label: 'Content editor'
+weight: 3
+is_admin: null
+permissions:
+- access administration pages
+- access content overview
+- access toolbar
+- administer menu
+- administer nodes
+- administer taxonomy
+- create administration content
+- create category_page content
+- create contacts content
+- create content_page content
+- create event content
+- create event_list content
+- create faculty content
+- create frontpage content
+- create news content
+- create news_list content
+- create search_results content
+- create simplenews_issue content
+- create staff content
+- delete administration revisions
+- delete all revisions
+- delete any administration content
+- delete any category_page content
+- delete any contacts content
+- delete any content_page content
+- delete any event content
+- delete any event_list content
+- delete any faculty content
+- delete any frontpage content
+- delete any news content
+- delete any news_list content
+- delete any search_results content
+- delete any simplenews_issue content
+- delete any staff content
+- delete category_page revisions
+- delete contacts revisions
+- delete content_page revisions
+- delete event revisions
+- delete event_list revisions
+- delete faculty revisions
+- delete frontpage revisions
+- delete news revisions
+- delete news_list revisions
+- delete own administration content
+- delete own category_page content
+- delete own contacts content
+- delete own content_page content
+- delete own event content
+- delete own event_list content
+- delete own faculty content
+- delete own frontpage content
+- delete own news content
+- delete own news_list content
+- delete own search_results content
+- delete own simplenews_issue content
+- delete own staff content
+- delete search_results revisions
+- delete simplenews_issue revisions
+- delete staff revisions
+- delete terms in departments
+- edit any administration content
+- edit any category_page content
+- edit any contacts content
+- edit any content_page content
+- edit any event content
+- edit any event_list content
+- edit any faculty content
+- edit any frontpage content
+- edit any news content
+- edit any news_list content
+- edit any search_results content
+- edit any simplenews_issue content
+- edit any staff content
+- edit own administration content
+- edit own category_page content
+- edit own contacts content
+- edit own content_page content
+- edit own event content
+- edit own event_list content
+- edit own faculty content
+- edit own frontpage content
+- edit own news content
+- edit own news_list content
+- edit own search_results content
+- edit own simplenews_issue content
+- edit own staff content
+- edit terms in departments
+- revert administration revisions
+- revert all revisions
+- revert category_page revisions
+- revert contacts revisions
+- revert content_page revisions
+- revert event revisions
+- revert event_list revisions
+- revert faculty revisions
+- revert frontpage revisions
+- revert news revisions
+- revert news_list revisions
+- revert search_results revisions
+- revert simplenews_issue revisions
+- revert staff revisions
+- use text format full_html
+- use text format restricted_html
+- view administration revisions
+- view all revisions
+- view category_page revisions
+- view contacts revisions
+- view content_page revisions
+- view event revisions
+- view event_list revisions
+- view faculty revisions
+- view frontpage revisions
+- view news revisions
+- view news_list revisions
+- view own unpublished content
+- view search_results revisions
+- view simplenews_issue revisions
+- view staff revisions
+- view the administration theme

@@ -1,0 +1,37 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - administration
+    - ctools
+    - node
+  theme:
+    - sseriga
+id: administrationlistblock
+theme: sseriga
+region: content
+weight: -3
+provider: null
+plugin: administration_list_block
+settings:
+  id: administration_list_block
+  label: 'Administration list block'
+  provider: administration
+  label_display: '0'
+  context_mapping:
+    node: '@node.node_route_context:node'
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      administration: administration
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+  node_type:
+    id: node_type
+    bundles:
+      administration: administration
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

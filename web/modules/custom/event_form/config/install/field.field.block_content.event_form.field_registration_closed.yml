@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.event_form
+    - field.storage.block_content.field_registration_closed
+id: block_content.event_form.field_registration_closed
+field_name: field_registration_closed
+entity_type: block_content
+bundle: event_form
+label: 'Registration closed'
+description: 'If checked, registration will not be available, regardless of applicant count or event start time.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

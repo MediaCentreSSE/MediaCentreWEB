@@ -1,0 +1,6 @@
+form:
+  js:
+    js/event_archive_form.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal

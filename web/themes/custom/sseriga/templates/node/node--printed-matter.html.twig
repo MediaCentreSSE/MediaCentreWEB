@@ -1,0 +1,31 @@
+{% if node.field_lead_text.value %}
+    <div class="printed-matter-intro">{{ node.field_lead_text.value|raw }}</div>
+{% endif %}
+
+{% if node.field_printed_matter|length %}
+    <div class="printed-matter-docs">
+        {% for printed_matter in node.field_printed_matter %}
+            {% set printed_matter = printed_matter.entity %}
+            <div class="doc row">
+                {% if printed_matter.field_image.target_id %}
+                    <div class="col">
+                        <img src="{{ printed_matter.field_image.target_id|style('printed_matter') }}" alt="{{ printed_matter.field_image.alt }}">
+                    </div>
+                {% endif %}
+
+                <div class="col">
+                    <h2>{{ printed_matter.field_title.value }}</h2>
+                    {{ printed_matter.field_text.value|raw }}
+
+                    {% if printed_matter.field_file.target_id %}
+                        {% set file = printed_matter.field_file.entity %}
+                        <div class="download">
+                            <a download href="{{ file_url(file.uri.value) }}">{{ 'Download'|trans({}, {context: 'attachment'}) }}</a>
+                            <span>{% if file.filesize.value|length %}{{ (file.filesize.value / 1024 / 1024)|number_format(2, '.') ~ 'MB' }}{% endif %} {{ file.filename.value|split('.')|last|upper }} {{ 'Document'|trans({}, {context: 'attachment'}) }}</span>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}

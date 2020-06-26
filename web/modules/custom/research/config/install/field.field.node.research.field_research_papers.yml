@@ -1,0 +1,84 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_research_papers
+    - node.type.research
+    - paragraphs.paragraphs_type.research_paper
+  module:
+    - entity_reference_revisions
+id: node.research.field_research_papers
+field_name: field_research_papers
+entity_type: node
+bundle: research
+label: 'Research papers'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      research_paper: research_paper
+    target_bundles_drag_drop:
+      research_paper:
+        enabled: true
+        weight: 20
+      additional_form_data:
+        weight: 21
+        enabled: false
+      calendar_event:
+        weight: 22
+        enabled: false
+      calendar_month:
+        weight: 23
+        enabled: false
+      calendar_season:
+        weight: 24
+        enabled: false
+      contact_group:
+        weight: 25
+        enabled: false
+      expandable_list_item:
+        weight: 26
+        enabled: false
+      file_attachment:
+        weight: 27
+        enabled: false
+      form_field:
+        weight: 28
+        enabled: false
+      gallery_image:
+        weight: 29
+        enabled: false
+      marker:
+        weight: 30
+        enabled: false
+      most_visited_column:
+        weight: 31
+        enabled: false
+      most_visited_row:
+        weight: 32
+        enabled: false
+      printed_matter:
+        weight: 33
+        enabled: false
+      promo_slide:
+        weight: 34
+        enabled: false
+      quick_link_grid:
+        weight: 35
+        enabled: false
+      quick_link_slide:
+        weight: 36
+        enabled: false
+      quick_link_social:
+        weight: 37
+        enabled: false
+      quick_links_promoted:
+        weight: 38
+        enabled: false
+field_type: entity_reference_revisions

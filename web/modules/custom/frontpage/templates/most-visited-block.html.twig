@@ -1,0 +1,35 @@
+{% if items|length %}
+    <div class="main-content-width centered padded row-space">
+        <div class="most-visited-block">
+            <h2>{{ 'Most Visited'|trans({}, {context: 'frontpage'}) }}</h2>
+            {% for item in items %}
+                {% set item_output %}
+                    <div class="col">
+                        <div class="most-visited-item">
+                            {% if item.field_image.target_id %}
+                                <div class="image-holder" style="background-image: url('{{ item.field_image.target_id|style('most_visited') }}');"></div>
+                            {% endif %}
+                            <div class="text-holder cf">
+                                <div class="title">{{ item.field_title.value }}</div>
+                                {% for row in item.field_rows %}
+                                    {% set row = row.entity %}
+                                    <a href="{{ row.field_link.0.url }}" class="arrowed-link">{{ row.field_title.value }}</a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                {% endset %}
+
+                {% if (loop.index % 2) %}
+                    <div class="row">
+                {% endif %}
+
+                {{ item_output }}
+
+                {% if not (loop.index % 2) or loop.last %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}

@@ -1,0 +1,34 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.expandable_list_item.field_text
+    - field.field.paragraph.expandable_list_item.field_title
+    - paragraphs.paragraphs_type.expandable_list_item
+  module:
+    - text
+id: paragraph.expandable_list_item.default
+targetEntityType: paragraph
+bundle: expandable_list_item
+mode: default
+content:
+  field_text:
+    weight: 1
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

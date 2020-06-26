@@ -1,0 +1,4 @@
+services:
+  widgets.manager:
+    class: Drupal\widgets\WidgetManager
+    arguments: ['@plugin.manager.block', '@current_user', '@content_page.manager']

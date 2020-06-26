@@ -1,0 +1,19 @@
+add event applicant entities:
+  title: 'Create new Event applicant entities'
+
+administer event applicant entities:
+  title: 'Administer Event applicant entities'
+  description: 'Allow to access the administration form to configure Event applicant entities.'
+  restrict access: true
+
+delete event applicant entities:
+  title: 'Delete Event applicant entities'
+
+edit event applicant entities:
+  title: 'Edit Event applicant entities'
+
+view published event applicant entities:
+  title: 'View published Event applicant entities'
+
+view unpublished event applicant entities:
+  title: 'View unpublished Event applicant entities'

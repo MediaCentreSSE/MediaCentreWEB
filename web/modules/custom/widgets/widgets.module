@@ -1,0 +1,139 @@
+<?php
+
+/**
+ * @file
+ * Contains widgets.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_help().
+ */
+function widgets_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the widgets module.
+    case 'help.page.widgets':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Outputs custom blocks assigned a current node') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function widgets_theme($existing, $type, $theme, $path) {
+  return [
+    'widgets_block' => [
+      'variables' => [
+        'widgets' => [],
+      ],
+    ],
+    'poll_block' => [
+      'variables' => [
+        'title' => '',
+        'poll' => NULL,
+      ],
+    ],
+    'freeform_block' => [
+      'variables' => [
+        'content' => NULL,
+      ],
+    ],
+    'additional_links_block' => [
+      'variables' => [
+        'content' => NULL,
+      ],
+    ],
+    'facebook_feed_block' => [
+      'variables' => [
+        'content' => NULL,
+        'posts' => [],
+      ],
+    ],
+    'contact_person_block' => [
+      'variables' => [
+        'content' => NULL,
+      ],
+    ],
+    'private_widget_block' => [
+      'variables' => [
+        'content' => NULL,
+      ],
+    ],
+    'twitter_feed_block' => [
+      'variables' => [
+        'content' => NULL,
+        'tweets' => [],
+      ],
+    ],
+    'button_block' => [
+      'variables' => [
+        'content' => NULL,
+      ],
+    ],
+    'highlight_block' => [
+      'variables' => [
+        'content' => NULL,
+      ],
+    ],
+    'quote_block' => [
+      'variables' => [
+        'content' => NULL,
+      ],
+    ],
+    'tour_360_block' => [
+      'variables' => [
+        'content' => NULL,
+      ],
+    ],
+    'visit_us_block' => [
+      'variables' => [
+        'content' => NULL,
+      ],
+    ],
+    'block_as_link_block' => [
+      'variables' => [
+        'content' => NULL,
+      ],
+    ],
+  ];
+}
+
+/**
+ * Display list of inherited widgets.
+ *
+ * @param array $form
+ *   The form.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   The form state.
+ * @param string $form_id
+ *   The form identifier.
+ */
+function widgets_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $admin_context = Drupal::service('router.admin_context');
+  if ($admin_context->isAdminRoute() && ($form['#entity_type'] ?? '') === 'node' && isset($form['field_inherit_widgets'])) {
+    $node = $form_state->getFormObject()->getEntity();
+    if (!$node->id()) {
+      return;
+    }
+
+    $widget_manager = Drupal::service('widgets.manager');
+    $inherited_widgets = $widget_manager->getInheritedWidgets($node, [], FALSE);
+
+    if (count($inherited_widgets)) {
+      $suffix = '<div class="custom-indent" id="field-inherited-widgets-list"><div>Currently inherited widgets:</div><ul>';
+      foreach ($inherited_widgets as $inherited_widget) {
+        $suffix .= '<li>' . $inherited_widget->info->value . ' (' . $inherited_widget->id() . ')</li>';
+      }
+      $suffix .= '</ul></div>';
+      $form['field_inherit_widgets']['widget']['#suffix'] = $suffix;
+      $form['#attached']['library'][] = 'widgets/custom_admin';
+    }
+  }
+}

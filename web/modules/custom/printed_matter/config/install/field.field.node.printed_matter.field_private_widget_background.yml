@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_private_widget_background
+    - node.type.printed_matter
+  module:
+    - options
+id: node.printed_matter.field_private_widget_background
+field_name: field_private_widget_background
+entity_type: node
+bundle: printed_matter
+label: 'Private widget background'
+description: ''
+required: true
+translatable: true
+default_value:
+  -
+    value: default
+default_value_callback: ''
+settings: {  }
+field_type: list_string

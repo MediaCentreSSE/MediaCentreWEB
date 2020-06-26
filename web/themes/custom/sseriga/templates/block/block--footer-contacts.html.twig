@@ -1,0 +1,37 @@
+{% set content = elements.content['#block_content'] %}
+<div class="bottom cf">
+    <div class="main-content-width centered padded cf">
+        <div class="contact-info-wrapper cf">
+            <div class="item"><a href="mailto:{{ 'office@sseriga.edu'|trans({}, {context: 'footer'}) }}">{{ 'office@sseriga.edu'|trans({}, {context: 'footer'}) }}</a></div>
+            <div class="item"><a href="tel:{{ '+371 670 158 00'|trans({}, {context: 'footer'}) }}">{{ '+371 670 158 00'|trans({}, {context: 'footer'}) }}</a></div>
+            <div class="item">{{ 'Strelnieku iela 4a, Riga, LV-1010, Latvia'|trans({}, {context: 'footer'}) }}</div>
+        </div>
+        <nav class="social-media-wrapper cf">
+            {% if content.field_twitter.0.url %}
+                <a href="{{ content.field_twitter.0.url }}" class="twitter"></a>
+            {% endif %}
+            {% if content.field_facebook.0.url %}
+                <a href="{{ content.field_facebook.0.url }}" class="facebook"></a>
+            {% endif %}
+            {% if content.field_linkedin.0.url %}
+                <a href="{{ content.field_linkedin.0.url }}" class="linkedin"></a>
+            {% endif %}
+            {% if content.field_flickr.0.url %}
+                <a href="{{ content.field_flickr.0.url }}" class="flickr"></a>
+            {% endif %}
+            {% if content.field_rss.0.url %}
+                <a href="{{ content.field_rss.0.url }}" class="rss"></a>
+            {% endif %}
+            {% if content.field_vimeo.0.url %}
+                <a href="{{ content.field_vimeo.0.url }}" class="vimeo"></a>
+            {% endif %}
+            {% if content.field_youtube.0.url %}
+                <a href="{{ content.field_youtube.0.url }}" class="youtube"></a>
+            {% endif %}
+            {% if content.field_instagram.0.url %}
+                <a href="{{ content.field_instagram.0.url }}" class="instagram"></a>
+            {% endif %}
+        </nav>
+    </div>
+{#     <a href="http://www.efumo.lv" target="_blank" title="{{ 'Efumo, Mājas lapas izstrāde, izveide, uzturēšana, UX dizains, IT Risinājumi, IT sistēmu integrācijas'|trans({}, {context: 'footer'}) }}" class="developer-block"><img src="/{{ directory }}/assets/images/efumo_logo_white.svg" alt="{{ 'Efumo, Mājas lapas izstrāde, izveide, uzturēšana, UX dizains, IT Risinājumi, IT sistēmu integrācijas'|trans({}, {context: 'footer'}) }}">{{ 'Izstrāde'|trans({}, {context: 'footer'}) }}</a> #}
+</div>

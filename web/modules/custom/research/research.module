@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains research.module.
+ */
+
+/**
+ * Implements research_theme().
+ */
+function research_theme($existing, $type, $theme, $path) {
+  return [
+    'research_block' => [
+      'variables' => [
+        'items' => [],
+        'node' => NULL,
+        'pager' => [
+          '#type' => 'pager',
+          '#quantity' => 5,
+        ],
+      ],
+    ],
+  ];
+}

@@ -1,0 +1,32 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.calendar_season.field_months
+    - field.field.paragraph.calendar_season.field_title
+    - paragraphs.paragraphs_type.calendar_season
+  module:
+    - entity_reference_revisions
+id: paragraph.calendar_season.default
+targetEntityType: paragraph
+bundle: calendar_season
+mode: default
+content:
+  field_months:
+    type: entity_reference_revisions_entity_view
+    weight: 1
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_title:
+    weight: 0
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

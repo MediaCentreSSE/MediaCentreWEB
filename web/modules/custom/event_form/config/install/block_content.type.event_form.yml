@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: event_form
+label: 'Event form'
+revision: 0
+description: 'Allows for event form creation. By default, has the following fields added - "E-mail", "Name", "Surname", "Phone", "Organisation or School", "Position or Grade".'

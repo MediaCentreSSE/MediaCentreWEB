@@ -1,0 +1,72 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_expandable_list_items
+    - node.type.event
+    - paragraphs.paragraphs_type.expandable_list_item
+  module:
+    - entity_reference_revisions
+id: node.event.field_expandable_list_items
+field_name: field_expandable_list_items
+entity_type: node
+bundle: event
+label: 'Expandable list items'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      expandable_list_item: expandable_list_item
+    target_bundles_drag_drop:
+      calendar_event:
+        weight: 16
+        enabled: false
+      calendar_month:
+        weight: 17
+        enabled: false
+      calendar_season:
+        weight: 18
+        enabled: false
+      contact_group:
+        weight: 19
+        enabled: false
+      expandable_list_item:
+        enabled: true
+        weight: 20
+      file_attachment:
+        weight: 21
+        enabled: false
+      form_field:
+        weight: 22
+        enabled: false
+      gallery_image:
+        weight: 23
+        enabled: false
+      marker:
+        weight: 24
+        enabled: false
+      most_visited_column:
+        weight: 25
+        enabled: false
+      most_visited_row:
+        weight: 26
+        enabled: false
+      quick_link_grid:
+        weight: 27
+        enabled: false
+      quick_link_slide:
+        weight: 28
+        enabled: false
+      quick_link_social:
+        weight: 29
+        enabled: false
+      quick_links_promoted:
+        weight: 30
+        enabled: false
+field_type: entity_reference_revisions

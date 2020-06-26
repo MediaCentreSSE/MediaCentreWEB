@@ -1,0 +1,81 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_printed_matter
+    - node.type.printed_matter
+    - paragraphs.paragraphs_type.printed_matter
+  module:
+    - entity_reference_revisions
+id: node.printed_matter.field_printed_matter
+field_name: field_printed_matter
+entity_type: node
+bundle: printed_matter
+label: 'Printed matter'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      printed_matter: printed_matter
+    target_bundles_drag_drop:
+      printed_matter:
+        enabled: true
+        weight: 19
+      additional_form_data:
+        weight: 20
+        enabled: false
+      calendar_event:
+        weight: 21
+        enabled: false
+      calendar_month:
+        weight: 22
+        enabled: false
+      calendar_season:
+        weight: 23
+        enabled: false
+      contact_group:
+        weight: 24
+        enabled: false
+      expandable_list_item:
+        weight: 25
+        enabled: false
+      file_attachment:
+        weight: 26
+        enabled: false
+      form_field:
+        weight: 27
+        enabled: false
+      gallery_image:
+        weight: 28
+        enabled: false
+      marker:
+        weight: 29
+        enabled: false
+      most_visited_column:
+        weight: 30
+        enabled: false
+      most_visited_row:
+        weight: 31
+        enabled: false
+      promo_slide:
+        weight: 32
+        enabled: false
+      quick_link_grid:
+        weight: 33
+        enabled: false
+      quick_link_slide:
+        weight: 34
+        enabled: false
+      quick_link_social:
+        weight: 35
+        enabled: false
+      quick_links_promoted:
+        weight: 36
+        enabled: false
+field_type: entity_reference_revisions

@@ -1,0 +1,8 @@
+services:
+  content_page.manager:
+    class: Drupal\content_page\ContentPageManager
+    arguments: ['@menu.link_tree', '@plugin.manager.menu.link', '@entity_type.manager']
+  content_page.custom_form_manager:
+    class: Drupal\content_page\CustomFormManager
+    arguments: ['@request_stack']
+

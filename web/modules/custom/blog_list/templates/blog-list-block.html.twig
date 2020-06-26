@@ -1,0 +1,21 @@
+<div class="blog-list-block">
+    <h1>{{ node.title.value }}</h1>
+    {% if items|length %}
+        <div class="blog-list">
+            <div class="row">
+                {% for blog in items %}
+                    <div class="col-6 col-sm-4">
+                        <a href="{{ path('entity.node.canonical', {node: blog.id}) }}" class="blog-item">
+                            {% if blog.field_blog_list_image.target_id %}
+                                <img src="{{ blog.field_blog_list_image.target_id|style('blog_list_image') }}" />
+                            {% endif %}
+                            <h2>{{ blog.title.value }}</h2>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+
+    {{ pager }}
+</div>

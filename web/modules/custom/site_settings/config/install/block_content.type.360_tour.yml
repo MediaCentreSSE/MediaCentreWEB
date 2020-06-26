@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: 360_tour
+label: '360 tour'
+revision: 0
+description: 'Outputs a styled link button with a 360 icon in background.'

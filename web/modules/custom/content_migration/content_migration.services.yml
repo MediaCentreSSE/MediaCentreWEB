@@ -1,0 +1,4 @@
+services:
+  content_migration.manager:
+    class: Drupal\content_migration\ContentMigrationManager
+    arguments: ['@entity_type.manager', '@plugin.manager.menu.link', '@pathauto.generator', '@path.alias_storage']

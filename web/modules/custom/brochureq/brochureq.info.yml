@@ -1,0 +1,5 @@
+name: 'Brochure Questionnaire module'
+type: module
+description: 'The functionality for Brochure Questionnaire'
+core: 8.x
+package: 'Custom'

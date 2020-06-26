@@ -1,0 +1,17 @@
+excluded:
+  - core.entity_form_display.node.staff.default
+  - core.entity_view_display.node.staff.default
+  - field.field.node.staff.field_administration
+  - field.field.node.staff.field_banner
+  - field.field.node.staff.field_body
+  - field.field.node.staff.field_contact_form
+  - field.field.node.staff.field_department
+  - field.field.node.staff.field_email
+  - field.field.node.staff.field_faculty
+  - field.field.node.staff.field_image
+  - field.field.node.staff.field_meta_tags
+  - field.field.node.staff.field_phone
+  - field.field.node.staff.field_position
+  - field.field.node.staff.field_website
+  - field.field.node.staff.field_widgets
+required: true

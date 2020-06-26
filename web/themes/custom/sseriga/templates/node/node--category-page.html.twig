@@ -1,0 +1,25 @@
+<div class="main-content-width centered padded">
+    {% if node.field_about.value or node.field_overview_page.target_id %}
+        <div class="subject-intro-block">
+            <div class="row justify-content-center">
+                {% if node.field_about.value %}
+                    <div class="col">
+                        <h2>{{ node.field_about.value|nl2br }}</h2>
+                    </div>
+                {% endif %}
+                {% if node.field_overview_page.target_id %}
+                    {% set overview_page = node.field_overview_page.entity %}
+                    <div class="col">
+                        <div class="overview">
+                            <div class="title">{{ 'Overview'|trans({}, {context: 'category page'}) }}</div>
+                            <div>{{ overview_page.field_lead_text.value|raw }}</div>
+                            <div class="link-wrapper">
+                                <a href="{{ path('entity.node.canonical', {node: overview_page.id}) }}" class="arrowed-link">{{ 'Read More'|trans({}, {context: 'category page'}) }}</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
+</div>

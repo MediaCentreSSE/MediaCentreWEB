@@ -1,0 +1,15 @@
+content_search.admin_form:
+  path: '/admin/config/search/content-search'
+  defaults:
+    _form: '\Drupal\content_search\Form\ContentSearchAdminForm'
+    _title: 'Content search overview'
+  requirements:
+    _permission: 'administer site configuration'
+
+content_search.search:
+  path: '/search'
+  defaults:
+    _controller: '\Drupal\content_search\Controller\ContentSearchController::getSearchResultsPage'
+    _title: 'Search'
+  requirements:
+    _permission: 'access content'

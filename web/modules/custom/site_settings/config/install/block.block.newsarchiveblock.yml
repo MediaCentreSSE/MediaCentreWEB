@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - ctools
+    - news_archive
+  theme:
+    - sseriga
+id: newsarchiveblock
+theme: sseriga
+region: content
+weight: 0
+provider: null
+plugin: news_archive_block
+settings:
+  id: news_archive_block
+  label: 'News archive block'
+  provider: news_archive
+  label_display: '0'
+  context_mapping:
+    node: '@node.node_route_context:node'
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      news_archive: news_archive
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

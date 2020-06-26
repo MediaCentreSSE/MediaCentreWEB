@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_embed_code
+    - node.type.frontpage
+id: node.frontpage.field_embed_code
+field_name: field_embed_code
+entity_type: node
+bundle: frontpage
+label: 'Embed code'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

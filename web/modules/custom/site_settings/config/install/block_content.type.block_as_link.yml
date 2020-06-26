@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: block_as_link
+label: 'Block as link'
+revision: 0
+description: 'Contains a block, that acts as a link, with a freeform text field and selection of background colors, '

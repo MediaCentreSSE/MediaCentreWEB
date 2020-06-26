@@ -1,0 +1,15 @@
+{% if node.field_expandable_list_items|length %}
+    <div class="accordeon-block">
+        <div class="accordeon-items">
+            {% for item in node.field_expandable_list_items %}
+                {% set item = item.entity %}
+                <div class="accordeon-item">
+                    <a href="#" class="accordeon-title"><h2>{{ item.field_title.value }}</h2></a>
+                    <div class="accordeon-content">
+                        <div class="accordeon-content-inner text-style">{{ item.field_text.value|raw }}</div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}

@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: quick_links_promoted
+label: 'Quick links - promoted (360x270)'
+effects:
+  d7db3cc6-f5de-4bfb-b349-8512b6e2d5f7:
+    uuid: d7db3cc6-f5de-4bfb-b349-8512b6e2d5f7
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 360
+      height: 270

@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - ctools
+    - faculty
+  theme:
+    - sseriga
+id: facultylistblock
+theme: sseriga
+region: content
+weight: -2
+provider: null
+plugin: faculty_list_block
+settings:
+  id: faculty_list_block
+  label: 'Faculty list block'
+  provider: faculty
+  label_display: '0'
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      faculty: faculty
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

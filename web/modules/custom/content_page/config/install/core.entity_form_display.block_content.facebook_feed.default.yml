@@ -1,0 +1,70 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.facebook_feed
+    - field.field.block_content.facebook_feed.field_facebook_page
+    - field.field.block_content.facebook_feed.field_post_count
+    - field.field.block_content.facebook_feed.field_title
+  module:
+    - field_group
+third_party_settings:
+  field_group:
+    group_content:
+      children:
+        - field_title
+        - field_facebook_page
+        - field_post_count
+      parent_name: ''
+      weight: 20
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: true
+        required_fields: true
+      label: Content
+id: block_content.facebook_feed.default
+targetEntityType: block_content
+bundle: facebook_feed
+mode: default
+content:
+  field_facebook_page:
+    weight: 28
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_post_count:
+    weight: 29
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  field_title:
+    weight: 27
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  info:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+hidden: {  }

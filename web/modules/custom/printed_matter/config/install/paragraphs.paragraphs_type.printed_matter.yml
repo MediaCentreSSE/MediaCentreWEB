@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: printed_matter
+label: 'Printed matter'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

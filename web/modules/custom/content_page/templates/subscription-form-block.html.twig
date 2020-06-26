@@ -1,0 +1,56 @@
+{#
+<div class="subscribe-block">
+    <form data-drupal-selector="{{ form['#attributes']['data-drupal-selector'] }}" id="{{ form['#id'] }}" method="{{ form['#method'] }}">
+        {{ form.form_build_id }}
+        {{ form.form_id }}
+        {{ form.form_token }}
+
+        {{ form.subscribe }}
+
+        <div class="row no-gutters">
+            <div class="col">{{ 'Subscribe to SSE Riga Executive Education department newsletter:'|trans({}, {context: 'subscription'}) }}</div>
+            <div class="col">
+                <div class="inputblock secondary-style" data-field="email">
+                    <div class="inputblock-input">
+                        {{ form.email }}
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <button data-field="subscribe" type="submit" class="button contains-icon width-fluid"><i class="icon icon-mail-gold icon-push-right float-left"></i>{{ 'SUBSCRIBE NOW'|trans({}, {context: 'subscription'}) }}</button>
+            </div>
+        </div>
+    </form>
+</div>
+#}
+
+<div class="subscribe-block form-block">
+    <div class="form-block-inner">
+        <h2>{{ 'Subscribe to SSE Riga Executive Education department newsletter:'|trans({}, {context: 'subscription'}) }}</h2>
+        <form data-drupal-selector="{{ form['#attributes']['data-drupal-selector'] }}" id="{{ form['#id'] }}" method="{{ form['#method'] }}">
+            {{ form.form_build_id }}
+            {{ form.form_id }}
+            {{ form.form_token }}
+
+            {{ form.subscribe }}
+
+            <div class="custom-table">
+                <div class="tr inputblock required" data-field="email">
+                    <div class="td">
+                        <label class="inputblock-label">{{ form.email['#title'] }}</label>
+                    </div>
+                    <div class="td">
+                        <div class="inputblock-input">
+                            {{ form.email }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom cf">
+                <div class="button-wrapper" data-field="submit">
+                    <button data-field="subscribe" type="submit" class="button width-fluid">{{ 'SUBSCRIBE NOW'|trans({}, {context: 'subscription'}) }}</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

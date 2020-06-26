@@ -1,0 +1,6 @@
+services:
+  event.event_dates_convert:
+    class: Drupal\event\Command\EventDateConversionCommand
+    arguments: ['@entity_type.manager']
+    tags:
+      - { name: drupal.command }

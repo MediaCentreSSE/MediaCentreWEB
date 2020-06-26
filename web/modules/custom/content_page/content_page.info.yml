@@ -1,0 +1,32 @@
+name: Page
+description: 'Provides Page content type and related configuration. '
+type: module
+package: Custom
+core: 8.x
+dependencies:
+  - block_content
+  - category_page
+  - contacts
+  - datetime
+  - entity_reference_revisions
+  - event
+  - field
+  - field_group
+  - file
+  - frontpage
+  - image
+  - language
+  - link
+  - menu_ui
+  - metatag
+  - news
+  - node
+  - options
+  - paragraphs
+  - path
+  - simplenews
+  - site_settings
+  - svg_image
+  - text
+  - user
+  - views

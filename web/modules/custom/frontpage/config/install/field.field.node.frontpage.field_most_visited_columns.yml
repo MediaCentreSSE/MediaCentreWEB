@@ -1,0 +1,45 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_most_visited_columns
+    - node.type.frontpage
+    - paragraphs.paragraphs_type.most_visited_column
+  module:
+    - entity_reference_revisions
+id: node.frontpage.field_most_visited_columns
+field_name: field_most_visited_columns
+entity_type: node
+bundle: frontpage
+label: 'Most visited - columns'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      most_visited_column: most_visited_column
+    target_bundles_drag_drop:
+      most_visited_row:
+        weight: 7
+        enabled: false
+      most_visited_column:
+        enabled: true
+        weight: 8
+      quick_link_grid:
+        weight: 9
+        enabled: false
+      quick_link_slide:
+        weight: 10
+        enabled: false
+      quick_link_social:
+        weight: 11
+        enabled: false
+      quick_links_promoted:
+        weight: 12
+        enabled: false
+field_type: entity_reference_revisions

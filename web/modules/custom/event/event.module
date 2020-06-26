@@ -1,0 +1,60 @@
+<?php
+
+/**
+ * @file
+ * Contains event.module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\content_page\ContentPageManager;
+use Drupal\Core\Entity\EntityInterface;
+
+/**
+ * Validate time fields.
+ *
+ * @param array $form
+ *   The form.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   The form state.
+ * @param string $form_id
+ *   The form identifier.
+ */
+function event_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $admin_context = Drupal::service('router.admin_context');
+  if ($admin_context->isAdminRoute() && isset($form['field_time_from']) && isset($form['field_time_to'])) {
+    $form['#attached']['library'][] = 'event/custom_admin';
+  }
+}
+
+/**
+ * Implements hook_entity_insert().
+ *
+ * Update event start/end dates for easier searching and sorting.
+ */
+function event_node_presave(EntityInterface $node) {
+  if ($node->getType() == ContentPageManager::CONTENT_TYPE_EVENT) {
+    $dates = $node->get('field_dates')->referencedEntities();
+    $min_date = NULL;
+    $max_date = NULL;
+    $min_time = NULL;
+    $max_time = NULL;
+
+    foreach ($dates as $date) {
+      $date_timestamp = strtotime($date->get('field_date')->value);
+
+      if ($min_date === NULL || $date_timestamp < $min_date) {
+        $min_date = $date_timestamp;
+        $min_time = (string) $date->get('field_time_from')->value;
+      }
+      if ($max_date === NULL || $date_timestamp > $max_date) {
+        $max_date = $date_timestamp;
+        $max_time = (string) $date->get('field_time_to')->value;
+      }
+    }
+
+    $node->set('field_date_from', date('Y-m-d', $min_date));
+    $node->set('field_time_from', $min_time);
+    $node->set('field_date_to', date('Y-m-d', $max_date));
+    $node->set('field_time_to', $max_time);
+  }
+}

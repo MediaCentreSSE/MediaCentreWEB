@@ -1,0 +1,9 @@
+{% if items|length %}
+    <div class="main-content-width centered padded row-space">
+        <div class="subjects-block">
+            {% for item in items %}
+                <a href="{{ item.url }}"><h2>{{ item.title }}</h2></a>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}

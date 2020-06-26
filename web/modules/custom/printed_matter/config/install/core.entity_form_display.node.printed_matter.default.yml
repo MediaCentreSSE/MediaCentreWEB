@@ -1,0 +1,232 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.printed_matter.field_banner
+    - field.field.node.printed_matter.field_content_menu
+    - field.field.node.printed_matter.field_inherit_widgets
+    - field.field.node.printed_matter.field_lead_text
+    - field.field.node.printed_matter.field_meta_tags
+    - field.field.node.printed_matter.field_printed_matter
+    - field.field.node.printed_matter.field_private_widget_background
+    - field.field.node.printed_matter.field_private_widget_text
+    - field.field.node.printed_matter.field_private_widget_title
+    - field.field.node.printed_matter.field_widgets
+    - image.style.thumbnail
+    - node.type.printed_matter
+  module:
+    - field_group
+    - metatag
+    - paragraphs
+    - path
+    - svg_image
+    - text
+third_party_settings:
+  field_group:
+    group_header:
+      children:
+        - title
+        - field_banner
+        - field_content_menu
+      parent_name: ''
+      weight: 7
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: true
+        required_fields: true
+      label: Header
+    group_content:
+      children:
+        - field_lead_text
+      parent_name: ''
+      weight: 8
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: true
+        required_fields: true
+      label: Content
+    group_printed_matter:
+      children:
+        - field_printed_matter
+      parent_name: ''
+      weight: 9
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: true
+        required_fields: true
+      label: 'Printed matter'
+    group_private_widget:
+      children:
+        - field_private_widget_title
+        - field_private_widget_text
+        - field_private_widget_background
+      parent_name: ''
+      weight: 10
+      format_type: details
+      format_settings:
+        label: 'Private widget'
+        open: true
+        id: ''
+        classes: ''
+        required_fields: false
+      label: 'Private widget'
+    group_widgets:
+      children:
+        - field_inherit_widgets
+        - field_widgets
+      parent_name: ''
+      weight: 11
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: true
+        required_fields: true
+      label: Widgets
+id: node.printed_matter.default
+targetEntityType: node
+bundle: printed_matter
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_banner:
+    weight: 1
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+  field_content_menu:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_inherit_widgets:
+    weight: 15
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_lead_text:
+    weight: 8
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_meta_tags:
+    weight: 12
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_firehose
+    region: content
+  field_printed_matter:
+    type: entity_reference_paragraphs
+    weight: 26
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
+  field_private_widget_background:
+    weight: 14
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_private_widget_text:
+    weight: 13
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_private_widget_title:
+    weight: 12
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_widgets:
+    weight: 16
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  langcode:
+    type: language_select
+    weight: 0
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 3
+    region: content
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 6
+    region: content
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 4
+    region: content
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 1
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    region: content
+    third_party_settings: {  }
+hidden: {  }

@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Frontpage
+type: frontpage
+description: 'Frontpage of site, contains various blocks of links and promoted info.'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: false

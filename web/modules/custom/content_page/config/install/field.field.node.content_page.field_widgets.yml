@@ -1,0 +1,49 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.360_tour
+    - block_content.type.additional_links
+    - block_content.type.block_as_link
+    - block_content.type.button
+    - block_content.type.contact_person
+    - block_content.type.facebook_feed
+    - block_content.type.freeform_text
+    - block_content.type.highlight
+    - block_content.type.poll
+    - block_content.type.quote
+    - block_content.type.twitter_feed
+    - block_content.type.visit_us
+    - field.storage.node.field_widgets
+    - node.type.content_page
+id: node.content_page.field_widgets
+field_name: field_widgets
+entity_type: node
+bundle: content_page
+label: Widgets
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:block_content'
+  handler_settings:
+    target_bundles:
+      360_tour: 360_tour
+      additional_links: additional_links
+      block_as_link: block_as_link
+      button: button
+      contact_person: contact_person
+      facebook_feed: facebook_feed
+      freeform_text: freeform_text
+      highlight: highlight
+      poll: poll
+      quote: quote
+      twitter_feed: twitter_feed
+      visit_us: visit_us
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: freeform_text
+field_type: entity_reference

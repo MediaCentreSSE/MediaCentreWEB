@@ -1,0 +1,20 @@
+name: 'Category page'
+description: 'Provides Category page content type and related configuration. '
+type: module
+package: Custom
+core: 8.x
+dependencies:
+  - block_content
+  - content_page
+  - field
+  - field_group
+  - file
+  - frontpage
+  - image
+  - language
+  - menu_ui
+  - metatag
+  - node
+  - path
+  - site_settings
+  - user

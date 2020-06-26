@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: expandable_list_item
+label: 'Expandable list item'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

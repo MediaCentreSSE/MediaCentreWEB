@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: gallery_image
+label: 'Gallery image (2560x2560)'
+effects:
+  e5047025-2a8e-4090-9fbe-a70d53d331de:
+    uuid: e5047025-2a8e-4090-9fbe-a70d53d331de
+    id: image_scale
+    weight: 1
+    data:
+      width: 2560
+      height: 2560
+      upscale: false

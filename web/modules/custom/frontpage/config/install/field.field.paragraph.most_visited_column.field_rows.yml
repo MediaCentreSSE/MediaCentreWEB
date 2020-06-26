@@ -1,0 +1,45 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_rows
+    - paragraphs.paragraphs_type.most_visited_column
+    - paragraphs.paragraphs_type.most_visited_row
+  module:
+    - entity_reference_revisions
+id: paragraph.most_visited_column.field_rows
+field_name: field_rows
+entity_type: paragraph
+bundle: most_visited_column
+label: Rows
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      most_visited_row: most_visited_row
+    target_bundles_drag_drop:
+      most_visited_row:
+        enabled: true
+        weight: 7
+      most_visited_column:
+        weight: 8
+        enabled: false
+      quick_link_grid:
+        weight: 9
+        enabled: false
+      quick_link_slide:
+        weight: 10
+        enabled: false
+      quick_link_social:
+        weight: 11
+        enabled: false
+      quick_links_promoted:
+        weight: 12
+        enabled: false
+field_type: entity_reference_revisions

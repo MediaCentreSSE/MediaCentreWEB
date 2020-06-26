@@ -1,0 +1,212 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.research.field_banner
+    - field.field.node.research.field_content_menu
+    - field.field.node.research.field_inherit_widgets
+    - field.field.node.research.field_meta_tags
+    - field.field.node.research.field_private_widget_background
+    - field.field.node.research.field_private_widget_text
+    - field.field.node.research.field_private_widget_title
+    - field.field.node.research.field_research_papers
+    - field.field.node.research.field_widgets
+    - image.style.thumbnail
+    - node.type.research
+  module:
+    - field_group
+    - metatag
+    - paragraphs
+    - path
+    - svg_image
+    - text
+third_party_settings:
+  field_group:
+    group_header:
+      children:
+        - title
+        - field_banner
+        - field_content_menu
+      parent_name: ''
+      weight: 5
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: true
+        required_fields: true
+      label: Header
+    group_research_papers:
+      children:
+        - field_research_papers
+      parent_name: ''
+      weight: 6
+      format_type: details
+      format_settings:
+        label: 'Research papers'
+        open: true
+        required_fields: true
+        id: ''
+        classes: ''
+      label: 'Research papers'
+    group_private_widget:
+      children:
+        - field_private_widget_title
+        - field_private_widget_text
+        - field_private_widget_background
+      parent_name: ''
+      weight: 7
+      format_type: details
+      format_settings:
+        label: 'Private widget'
+        open: true
+        id: ''
+        classes: ''
+        required_fields: false
+      label: 'Private widget'
+    group_widgets:
+      children:
+        - field_inherit_widgets
+        - field_widgets
+      parent_name: ''
+      weight: 8
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: true
+        required_fields: true
+      label: Widgets
+id: node.research.default
+targetEntityType: node
+bundle: research
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_banner:
+    weight: -4
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+  field_content_menu:
+    weight: -3
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_inherit_widgets:
+    weight: 12
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_meta_tags:
+    weight: 11
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_firehose
+    region: content
+  field_private_widget_background:
+    weight: 16
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_private_widget_text:
+    weight: 15
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_private_widget_title:
+    weight: 14
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_research_papers:
+    type: entity_reference_paragraphs
+    weight: 26
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: preview
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: research_paper
+    third_party_settings: {  }
+    region: content
+  field_widgets:
+    weight: 13
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  langcode:
+    type: language_select
+    weight: 0
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 3
+    region: content
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 10
+    region: content
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 4
+    region: content
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 1
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    region: content
+    third_party_settings: {  }
+hidden: {  }

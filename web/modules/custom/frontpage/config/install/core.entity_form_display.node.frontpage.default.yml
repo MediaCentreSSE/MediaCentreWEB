@@ -1,0 +1,178 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.frontpage.field_embed_code
+    - field.field.node.frontpage.field_latest_news_list
+    - field.field.node.frontpage.field_meta_tags
+    - field.field.node.frontpage.field_most_visited_columns
+    - field.field.node.frontpage.field_promo_slides
+    - field.field.node.frontpage.field_quick_links_grid
+    - field.field.node.frontpage.field_quick_links_promoted
+    - field.field.node.frontpage.field_quick_links_slides
+    - field.field.node.frontpage.field_quick_links_social
+    - field.field.node.frontpage.field_upcoming_events_list
+    - node.type.frontpage
+  module:
+    - field_group
+    - metatag
+    - paragraphs
+    - path
+third_party_settings:
+  field_group:
+    group_promo_block:
+      children:
+        - field_promo_slides
+      parent_name: ''
+      weight: 9
+      format_type: details
+      format_settings:
+        label: 'Promo block'
+        open: true
+        required_fields: true
+        id: ''
+        classes: ''
+      label: 'Promo block'
+    group_quick_links_grid:
+      children:
+        - field_quick_links_grid
+      parent_name: ''
+      weight: 10
+      format_type: details
+      format_settings:
+        label: 'Quick links - grid'
+        open: true
+        required_fields: true
+        id: ''
+        classes: ''
+      label: 'Quick links - grid'
+    group_upcoming_events_and_latest:
+      children:
+        - field_upcoming_events_list
+        - field_latest_news_list
+      parent_name: ''
+      weight: 11
+      format_type: details
+      format_settings:
+        label: 'Upcoming events and latest news'
+        open: true
+        required_fields: true
+        id: ''
+        classes: ''
+      label: 'Upcoming events and latest news'
+id: node.frontpage.default
+targetEntityType: node
+bundle: frontpage
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_latest_news_list:
+    weight: 38
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_meta_tags:
+    weight: 8
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_firehose
+    region: content
+  field_promo_slides:
+    type: entity_reference_paragraphs
+    weight: 39
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
+  field_quick_links_grid:
+    type: entity_reference_paragraphs
+    weight: 26
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
+  field_upcoming_events_list:
+    weight: 37
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  langcode:
+    type: language_select
+    weight: 1
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 4
+    region: content
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 7
+    region: content
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 5
+    region: content
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 2
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    region: content
+    third_party_settings: {  }
+hidden:
+  field_embed_code: true
+  field_most_visited_columns: true
+  field_quick_links_promoted: true
+  field_quick_links_slides: true
+  field_quick_links_social: true

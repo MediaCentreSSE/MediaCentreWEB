@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: promo_frontpage
+label: 'Promo frontpage (2560x2560)'
+effects:
+  283a771a-88ad-4471-98a9-b077507e6368:
+    uuid: 283a771a-88ad-4471-98a9-b077507e6368
+    id: image_scale
+    weight: 1
+    data:
+      width: 2560
+      height: 2560
+      upscale: false

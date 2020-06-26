@@ -1,0 +1,90 @@
+/* Colors -----------------------------------------------------------------*/
+
+$color-1 : #FFFFFF; // White
+$color-2 : #000000; // Black
+$color-3 : #333333; // black tone 2
+$color-4 : #666666; // black tone 3
+$color-5 : #999999; // black tone 4
+$color-6 : #CCCCCC; // black tone 5
+$color-7 : #D9D9D9; // black tone 6
+$color-8 : #E5E5E5; // black tone 7
+
+$color-9 : #092F68; // darkblue tone 1
+$color-10 : #3A5986; // darkblue tone 2
+$color-11 : #6B82A4; // darkblue tone 3
+$color-12 : #9DACC3; // darkblue tone 4
+$color-13 : #CED5E1; // darkblue tone 5
+$color-14 : #DAE0E8; // darkblue tone 6
+$color-15 : #E6EAF0; // darkblue tone 7
+
+$color-16 : #A39161; // gold tone 1
+$color-17 : #B5A781; // gold tone 2
+$color-18 : #C8BDA0; // gold tone 3
+$color-19 : #DAD3C0; // gold tone 4
+$color-20 : #EDE9DF; // gold tone 5
+$color-21 : #F1EFE7; // gold tone 6
+$color-22 : #F7F7F7; // gold tone 7
+
+$color-23 : #591E77; // purple tone 1
+$color-24 : #7A4B92; // purple tone 2
+$color-25 : #9B78AD; // purple tone 3
+$color-26 : #BDA5C9; // purple tone 4
+$color-27 : #DED2E4; // purple tone 5
+$color-28 : #E6DDEB; // purple tone 6
+$color-29 : #EEE8F1; // purple tone 7
+
+$color-30 : #CC7D00; // orange tone 1
+$color-31 : #D69733; // orange tone 2
+$color-32 : #E0B166; // orange tone 3
+$color-33 : #EBCB99; // orange tone 4
+$color-34 : #F5E5CC; // orange tone 5
+$color-35 : #F7ECD9; // orange tone 6
+
+$color-36 : #6b83a4; // another blue
+$color-37 : #807041; // another gold
+$color-38 : #dc3545; // reddish
+$color-39 : #887d60; // brownish
+$color-40 : #a3915d; // brownish 2
+
+$color-41 : #7f8c8d; // gray
+// new
+$color-42 : #EEF0F4; // grayish
+$color-43 : #1F2630; // dark
+$color-44 : #505459; // dark 2 // replaced 36
+$color-45 : #A08F59; // gold 8
+$color-46 : #8497B3; // blueish
+$color-47 : #B86200; // orange hover
+$color-48 : #959CA6; // grayish
+$color-49 : #4B1963; // dark purple
+$color-50 : #B5C4D6; // lightishly blue
+$color-51 : #EA1A5F; // Reddish
+$color-52 : #1155A5; // Bluey 1
+$color-53 : #0D4286; // Bluey 2
+$color-54 : #F4BC00; // Orangy 1
+$color-55 : #E09C00; // Orangy 2
+$color-56 : #718399; // Gray hover
+$color-57 : #0E498C; // Blue hover 1
+$color-58 : #0B366E; // Blue hover 2
+$color-59 : #07274F; // Blue hover 3
+$color-60 : #E0A100; // Orange hover 1
+$color-61 : #CC8500; // Orange hover 2
+$color-62 : #DFE6EC; // Light blue
+$color-63 : #687994; // Blueish
+
+/* Fonts ------------------------------------------------------------------*/
+
+$primary-font-stack : "Futura-Med", Trebuchet MS, Arial, sans-serif;
+$font_libre_baskerville : "libre_baskervilleregular";
+$font_eb_garamond : "EB Garamond";
+$font_futurapt_book : "FuturaPT-Book";
+$font_futurapt_demi : "FuturaPT-Demi";
+$primary-text-size : 17px;
+$primary-text-color: $color-3;
+
+/* Other ------------------------------------------------------------------*/
+
+$main-content-width: 960px;
+$secondary-content-width: 1440px;
+$image-directory: "../../images/";
+$row_space: 40px;
+$default_bottom_margin: 40px;

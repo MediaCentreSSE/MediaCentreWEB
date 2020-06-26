@@ -1,0 +1,109 @@
+{% import _self as macros %}
+
+{# if output comes from a content node #}
+
+{% if node is defined and node.field_related_events|length %}
+    <div class="event-list-block">
+        <div class="events-list">
+            {% for event in node.field_related_events %}
+                {% set event = event.entity %}
+                {{ macros.output_related_event(event) }}
+            {% endfor %}
+        </div>
+    </div>
+    {# if output comes from an event list #}
+{% elseif items is defined %}
+    <div class="events-list">
+        {% for event in items %}
+            {{ macros.output_event(event) }}
+        {% endfor %}
+    </div>
+{% endif %}
+
+
+{% macro output_related_event(event) %}
+
+    {% if event.field_link.0 %}
+        <a href="{{ event.field_link.0.url }}" class="events-item">
+    {% else %}
+        <div href="{{ event.field_link.0.url }}" class="events-item">
+    {% endif %}
+        <div class="row">
+
+            {% set start_month = event.field_date_from.value|date('M')|upper %}
+            {% set start_date = event.field_date_from.value|date('j') %}
+
+            {% if event.field_date_to.value %}
+                {% set end_month = event.field_date_to.value|date('M')|upper %}
+                {% set end_date = event.field_date_to.value|date('j') %}
+                <div class="col">
+                    {% if start_month == end_month and start_date == end_date %}
+                        <span>{{ start_month }} {{ start_date }}</span>
+                    {% elseif start_month == end_month and start_date != end_date %}
+                        <span>{{ start_month }} {{ start_date }}</span> — <span>{{ end_date }}</span>
+                    {% elseif start_month != end_month %}
+                        <span>{{ start_month }} {{ start_date }}</span> — <span>{{ end_month }} {{ end_date }}</span>
+                    {% endif %}
+                </div>
+            {% else %}
+                <div class="col">
+                    <span>{{ start_month }} {{ start_date }}</span>
+                </div>
+            {% endif %}
+
+            <div class="col">
+                <div class="title {% if not event.field_link.0 %}no-hover{% endif %}">{{ event.field_title.value }}</div>
+                {% if event.field_address.value %}
+                    <div class="where">{{ event.field_address.value|nl2br }}</div>
+                {% endif %}
+            </div>
+
+        </div>
+
+    {% if event.field_link.0 %}
+        </a>
+    {% else %}
+        </div>
+    {% endif %}
+
+{% endmacro %}
+
+{% macro output_event(event) %}
+    <a href="{{ path('entity.node.canonical', {node: event.id}) }}" class="events-item">
+        <div class="row">
+            {% set start_month = event.field_date_from.value|date('M')|upper %}
+            {% set end_month = event.field_date_to.value|date('M')|upper %}
+
+            {% set start_date = event.field_date_from.value|date('j') %}
+            {% set end_date = event.field_date_to.value|date('j') %}
+
+            <div class="col">
+                {% if start_month == end_month and start_date == end_date %}
+                    <span>{{ start_month }} {{ start_date }}</span>
+                {% elseif start_month == end_month and start_date != end_date %}
+                    <span>{{ start_month }} {{ start_date }}</span> — <span>{{ end_date }}</span>
+                {% elseif start_month != end_month %}
+                    <span>{{ start_month }} {{ start_date }}</span> — <span>{{ end_month }} {{ end_date }}</span>
+                {% endif %}
+            </div>
+            <div class="col">
+                <div class="title">{{ event.title.value }}</div>
+                <div class="when">
+                    {% for event_date in event.field_dates %}
+                        {% set event_date = event_date.entity %}
+                        <div class="when-item">
+                            {{
+                                event_date.field_date.value|date('l, F j, Y')
+                                ~ (event_date.field_time_from.value ? ', ' ~ event_date.field_time_from.value : '')
+                                ~ (event_date.field_time_to.value ? (' – ' ~ event_date.field_time_to.value) : '')
+                            }}
+                        </div>
+                    {% endfor %}
+                </div>
+                {% if event.field_location.value %}
+                    <div class="where">{{ event.field_location.value|nl2br }}</div>
+                {% endif %}
+            </div>
+        </div>
+    </a>
+{% endmacro %}

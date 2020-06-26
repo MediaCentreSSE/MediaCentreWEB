@@ -1,0 +1,33 @@
+<div class="event-registration-block form-block">
+    <div class="form-block-inner">
+        <h2>{{ content.field_title.value }}</h2>
+        <form data-drupal-selector="{{ form['#attributes']['data-drupal-selector'] }}" id="{{ form['#id'] }}" method="{{ form['#method'] }}">
+            {{ form.form_build_id }}
+            {{ form.form_id }}
+            {{ form.form_token }}
+
+            <div class="custom-table">
+                {% for field_name, field in form %}
+                    {% if field_name|split('_')|first == 'field' %}
+                        <div class="tr inputblock {% if field['#required'] %}required{% endif %}" data-field="{{ field_name }}">
+                            <div class="td">
+                                <label class="inputblock-label">{{ field['#title'] }}{% if not field['#required'] %}<span>Optional</span>{% endif %}</label>
+                            </div>
+                            <div class="td">
+                                <div class="inputblock-input">
+                                    {{ field }}
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="legend"><span>*</span> – {{ 'Required fields'|trans({}, {context: 'custom contact form'}) }}</div>
+            <div class="bottom cf">
+                <div class="button-wrapper" data-field="submit">
+                    {{ form.submit }}
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

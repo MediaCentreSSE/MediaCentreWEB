@@ -1,0 +1,15 @@
+<div id="page-main-wrapper">
+    {% include directory ~ '/templates/partials/header.html.twig' %}
+
+    <div class="page-content-wrapper">
+        <!-- start of specific page content -->
+        <div class="page-wrapper">
+            <div class="main-content-width centered padded row-space">
+                {{ page.banner }}
+                {{ page.content }}
+                {{ page.sidebar }}
+            </div>
+        </div>
+    </div>
+</div>
+{% include directory ~ '/templates/partials/footer.html.twig' %}

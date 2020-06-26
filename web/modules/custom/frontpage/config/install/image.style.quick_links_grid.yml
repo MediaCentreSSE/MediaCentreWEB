@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: quick_links_grid
+label: 'Quick links - grid (480x80)'
+effects:
+  8734e9f3-577e-4234-8726-8a42592c1cce:
+    uuid: 8734e9f3-577e-4234-8726-8a42592c1cce
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 480
+      height: 80

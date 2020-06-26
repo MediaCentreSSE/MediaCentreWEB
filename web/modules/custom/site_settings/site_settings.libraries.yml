@@ -1,0 +1,4 @@
+custom_admin:
+  css:
+    theme:
+      css/custom_admin.css: {}

@@ -1,0 +1,29 @@
+{% if items|length or embed_code %}
+    <div class="secondary-content-width centered row-space">
+        <div class="row no-gutters">
+            {% if embed_code %}
+                <div class="col">
+                    <div class="video-block">
+                        {{ embed_code|raw }}
+                    </div>
+                </div>
+            {% endif %}
+            <div class="col">
+                <div class="alternating-news-block">
+                    {% for item in items %}
+                        <a {% if item.field_link.0.url %}href="{{ item.field_link.0.url }}"{% endif %} class="row no-gutters">
+                            <div class="col" style="background-image: url('{{ item.field_image.target_id|style('quick_links_promoted') }}');">
+                            </div>
+                            <div class="col {% if loop.first %}gold{% else %}blue{% endif %}">
+                                <div class="title">{{ item.field_title.value }}</div>
+                                {% if item.field_description.value %}
+                                    <div class="description">{{ item.field_description.value|nl2br }}</div>
+                                {% endif %}
+                            </div>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}

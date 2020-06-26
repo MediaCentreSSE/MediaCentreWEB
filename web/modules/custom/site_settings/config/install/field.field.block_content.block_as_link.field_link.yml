@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.block_as_link
+    - field.storage.block_content.field_link
+  module:
+    - link
+id: block_content.block_as_link.field_link
+field_name: field_link
+entity_type: block_content
+bundle: block_as_link
+label: Link
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 0
+field_type: link

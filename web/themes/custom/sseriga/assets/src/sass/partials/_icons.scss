@@ -1,0 +1,49 @@
+.icon {
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	background-repeat: no-repeat;
+	background-position: center center;
+	vertical-align: top;
+	&-push-left {
+		margin-left: 14px;
+		margin-right: -3px;
+	}
+	&-push-right {
+		margin-left: -3px;
+		margin-right: 14px;
+	}
+	&-mail-gold {
+		@include bgimgin("ic_mail_gold.svg");
+		background-size: 18px 18px;
+	}
+	&-mail2-gold {
+		@include bgimgin("ic_mail2_gold.svg");
+		background-size: 18px 18px;
+	}
+	&-phone-gold {
+		@include bgimgin("ic_phone_gold.svg");
+		background-size: 18px 18px;
+	}
+	&-three-sixty {
+		@include bgimgin("ic_three_sixty.svg");
+		width: 114px;
+		height: 80px;
+	}
+	&-marker-gold {
+		@include bgimgin("ic_marker_gold.svg");
+		width: 28px;
+		height: 40px;
+	}
+}
+.contains-icon {
+	&:hover {
+		.icon {
+			&-mail-gold {
+				@include bgimgin("ic_mail_white.svg");
+			}
+		}
+	}
+}
+
+

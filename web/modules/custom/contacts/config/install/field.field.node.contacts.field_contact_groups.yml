@@ -1,0 +1,69 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contact_groups
+    - node.type.contacts
+    - paragraphs.paragraphs_type.contact_group
+  module:
+    - entity_reference_revisions
+id: node.contacts.field_contact_groups
+field_name: field_contact_groups
+entity_type: node
+bundle: contacts
+label: 'Contact groups'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      contact_group: contact_group
+    target_bundles_drag_drop:
+      contact_group:
+        enabled: true
+        weight: 15
+      calendar_event:
+        weight: 16
+        enabled: false
+      calendar_month:
+        weight: 17
+        enabled: false
+      calendar_season:
+        weight: 18
+        enabled: false
+      expandable_list_item:
+        weight: 19
+        enabled: false
+      file_attachment:
+        weight: 20
+        enabled: false
+      form_field:
+        weight: 21
+        enabled: false
+      gallery_image:
+        weight: 22
+        enabled: false
+      most_visited_column:
+        weight: 23
+        enabled: false
+      most_visited_row:
+        weight: 24
+        enabled: false
+      quick_link_grid:
+        weight: 25
+        enabled: false
+      quick_link_slide:
+        weight: 26
+        enabled: false
+      quick_link_social:
+        weight: 27
+        enabled: false
+      quick_links_promoted:
+        weight: 28
+        enabled: false
+field_type: entity_reference_revisions

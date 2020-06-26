@@ -1,0 +1,67 @@
+<!doctype html>
+<html{{ html_attributes }}>
+    <head>
+        <head-placeholder token="{{ placeholder_token }}">
+        <title>{{ head_title|safe_join(' | ') }}</title>
+
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" type="image/x-icon" href="/{{ directory }}/assets/images/favicon.ico"/>
+        <link rel="apple-touch-icon" href="/{{ directory }}/assets/images/icon.png"/>
+
+        <css-placeholder token="{{ placeholder_token }}">
+        <js-placeholder token="{{ placeholder_token }}">
+
+        <!--[if IE]>
+            <link rel="stylesheet" type="text/css" href="/{{ directory }}/assets/css/ie9.css" />
+        <![endif]-->
+
+        <script src="/{{ directory }}/assets/src/js/vendor-ungrouped/js.cookie.js"></script>
+
+        <!-- Google Tag Manager -->
+        <script>
+            var user_gave_consent = Cookies.get("user_gave_consent");
+
+            if ( user_gave_consent == 1 ) {
+                (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-WVSWGS');
+            }
+        </script>
+        <!-- End Google Tag Manager -->
+
+        <!-- Facebook Pixel Code -->
+        <script>
+            if ( user_gave_consent == 1 ) {
+                !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod? n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init', '334633673552562');fbq('track', 'PageView');
+            }
+        </script>
+        <!-- End Facebook Pixel Code -->
+    </head>
+    <body{{ attributes }}>
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WVSWGS" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+
+        <!-- Facebook Pixel Code (noscript) -->
+        <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=334633673552562&ev=PageView&noscript=1"/></noscript>
+        <!-- End Facebook Pixel Code (noscript) -->
+
+        <!--[if lte IE 9]>
+            <div id="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</div>
+        <![endif]-->
+        {{ page }}
+        {{ page_top }}
+        {{ page_bottom }}
+        <js-bottom-placeholder token="{{ placeholder_token }}">
+
+        <script type="text/javascript">
+            if ( user_gave_consent == 1 ) {
+                // linkedin
+                _linkedin_partner_id = "554482"; window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || []; window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+
+                (function(){var s = document.getElementsByTagName("script")[0]; var b = document.createElement("script"); b.type = "text/javascript";b.async = true; b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js"; s.parentNode.insertBefore(b, s);})();
+            }
+        </script>
+        <noscript><img height="1" width="1" style="display:none;" alt="" src="https://dc.ads.linkedin.com/collect/?pid=554482&fmt=gif" /></noscript>
+    </body>
+</html>

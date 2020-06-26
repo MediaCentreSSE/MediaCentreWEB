@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.event_applicant.field_email
+  module:
+    - event_form
+id: event_applicant.event_applicant.field_email
+field_name: field_email
+entity_type: event_applicant
+bundle: event_applicant
+label: E-mail
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

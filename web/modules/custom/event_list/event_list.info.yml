@@ -1,0 +1,21 @@
+name: 'Event list'
+description: 'Provides Event list content type and related configuration. Outputs a list of event pages assigned to this list.'
+type: module
+core: 8.x
+package: Custom
+dependencies:
+  - category_page
+  - content_page
+  - field
+  - field_group
+  - frontpage
+  - image
+  - language
+  - menu_ui
+  - metatag
+  - node
+  - options
+  - path
+  - site_settings
+  - text
+  - user

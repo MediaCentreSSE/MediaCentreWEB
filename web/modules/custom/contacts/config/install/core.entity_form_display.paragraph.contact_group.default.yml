@@ -1,0 +1,44 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.contact_group.field_additional
+    - field.field.paragraph.contact_group.field_contact_person
+    - field.field.paragraph.contact_group.field_title
+    - paragraphs.paragraphs_type.contact_group
+  module:
+    - text
+id: paragraph.contact_group.default
+targetEntityType: paragraph
+bundle: contact_group
+mode: default
+content:
+  field_additional:
+    weight: 2
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_contact_person:
+    weight: 1
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

@@ -1,0 +1,78 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_promo_slides
+    - node.type.frontpage
+    - paragraphs.paragraphs_type.promo_slide
+  module:
+    - entity_reference_revisions
+id: node.frontpage.field_promo_slides
+field_name: field_promo_slides
+entity_type: node
+bundle: frontpage
+label: 'Promo slides'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      promo_slide: promo_slide
+    target_bundles_drag_drop:
+      promo_slide:
+        enabled: true
+        weight: 18
+      additional_form_data:
+        weight: 19
+        enabled: false
+      calendar_event:
+        weight: 20
+        enabled: false
+      calendar_month:
+        weight: 21
+        enabled: false
+      calendar_season:
+        weight: 22
+        enabled: false
+      contact_group:
+        weight: 23
+        enabled: false
+      expandable_list_item:
+        weight: 24
+        enabled: false
+      file_attachment:
+        weight: 25
+        enabled: false
+      form_field:
+        weight: 26
+        enabled: false
+      gallery_image:
+        weight: 27
+        enabled: false
+      marker:
+        weight: 28
+        enabled: false
+      most_visited_column:
+        weight: 29
+        enabled: false
+      most_visited_row:
+        weight: 30
+        enabled: false
+      quick_link_grid:
+        weight: 31
+        enabled: false
+      quick_link_slide:
+        weight: 32
+        enabled: false
+      quick_link_social:
+        weight: 33
+        enabled: false
+      quick_links_promoted:
+        weight: 34
+        enabled: false
+field_type: entity_reference_revisions

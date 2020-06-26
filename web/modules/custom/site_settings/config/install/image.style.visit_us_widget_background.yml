@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: visit_us_widget_background
+label: 'Visit us widget background (330x246)'
+effects:
+  eef0b268-d781-4828-a883-d9293ecd4c83:
+    uuid: eef0b268-d781-4828-a883-d9293ecd4c83
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 330
+      height: 246

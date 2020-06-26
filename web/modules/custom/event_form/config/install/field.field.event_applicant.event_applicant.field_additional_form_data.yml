@@ -1,0 +1,75 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.event_applicant.field_additional_form_data
+    - paragraphs.paragraphs_type.additional_form_data
+  module:
+    - entity_reference_revisions
+    - event_form
+id: event_applicant.event_applicant.field_additional_form_data
+field_name: field_additional_form_data
+entity_type: event_applicant
+bundle: event_applicant
+label: 'Additional form data'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      additional_form_data: additional_form_data
+    target_bundles_drag_drop:
+      additional_form_data:
+        enabled: true
+        weight: 17
+      calendar_event:
+        weight: 18
+        enabled: false
+      calendar_month:
+        weight: 19
+        enabled: false
+      calendar_season:
+        weight: 20
+        enabled: false
+      contact_group:
+        weight: 21
+        enabled: false
+      expandable_list_item:
+        weight: 22
+        enabled: false
+      file_attachment:
+        weight: 23
+        enabled: false
+      form_field:
+        weight: 24
+        enabled: false
+      gallery_image:
+        weight: 25
+        enabled: false
+      marker:
+        weight: 26
+        enabled: false
+      most_visited_column:
+        weight: 27
+        enabled: false
+      most_visited_row:
+        weight: 28
+        enabled: false
+      quick_link_grid:
+        weight: 29
+        enabled: false
+      quick_link_slide:
+        weight: 30
+        enabled: false
+      quick_link_social:
+        weight: 31
+        enabled: false
+      quick_links_promoted:
+        weight: 32
+        enabled: false
+field_type: entity_reference_revisions

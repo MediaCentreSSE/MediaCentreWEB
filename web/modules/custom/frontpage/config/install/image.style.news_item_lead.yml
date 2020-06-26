@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: news_item_lead
+label: 'News item lead (88x58)'
+effects:
+  5c1c53b8-5895-43f5-8191-afca7fc1da94:
+    uuid: 5c1c53b8-5895-43f5-8191-afca7fc1da94
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 88
+      height: 58

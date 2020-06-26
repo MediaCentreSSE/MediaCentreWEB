@@ -1,0 +1,29 @@
+langcode: en
+status: false
+dependencies:
+  module:
+    - ctools
+    - event_archive
+  theme:
+    - sseriga
+id: eventarchiveblock
+theme: sseriga
+region: content
+weight: 0
+provider: null
+plugin: event_archive_block
+settings:
+  id: event_archive_block
+  label: 'Event archive block'
+  provider: event_archive
+  label_display: '0'
+  context_mapping:
+    node: '@node.node_route_context:node'
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      event_archive: event_archive
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

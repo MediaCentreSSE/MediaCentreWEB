@@ -1,0 +1,15 @@
+global-css:
+  css:
+    component:
+      /core/modules/system/css/components/hidden.module.css: {}
+    theme:
+      assets/dist/css/style.css: {}
+
+global-js:
+  js:
+    assets/dist/js/scripts.min.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupal.ajax
+    - core/jquery.form

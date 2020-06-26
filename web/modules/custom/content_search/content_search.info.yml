@@ -1,0 +1,22 @@
+name: 'Content Search'
+type: module
+description: 'Contains search functionality using elasticsearch.'
+core: 8.x
+package: Custom
+dependencies:
+  - category_page
+  - content_page
+  - field
+  - field_group
+  - frontpage
+  - image
+  - language
+  - menu_ui
+  - metatag
+  - node
+  - options
+  - path
+  - site_settings
+  - svg_image
+  - text
+  - user

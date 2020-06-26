@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: printed_matter
+label: 'Printed matter (105xauto)'
+effects:
+  26d940c9-d88f-47e2-aeb7-4f1bcdc21223:
+    uuid: 26d940c9-d88f-47e2-aeb7-4f1bcdc21223
+    id: image_scale
+    weight: 1
+    data:
+      width: 105
+      height: null
+      upscale: false

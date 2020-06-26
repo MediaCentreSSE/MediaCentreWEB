@@ -1,0 +1,21 @@
+<div class="news-list-block mb-5 mb-lg-0">
+    <h1>{{ node.title.value }}</h1>
+    {% if items|length %}
+        <div class="news-list">
+            {% for news in items %}
+                <div class="news-item">
+                    <a href="{{ path('entity.node.canonical', {node: news.id}) }}" class="news-item-inner">
+                        <div class="date">{{ news.created.value|date('d.m.Y') }}</div>
+                        <div class="title">{{ news.title.value }}</div>
+                        {% if news.field_lead_text.value %}
+                            {# filter "|raw" comes last, to convert html entities to text #}
+                            <div class="description">{{ news.field_lead_text.value|striptags|truncate(220, true, "...")|raw }}</div>
+                        {% endif %}
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {{ pager }}
+</div>

@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.event_form
+    - field.storage.block_content.field_max_number_of_applicants
+id: block_content.event_form.field_max_number_of_applicants
+field_name: field_max_number_of_applicants
+entity_type: block_content
+bundle: event_form
+label: 'Max number of applicants'
+description: 'If value left at 0, no applicant limit will be imposed.'
+required: true
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: applicants
+field_type: integer

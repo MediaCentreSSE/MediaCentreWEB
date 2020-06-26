@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - category_page
+    - ctools
+  theme:
+    - sseriga
+id: categorymenublock
+theme: sseriga
+region: content
+weight: 1
+provider: null
+plugin: category_menu_block
+settings:
+  id: category_menu_block
+  label: 'Category menu block'
+  provider: category_page
+  label_display: '0'
+  context_mapping:
+    node: '@node.node_route_context:node'
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      category_page: category_page
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

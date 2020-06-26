@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.event_archive
+id: node.event_archive
+target_entity_type_id: node
+target_bundle: event_archive
+default_langcode: site_default
+language_alterable: false

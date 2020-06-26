@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_private_widget_text
+    - node.type.printed_matter
+  module:
+    - text
+id: node.printed_matter.field_private_widget_text
+field_name: field_private_widget_text
+entity_type: node
+bundle: printed_matter
+label: 'Private widget text'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

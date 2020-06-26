@@ -1,0 +1,48 @@
+{# if only 1 image, no popup should be available #}
+{% if node.field_gallery_images|length == 1 %}
+    <div class="article-gallery-block cf loading">
+        <a class="title-image" data-src="{{ node.field_gallery_images.0.entity.field_image.target_id|style('gallery_image') }}">
+            <div class="gallery-items hidden">
+                {% for gallery_image in node.field_gallery_images %}
+                    {% set gallery_image = gallery_image.entity %}
+                    <div class="gallery-item {% if loop.first %}title-image{% endif %}" data-src="{{ gallery_image.field_image.target_id|style('gallery_image') }}"></div>
+                {% endfor %}
+            </div>
+        </a>
+    </div>
+{% elseif node.field_gallery_images|length > 1 %}
+    <div class="article-gallery-block cf loading">
+        <a href="#" class="title-image open-gallery-popup hoverable" data-src="{{ node.field_gallery_images.0.entity.field_image.target_id|style('gallery_image') }}">
+            {% if node.field_gallery_images|length != 1 %}
+                <div class="info-wrapper"></div>
+            {% endif %}
+            <div class="gallery-items hidden">
+                {% for gallery_image in node.field_gallery_images %}
+                    {% set gallery_image = gallery_image.entity %}
+                    <div class="gallery-item {% if loop.first %}title-image{% endif %}" data-src="{{ gallery_image.field_image.target_id|style('gallery_image') }}"></div>
+                {% endfor %}
+            </div>
+        </a>
+    </div>
+    <div class="gallery-popup popup">
+        <div class="popup-inner">
+            <div class="popup-inner-row">
+                <div class="popup-inner-cell">
+                    <div class="popup-content-outer">
+                        <div class="popup-content-inner main-content-width">
+                            <div class="close-popup"></div>
+                            <div class="image-wrapper loading">
+                                <img src="" />
+                                {% if node.field_gallery_images|length != 1 %}
+                                    <div class="gallery-image-prev"></div>
+                                    <div class="gallery-image-next"></div>
+                                {% endif %}
+                            </div>
+                            <div class="counter"><span class="current"></span> / <span class="total"></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}

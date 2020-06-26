@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains content_migration.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function content_migration_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the content_migration module.
+    case 'help.page.content_migration':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Commands for migrating content to current site') . '</p>';
+      return $output;
+
+    default:
+  }
+}

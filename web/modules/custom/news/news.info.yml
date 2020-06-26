@@ -1,0 +1,27 @@
+name: News
+description: 'Provides News content type and related configuration. Contains news list content pages.'
+type: module
+core: 8.x
+package: Custom
+dependencies:
+  - category_page
+  - content_page
+  - entity_reference_revisions
+  - event
+  - field
+  - field_group
+  - frontpage
+  - image
+  - language
+  - menu_ui
+  - metatag
+  - news_archive
+  - news_list
+  - node
+  - options
+  - paragraphs
+  - path
+  - site_settings
+  - svg_image
+  - text
+  - user

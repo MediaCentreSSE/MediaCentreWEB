@@ -1,0 +1,40 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.facebook_feed
+    - field.field.block_content.facebook_feed.field_facebook_page
+    - field.field.block_content.facebook_feed.field_post_count
+    - field.field.block_content.facebook_feed.field_title
+id: block_content.facebook_feed.default
+targetEntityType: block_content
+bundle: facebook_feed
+mode: default
+content:
+  field_facebook_page:
+    weight: 0
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_post_count:
+    weight: 2
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  field_title:
+    weight: 1
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  langcode: true

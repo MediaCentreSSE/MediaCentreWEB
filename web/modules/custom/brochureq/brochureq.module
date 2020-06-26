@@ -1,0 +1,108 @@
+<?php
+use Drupal\Core\Url;
+/**
+ * Add these fields to 'content_page' content type:
+ *
+ * brochureqemail,      type - Email,
+ * brochureqagreement,  type - Reference content
+ *
+ * This is "fencing a garden" thing because of task definition:
+ * Client wants the form to be displayed on already existing page.
+ * This means displaying form on already existing content type.
+ *
+ * I would create some new content type with the fields above and render a form there.
+ * But playing with it I failed to retrieve and render:
+ *    menu children (displayed as a buttons under the breadcrumbs),
+ *    breadcrumbs (I managed to make them rendered, but in a container, so not whole page wide),
+ *    hero banner images.
+ * These things made new page looking not like other pages.
+ *
+ */
+
+function brochureq_preprocess_node__content_page(&$variables) {
+    $variables['#cache']['max-age'] = 0; // disabled cache
+
+    if($variables['node']->get('field_brochureqagreement')->getValue() && $variables['node']->get('field_brochureqemail')->getValue()) {
+
+        $sessionKey = 'brochureq_form_valid';
+
+        $body = $variables['node']->get('field_body')->getValue()[0]['value'];
+
+        if(!\Drupal::request()->getSession()->get($sessionKey)) {
+
+            $agreement = Url::fromRoute(
+                'entity.node.canonical',
+                ['node' => $variables['node']->get('field_brochureqagreement')->entity->id()],
+                ['absolute' => TRUE]
+            )->toString();
+
+            $emails = array_filter(array_column($variables['node']->get('field_brochureqemail')->getValue(), 'value'));
+
+            $formObject = new Drupal\brochureq\Form\BrochureqForm();
+            $formObject->setData([
+                'emails'      => $emails,
+                'agreement'   => $agreement,
+                'session_key' => $sessionKey
+            ]);
+            $form = \Drupal::formBuilder()->getForm($formObject);
+
+            $formhtml = Drupal::service('renderer')->renderPlain($form);
+
+
+            $variables['node']->field_body = $body . $formhtml;
+            $variables['node']->field_file_attachments = [];
+        } else {
+            $variables['node']->field_body = $body . '<h3>' . t('Thank you for your interest, you may download the brochure now.') . '</h3>';
+        }
+    }
+}
+
+function brochureq_preprocess_form_element(&$variables) {
+    $element = $variables['element'];
+    if (isset($element['#label_attributes'])) {
+        $variables['label']['#attributes'] = array_merge(
+            $variables['attributes'],
+            $element['#label_attributes']
+        );
+    }
+}
+
+function sendEmail($form, $form_state, $emails) {
+
+    $params['subject'] = t('New questionnaire submitted!');
+    $params['message'] = '';
+
+    $fields = ['name', 'last_name', 'company', 'position', 'country', 'email', 'phone'];
+    foreach($form_state->getValues() as $key => $value) {
+        if(in_array($key, $fields)) {
+            $params['message'] .= trim(strip_tags($form[$key]['#title'])) . ': ' . $value . "\n";
+        }
+    }
+
+    foreach($emails as $email) {
+        if (!empty($params['subject'])) {
+            $mailManager = \Drupal::service('plugin.manager.mail');
+            $result = $mailManager->mail(
+                'brochureq',
+                'html',
+                $email,
+                \Drupal::currentUser()->getPreferredLangcode(),
+                $params,
+                null,
+                true
+            );
+            if ($result['result'] !== true) {
+                drupal_set_message(t('There was a problem sending your message to to "' . $email . '" and it was not sent.'), 'warning');
+            } else {
+                drupal_set_message(t('Email to "' . $email . '" sent'));
+            }
+        } else {
+            drupal_set_message(t('You must specify subject, email to "' . $email . '" was not sent.'), 'warning');
+        }
+    }
+}
+
+function brochureq_mail($key, &$message, $params) {
+    $message['subject'] = $params['subject'];
+    $message['body'][] = $params['message'];
+}

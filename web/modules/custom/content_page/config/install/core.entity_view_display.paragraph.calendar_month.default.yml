@@ -1,0 +1,32 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.calendar_month.field_events
+    - field.field.paragraph.calendar_month.field_title
+    - paragraphs.paragraphs_type.calendar_month
+  module:
+    - entity_reference_revisions
+id: paragraph.calendar_month.default
+targetEntityType: paragraph
+bundle: calendar_month
+mode: default
+content:
+  field_events:
+    type: entity_reference_revisions_entity_view
+    weight: 1
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_title:
+    weight: 0
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

@@ -1,0 +1,92 @@
+@mixin bgimgin( $file:'', $important: null ){
+	@if $important == important {
+		$important: !important;
+	} @else {
+		$important: null;
+	}
+	background-image: inline-image($image-directory + $file) $important;
+}
+
+@mixin opacity( $opacity: 100, $important: null ) {
+	@if $important == important {
+		$important: !important;
+	} @else {
+		$important: null;
+	}
+	filter: alpha(opacity=$opacity) $important;
+	-moz-opacity: $opacity / 100 $important;
+	-khtml-opacity: $opacity / 100 $important;
+	opacity: $opacity / 100 $important;
+	zoom: 1;
+}
+
+@mixin transition( $parameters ) {
+	transition: $parameters;
+	-webkit-transition: $parameters;
+}
+
+@mixin transform( $transforms ) {
+	 -moz-transform: $transforms;
+	   -o-transform: $transforms;
+	  -ms-transform: $transforms;
+  -webkit-transform: $transforms;
+		  transform: $transforms;
+}
+
+@mixin noselect() {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+@mixin box( $parameters ) {
+  -webkit-box-shadow: $parameters;
+	 -moz-box-shadow: $parameters;
+		  box-shadow: $parameters;
+}
+@mixin radius( $parameters ) {
+  -webkit-border-radius: $parameters;
+	 -moz-border-radius: $parameters;
+		  border-radius: $parameters;
+}
+
+@mixin linear-gradient($direction, $color_1, $color_2) {
+	background-color: $color_1; /* IE9 will show first color, because it does not support linear gradient */
+	background: -webkit-linear-gradient($direction, $color_1, $color_2); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient($direction, $color_1, $color_2); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient($direction, $color_1, $color_2); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(to $direction, $color_1, $color_2); /* Standard syntax (must be last) */
+}
+
+@mixin optional-at-root($sel) {
+	@at-root #{if(not &, $sel, selector-append(&, $sel))} {
+		@content;
+	}
+}
+
+@mixin placeholder {
+	@include optional-at-root('::-webkit-input-placeholder') {/* WebKit, Blink, Edge */
+		@content;
+	}
+
+	@include optional-at-root(':-moz-placeholder') {/* Mozilla Firefox 4 to 18 */
+		@content;
+		opacity:  1;
+	}
+
+	@include optional-at-root('::-moz-placeholder') {/* Mozilla Firefox 19+ */
+		@content;
+		opacity:  1;
+	}
+
+	@include optional-at-root(':-ms-input-placeholder') {/* Internet Explorer 10-11 */
+		@content;
+	}
+
+	@include optional-at-root('::-ms-input-placeholder') {/* Microsoft Edge */
+		@content;
+	}
+}

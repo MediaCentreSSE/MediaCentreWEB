@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: most_visited_column
+label: 'Most visited - column'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

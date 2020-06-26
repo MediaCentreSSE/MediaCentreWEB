@@ -1,0 +1,89 @@
+<div class="main-content-width centered padded">
+    <div class="row no-gutters justify-content-center">
+        <div class="col layout-main-block">
+
+            <div class="contact-us-block text-style">
+                <h1>{{ node.field_column_1_title.value }}</h1>
+
+                {% if node.field_email.value %}
+                    <div class="email">
+                        <a href="mailto:{{ node.field_email.value }}">{{ node.field_email.value }}</a>
+                    </div>
+                {% endif %}
+
+                {% if node.field_phone.value %}
+                    <div class="phone">
+                        {{ node.field_phone.value }}
+                    </div>
+                {% endif %}
+
+                {% if node.field_address.value %}
+                    <div class="address">
+                        {{ node.field_address.value }}
+                    </div>
+                {% endif %}
+
+                <div class="description">
+                    {{ node.field_column_1_text.value|raw }}
+                </div>
+
+                <div class="requisites-wrapper">
+                    <h2>{{ node.field_column_2_title.value }}</h2>
+                    {{ node.field_column_2_text.value|raw }}
+                </div>
+            </div>
+
+        </div>
+        <div class="col layout-right-sidebar row-space">
+            {{ drupal_region('sidebar') }}
+        </div>
+    </div>
+</div>
+
+<div class="map-block">
+    <div class="map-holder">
+        <div class="map loading"></div>
+        {% for marker in node.field_markers %}
+            {% set marker = marker.entity %}
+            <div class="map-content hidden" data-marker="{{ marker.id.value }}">
+                <div class="info-window-content">
+                    <div class="title">{{ marker.field_title_long.value|nl2br }}</div>
+                    <hr/>
+                    <div class="address">{{ marker.field_address.value|nl2br }}</div>
+                    <hr/>
+                    <div class="contact-details">
+                        <table>
+                            <tbody>
+                                {% if marker.field_phone.value %}
+                                    <tr>
+                                        <td>{{ 'Phone:'|trans({}, {context: 'contacts'}) }}</td>
+                                        <td class="nr">{{ marker.field_phone.value }}</td>
+                                    </tr>
+                                {% endif %}
+                                {% if marker.field_fax.value %}
+                                    <tr>
+                                        <td>{{ 'Fax:'|trans({}, {context: 'contacts'}) }}</td>
+                                        <td class="nr">{{ marker.field_fax.value }}</td>
+                                    </tr>
+                                {% endif %}
+                                {% if marker.field_email.value %}
+                                    <tr>
+                                        <td>{{ 'E-mail:'|trans({}, {context: 'contacts'}) }}</td>
+                                        <td><a href="mailto:{{ marker.field_email.value }}">{{ marker.field_email.value }}</a></td>
+                                    </tr>
+                                {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+        <div class="markers hidden">
+            {% for marker in node.field_markers %}
+                {% set marker = marker.entity %}
+                <div class="marker" data-lat="{{ marker.field_latitude.value }}" data-lng="{{ marker.field_longitude.value }}" data-marker="{{ marker.id.value }}"></div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - ctools
+    - research
+  theme:
+    - sseriga
+id: researchblock
+theme: sseriga
+region: content
+weight: 0
+provider: null
+plugin: research_block
+settings:
+  id: research_block
+  label: 'Research block'
+  provider: research
+  label_display: '0'
+  context_mapping:
+    node: '@node.node_route_context:node'
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      research: research
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

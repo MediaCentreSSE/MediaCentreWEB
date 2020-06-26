@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: facebook_feed
+label: 'Facebook feed'
+revision: 0
+description: 'Outputs latest posts from a specified Facebook page.'

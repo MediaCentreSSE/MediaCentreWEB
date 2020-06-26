@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: additional_links
+label: 'Additional links'
+revision: 0
+description: 'Contains editable links to related content.'

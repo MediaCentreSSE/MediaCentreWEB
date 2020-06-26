@@ -1,0 +1,12 @@
+services:
+  event_form.event_form_notify_applicants:
+    class: Drupal\event_form\Command\ApplicantNotificationCommand
+    arguments: ['@event_form.manager']
+    tags:
+      - { name: drupal.command }
+  event_form.event_form_notify_admin:
+    class: Drupal\event_form\Command\AdminNotificationCommand
+    arguments: ['@event_form.manager']
+    tags:
+      - { name: drupal.command }
+

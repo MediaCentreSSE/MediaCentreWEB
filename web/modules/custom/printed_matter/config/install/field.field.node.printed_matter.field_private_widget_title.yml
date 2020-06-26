@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_private_widget_title
+    - node.type.printed_matter
+id: node.printed_matter.field_private_widget_title
+field_name: field_private_widget_title
+entity_type: node
+bundle: printed_matter
+label: 'Private widget title'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

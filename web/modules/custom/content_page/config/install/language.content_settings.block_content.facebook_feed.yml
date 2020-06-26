@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.facebook_feed
+id: block_content.facebook_feed
+target_entity_type_id: block_content
+target_bundle: facebook_feed
+default_langcode: site_default
+language_alterable: false

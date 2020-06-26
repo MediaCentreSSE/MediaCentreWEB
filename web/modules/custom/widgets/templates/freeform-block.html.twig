@@ -1,0 +1,11 @@
+<div class="widget-block visit-us">
+    <h2>{{ content.field_title.value }}</h2>
+    {% if content.body.value %}
+        <div class="text-style">{{ content.body.value|raw }}</div>
+    {% endif %}
+    {% if content.field_svg_image.entity.uri %}
+        <div class="svg-image">
+            {{ drupal_image(content.field_svg_image.entity.uri.value, null, {'alt': content.field_svg_image.alt}) }}
+        </div>
+    {% endif %}
+</div>

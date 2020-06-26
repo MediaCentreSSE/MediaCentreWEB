@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * @file
+ * Contains category_page.module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function category_page_theme($existing, $type, $theme, $path) {
+  return [
+    'category_menu_block' => [
+      'variables' => [
+        'items' => [],
+      ],
+    ],
+  ];
+}

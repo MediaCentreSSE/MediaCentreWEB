@@ -1,0 +1,25 @@
+<div id="page-main-wrapper">
+    {% include directory ~ '/templates/partials/header.html.twig' %}
+    <div class="page-content-wrapper">
+        {{ page.content_menu.breadcrumbsblock }}
+        <!-- start of specific page content -->
+        <div class="staff-wrapper">
+            {{ page.banner }}
+            <div class="main-content-width centered padded row-space">
+                <div class="row no-gutters justify-content-center">
+                    <div class="col layout-main-block">{{ page.content_menu|without('breadcrumbsblock') }}</div>
+                </div>
+
+                <div class="row no-gutters justify-content-center">
+                    <div class="col layout-main-block">
+                        {{ page.content }}
+                    </div>
+                    <div class="col layout-right-sidebar">
+                        {{ page.sidebar }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% include directory ~ '/templates/partials/footer.html.twig' %}

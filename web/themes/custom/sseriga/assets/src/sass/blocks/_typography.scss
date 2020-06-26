@@ -1,0 +1,249 @@
+.text-style,
+.cke_editable_themed {
+	font-family: $font_futurapt_book;
+	font-size: 20px;
+	font-weight: 300;
+	line-height: 24px;
+	color: $color-44;
+	a {
+		text-decoration: underline;
+	}
+	ul {
+		list-style: none;
+		margin-left: 0px;
+		margin-bottom: 20px;
+		li {
+			position: relative;
+			padding-left: 20px;
+			margin-bottom: 15px;
+			&:before {
+				content: "";
+				position: absolute;
+				left: 0px;
+				top: 8px;
+				width: 6px;
+				height: 6px;
+				border-radius: 50%;
+				background-color: $color-44;
+			}
+		}
+	}
+	ol {
+		list-style: none;
+		margin-left: 0px;
+		margin-bottom: 20px;
+		counter-reset: my-badass-counter;
+		li {
+			position: relative;
+			padding-left: 24px;
+			margin-bottom: 10px;
+			&:before {
+				content: counter(my-badass-counter)".";
+				counter-increment: my-badass-counter;
+				position: absolute;
+				top: 0px;
+				left: 2px;
+				font-size: 16px;
+				font-weight: 700;
+				color: $color-16;
+			}
+		}
+	}
+	blockquote {
+		box-sizing: border-box;
+		font-size: 17px;
+		font-style: italic;
+		margin: 0px;
+		padding: 0px;
+		border: 0px;
+		color: $primary-text-color;
+		padding-left: 30px;
+		padding-right: 30px;
+		&:before,
+		&:after {
+			content: "“";
+			display: inline-block;
+			color: $color-16;
+			font-size: 20px;
+		}
+		&:before {
+			padding-right: 5px;
+		}
+		&:after {
+			content: "”";
+			padding-left: 5px;
+		}
+	}
+	dl {
+		dd {
+			margin-bottom: 5px;
+		}
+		dl {
+			margin-left: 25px;
+		}
+	}
+	table {
+		width: 100% !important;
+		border: 0px;
+		tr {
+			th {
+				padding-top: 10px;
+				padding-bottom: 10px;
+				padding-left: 16px;
+				padding-right: 16px;
+				border: 0px solid $color-1;
+				background-color: $color-42;
+			}
+			td {
+				padding-top: 10px;
+				padding-bottom: 10px;
+				padding-left: 16px;
+				padding-right: 16px;
+				border: 0px solid $color-15;
+			}
+			th,
+			td {
+				img {
+					max-width: none;
+				}
+			}
+			&:nth-child(odd) {
+				td {
+					background-color: $color-42;
+				}
+			}
+		}
+		&.valign-middle {
+			tr {
+				th {
+					vertical-align: middle;
+				}
+				td {
+					vertical-align: middle;
+				}
+			}
+		}
+	}
+	.float-left {
+		margin-bottom: 30px;
+		margin-right: 35px;
+	}
+	.float-right {
+		margin-bottom: 30px;
+		margin-left: 35px;
+	}
+	/*
+	p {
+		font-family: inherit !important;
+		font-size: inherit !important;
+		line-height: inherit !important;
+	}
+	*/
+	span {
+		/*
+		font-family: inherit !important;
+		font-size: inherit !important;
+		line-height: inherit !important;
+		*/
+		&.highlight {
+			font-family: $primary-font-stack !important;
+			font-size: 20px !important;
+			font-weight: 500 !important;
+			line-height: inherit !important;
+			display: block;
+			padding-left: 17px;
+			border-left: 2px solid $color-16;
+			color: $color-45;
+		}
+		&.intro-style {
+			font-family: $primary-font-stack !important;
+			font-size: 20px !important;
+			line-height: 24px !important;
+			color: $color-44;
+		}
+		&.small-style {
+			font-family: $font_futurapt_book !important;
+			font-size: 16px !important;
+			line-height: 20px !important;
+			color: $color-44;
+		}
+		&.small-thick-style {
+			font-family: $font_futurapt_demi !important;
+			font-size: 16px !important;
+			line-height: 20px !important;
+			color: $color-44;
+		}
+		&.blog-post-date-style {
+			font-family: $font_futurapt_book !important;
+			font-size: 16px !important;
+			line-height: inherit !important;
+			letter-spacing: 0.112em;
+			text-transform: uppercase;
+			color: $color-48;
+		}
+	}
+	.event-programme-table {
+		width: auto;
+		tbody {
+			tr {
+				td {
+					border: 0px;
+					padding: 0px;
+					padding-bottom: 10px;
+					vertical-align: top;
+					&:first-child {
+						padding-right: 10px;
+						color: $color-9;
+						font-family: $primary-font-stack;
+					}
+				}
+			}
+		}
+	}
+}
+
+.cke_editable_themed {
+	padding: 20px;
+}
+
+.widget-block {
+	ul {
+		list-style: none;
+		margin-left: 0px;
+		margin-bottom: 20px;
+		li {
+			position: relative;
+			padding-left: 20px;
+			&:before {
+				content: "";
+				position: absolute;
+				left: 0px;
+				top: 8px;
+				width: 6px;
+				height: 6px;
+				border-radius: 50%;
+				background-color: $color-44;
+			}
+		}
+	}
+	ol {
+		list-style: none;
+		margin-left: 0px;
+		margin-bottom: 20px;
+		counter-reset: my-badass-counter;
+		li {
+			position: relative;
+			padding-left: 24px;
+			&:before {
+				content: counter(my-badass-counter)".";
+				counter-increment: my-badass-counter;
+				position: absolute;
+				top: 0px;
+				left: 2px;
+				font-size: 16px;
+				font-weight: 700;
+				color: $color-16;
+			}
+		}
+	}
+}

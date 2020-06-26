@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: quick_links_social
+label: 'Quick links - social (570x246)'
+effects:
+  6b9e3f04-834b-4f23-a169-c5769974cf95:
+    uuid: 6b9e3f04-834b-4f23-a169-c5769974cf95
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 570
+      height: 246

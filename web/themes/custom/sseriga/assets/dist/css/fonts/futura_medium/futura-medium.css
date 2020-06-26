@@ -1,0 +1,27 @@
+/*
+Font: 		Futura
+Style: 		Medium
+URL: 		https://www.youworkforthem.com/font/T0982/futura
+Foundry: 	URW++
+Foundry: 	https://www.youworkforthem.com/designer/204/urw
+Copyright:	Copyright 2010 URW++ Design & Development
+Version: 	17
+Created:	March 19, 2015
+License: 	https://www.youworkforthem.com/font-license 
+License: 	The WebFont(s) listed in this document must follow the YouWorkForThem
+			WebFont license rules. All other parties are strictly restricted 
+			from using the WebFonts(s) listed without a purchased license. 
+			All details above must always remain unaltered and visible in your CSS.
+*/
+
+@font-face {
+	font-family: 'Futura-Med';
+	src: url('futura-medium.eot');
+	src: url('futura-medium.eot?#iefix') format('embedded-opentype'),
+             url('futura-medium.woff2') format('woff2'),
+	     url('futura-medium.woff') format('woff'),
+	     url('futura-medium.ttf') format('truetype'),
+	     url('futura-medium.svg#youworkforthem') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}

@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: research_paper
+label: 'Research paper'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

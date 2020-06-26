@@ -1,0 +1,13 @@
+quick_links_slider:
+  js:
+    js/startpage_module.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+
+custom_admin:
+  js:
+    js/custom_admin.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal

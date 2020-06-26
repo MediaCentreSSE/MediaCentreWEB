@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_content_menu
+    - node.type.news_archive
+  module:
+    - options
+id: node.news_archive.field_content_menu
+field_name: field_content_menu
+entity_type: node
+bundle: news_archive
+label: 'Content menu'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

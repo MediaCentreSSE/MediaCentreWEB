@@ -1,0 +1,54 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.printed_matter.field_file
+    - field.field.paragraph.printed_matter.field_image
+    - field.field.paragraph.printed_matter.field_text
+    - field.field.paragraph.printed_matter.field_title
+    - image.style.thumbnail
+    - paragraphs.paragraphs_type.printed_matter
+  module:
+    - file
+    - image
+    - text
+id: paragraph.printed_matter.default
+targetEntityType: paragraph
+bundle: printed_matter
+mode: default
+content:
+  field_file:
+    weight: 1
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+    type: file_generic
+    region: content
+  field_image:
+    weight: 2
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+  field_text:
+    weight: 3
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

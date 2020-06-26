@@ -1,0 +1,63 @@
+<div class="event-registration-block form-block">
+    <div class="form-block-inner">
+        <h2>{{ content.field_title.value }}</h2>
+        {% if message %}
+            <div>{{ message }}</div>
+        {% endif %}
+        {% if form %}
+            <form data-drupal-selector="{{ form['#attributes']['data-drupal-selector'] }}" id="{{ form['#id'] }}" method="{{ form['#method'] }}">
+                {{ form.form_build_id }}
+                {{ form.form_id }}
+                {{ form.form_token }}
+
+                <div class="custom-table">
+                    {% import _self as event_form %}
+                    {% set default_fields = ['email', 'name', 'surname', 'phone', 'organisation_or_school', 'position_or_grade'] %}
+
+                    {# output default event form fields #}
+                    {% for field in default_fields %}
+                        {{ event_form.output_field(form[field]) }}
+                    {% endfor %}
+
+                    {# output custom event form fields #}
+                    {% for field_name, field in form %}
+                        {% if field_name|split('_')|first == 'field' %}
+                            {{ event_form.output_field(field) }}
+                        {% endif %}
+                    {% endfor %}
+
+                    <div class="tr inputblock">
+                        <div class="td">
+                            <div class="checkbox-wrapper inputblock">
+                                {{ form['subscription'] }}
+                                <label for="edit-subscription" class="checkbox-label">
+                                    {{ 'Sign up for the Newsletter'|trans({}, {context: 'event form'}) }}
+                                    <span>{{ 'By checking, you agree with our <a target="_blank" href="@privacy-policy-link">Privacy Policy</a>'|trans({'@privacy-policy-link': path('privacy_policy_page')}, {context: 'event form'}) }}</span>
+                                </label>
+                                <div class="checkbox-element"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom cf">
+                    <div class="button-wrapper" data-field="submit">
+                        {{ form.submit }}
+                    </div>
+                </div>
+            </form>
+        {% endif %}
+    </div>
+</div>
+
+{% macro output_field(field) %}
+    <div class="tr inputblock {% if field['#required'] %}required{% endif %}" data-field="{{ field['#name'] }}">
+        <div class="td">
+            <label class="inputblock-label">{{ field['#title'] }}{% if not field['#required'] %}<span>{{ 'Optional'|trans({}, {context: 'custom contact form'}) }}</span>{% endif %}</label>
+        </div>
+        <div class="td">
+            <div class="inputblock-input">
+                {{ field }}
+            </div>
+        </div>
+    </div>
+{% endmacro %}

@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.twitter_feed
+    - field.storage.block_content.field_twitter_account_name
+id: block_content.twitter_feed.field_twitter_account_name
+field_name: field_twitter_account_name
+entity_type: block_content
+bundle: twitter_feed
+label: 'Twitter account name'
+description: 'Enter the account from which to pull latest tweets, e.g. sse_riga'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

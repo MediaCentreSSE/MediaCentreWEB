@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: promo_slide
+label: 'Promo slide'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

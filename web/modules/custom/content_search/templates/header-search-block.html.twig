@@ -1,0 +1,13 @@
+<div class="search-wrapper cf {{ form.open ? 'active' : '' }}">
+    <button type="button" class="button toggle"></button>
+    <div class="search-form-wrapper cf">
+        <form data-drupal-selector="{{ form['#attributes']['data-drupal-selector'] }}" id="{{ form['#id'] }}" method="{{ form['#method'] }}">
+            {{ form.form_build_id }}
+            {{ form.form_id }}
+            {{ form.form_token }}
+
+            {{ form.query }}
+            {{ form.submit }}
+        </form>
+    </div>
+</div>

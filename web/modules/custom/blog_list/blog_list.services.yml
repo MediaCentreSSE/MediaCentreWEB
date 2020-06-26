@@ -1,0 +1,5 @@
+services:
+  blog_list.manager:
+    class: Drupal\blog_list\BlogListManager
+    arguments: ['@entity_type.manager', '@request_stack']
+

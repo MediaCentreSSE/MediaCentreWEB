@@ -1,0 +1,36 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.quick_link_grid.field_image
+    - field.field.paragraph.quick_link_grid.field_link
+    - field.field.paragraph.quick_link_grid.field_title
+    - paragraphs.paragraphs_type.quick_link_grid
+  module:
+    - link
+id: paragraph.quick_link_grid.default
+targetEntityType: paragraph
+bundle: quick_link_grid
+mode: default
+content:
+  field_link:
+    type: link_default
+    weight: 1
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  field_image: true
+  status: true
+  uid: true

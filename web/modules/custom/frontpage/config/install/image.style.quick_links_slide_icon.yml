@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: quick_links_slide_icon
+label: 'Quick links - slide icon (90x90)'
+effects:
+  124000ab-074f-4b5d-87a6-469549e747d6:
+    uuid: 124000ab-074f-4b5d-87a6-469549e747d6
+    id: image_scale
+    weight: 1
+    data:
+      width: 90
+      height: 90
+      upscale: false

@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.facebook_feed
+    - field.storage.block_content.field_facebook_page
+id: block_content.facebook_feed.field_facebook_page
+field_name: field_facebook_page
+entity_type: block_content
+bundle: facebook_feed
+label: 'Facebook page'
+description: 'Enter the page from which to pull latest posts, e.g. https://www.facebook.com/SSERiga/'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

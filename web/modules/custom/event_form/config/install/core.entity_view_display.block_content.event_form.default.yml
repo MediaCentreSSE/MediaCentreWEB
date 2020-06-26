@@ -1,0 +1,73 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.event_form
+    - field.field.block_content.event_form.field_additional_fields
+    - field.field.block_content.event_form.field_alert_before
+    - field.field.block_content.event_form.field_max_number_of_applicants
+    - field.field.block_content.event_form.field_registration_closed
+    - field.field.block_content.event_form.field_subject
+    - field.field.block_content.event_form.field_title
+  module:
+    - entity_reference_revisions
+id: block_content.event_form.default
+targetEntityType: block_content
+bundle: event_form
+mode: default
+content:
+  field_additional_fields:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_alert_before:
+    weight: 4
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  field_max_number_of_applicants:
+    weight: 5
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  field_registration_closed:
+    weight: 6
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+  field_subject:
+    weight: 2
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_title:
+    weight: 3
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  langcode: true

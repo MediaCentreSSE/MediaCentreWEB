@@ -1,0 +1,125 @@
+/*  Ways to include fonts:
+
+    URL references to outside server:
+        + for an example, if it's a google font, there is a high chance their servers have less latency and better caching mechanism
+        + easier font management, just 1 line in header
+
+    URL references to local server:
+        + easier font management
+
+    Base64:
+        + lesser request time, good for saving latency
+ */
+
+//@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&subset=latin-ext');
+
+
+/* local */
+/* LIBRE BASKERVILLE */
+@font-face {
+    font-family: 'libre_baskervilleregular';
+    src: url('fonts/libre_baskerville/librebaskerville-regular-webfont.woff2') format('woff2'),
+         url('fonts/libre_baskerville/librebaskerville-regular-webfont.woff') format('woff'),
+         url('fonts/libre_baskerville/librebaskerville-regular-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'libre_baskervillebold';
+    src: url('fonts/libre_baskerville/librebaskerville-bold-webfont.woff2') format('woff2'),
+         url('fonts/libre_baskerville/librebaskerville-bold-webfont.woff') format('woff'),
+         url('fonts/libre_baskerville/librebaskerville-bold-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'libre_baskervilleitalic';
+    src: url('fonts/libre_baskerville/librebaskerville-italic-webfont.woff2') format('woff2'),
+         url('fonts/libre_baskerville/librebaskerville-italic-webfont.woff') format('woff'),
+         url('fonts/libre_baskerville/librebaskerville-italic-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* EB GARAMOND */
+/* Pls no "&amp;" in import links, never ever. Just use "&". "&amp;" breaks drupal css aggregation. */
+@import url('https://fonts.googleapis.com/css?family=EB+Garamond:400,400i&subset=latin-ext');
+
+/* FUTURA MEDIUM */
+/*
+Font:       Futura
+Style:      Medium
+URL:        https://www.youworkforthem.com/font/T0982/futura
+Foundry:    URW++
+Foundry:    https://www.youworkforthem.com/designer/204/urw
+Copyright:  Copyright 2010 URW++ Design & Development
+Version:    17
+Created:    March 19, 2015
+License:    https://www.youworkforthem.com/font-license
+License:    The WebFont(s) listed in this document must follow the YouWorkForThem
+            WebFont license rules. All other parties are strictly restricted
+            from using the WebFonts(s) listed without a purchased license.
+            All details above must always remain unaltered and visible in your CSS.
+*/
+@font-face {
+    font-family: 'Futura-Med';
+    src: url('fonts/futura_medium/futura-medium.eot');
+    src: url('fonts/futura_medium/futura-medium.eot?#iefix') format('embedded-opentype'),
+             url('fonts/futura_medium/futura-medium.woff2') format('woff2'),
+         url('fonts/futura_medium/futura-medium.woff') format('woff'),
+         url('fonts/futura_medium/futura-medium.ttf') format('truetype'),
+         url('fonts/futura_medium/futura-medium.svg#youworkforthem') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/**
+ * @license
+ * MyFonts Webfont Build ID 3612970, 2018-07-20T08:00:49-0400
+ *
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are
+ * explicitly restricted from using the Licensed Webfonts(s).
+ *
+ * You may obtain a valid license at the URLs below.
+ *
+ * Webfont: FuturaPT-Book by ParaType
+ * URL: https://www.myfonts.com/fonts/paratype/futura-book/futura-book/
+ *
+ * Webfont: FuturaPT-Demi by ParaType
+ * URL: https://www.myfonts.com/fonts/paratype/futura-book/futura-demi/
+ *
+ *
+ * License: https://www.myfonts.com/viewlicense?type=web&buildid=3612970
+ * Licensed pageviews: 10,000
+ * Webfonts copyright: Copyright &#x00A9; 1995 ParaGraph Intl., &#x00A9; 1998 ParaType Inc., ParaType Ltd. All rights reserved.
+ *
+ * © 2018 MyFonts Inc
+*/
+
+
+/* @import must be at top of file, otherwise CSS will not work */
+@import url("//hello.myfonts.net/count/37212a");
+
+
+@font-face {
+    font-family: 'FuturaPT-Book';
+    src: url('fonts/FuturaPT-Book/37212A_0_0.eot');
+    src: url('fonts/FuturaPT-Book/37212A_0_0.eot?#iefix') format('embedded-opentype'),
+    url('fonts/FuturaPT-Book/37212A_0_0.woff2') format('woff2'),
+    url('fonts/FuturaPT-Book/37212A_0_0.woff') format('woff'),
+    url('fonts/FuturaPT-Book/37212A_0_0.ttf') format('truetype');
+}
+
+
+@font-face {
+    font-family: 'FuturaPT-Demi';
+    src: url('fonts/FuturaPT-Demi/37212A_1_0.eot');
+    src: url('fonts/FuturaPT-Demi/37212A_1_0.eot?#iefix') format('embedded-opentype'),
+    url('fonts/FuturaPT-Demi/37212A_1_0.woff2') format('woff2'),
+    url('fonts/FuturaPT-Demi/37212A_1_0.woff') format('woff'),
+    url('fonts/FuturaPT-Demi/37212A_1_0.ttf') format('truetype');
+}
+

@@ -1,0 +1,31 @@
+<div class="cookie-notification-block">
+    <div class="container main-content-width">
+        <div class="clearfix">
+            <button type="button" class="button-close"></button>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-9 mb-4 mb-md-0">
+                <div class="description">{{ 'We use cookies to enhance your visit to our site. Read our <a target="_blank" href="@privacy-policy-link">Privacy Policy</a> to find out more.'|trans({'@privacy-policy-link': path('privacy_policy_page')}, {context: 'cookie notification'}) }}</div>
+            </div>
+            <div class="col-12 col-md-3">
+                <button type="button" class="button w-100 button-give-consent">{{ 'Accept & Close'|trans({}, {context: 'cookie notification'}) }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<header id="page-header">
+    <div class="top">
+        <div class="main-content-width centered padded cf">
+            <a href="{{ path('<front>') }}" class="logo-wrapper">
+                <img src="/{{ directory }}/assets/images/logo.svg" class="logo" title="{{ 'Stockholm School of Economics in Riga'|trans({}, {context: 'header'}) }}" />
+            </a>
+            <div class="header-content cf">
+                {{ page.header|without('sseriga_messages') }}
+                <div style="display: none;">
+                    {{ page.header.sseriga_messages }}
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

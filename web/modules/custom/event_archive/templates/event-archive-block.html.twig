@@ -1,0 +1,74 @@
+{% if years|length and months|length %}
+    <div class="search-block">
+        <form method="get" id="archive-form">
+            <div class="row">
+                <div class="col">
+                    <div class="inputblock secondary-style">
+                        <div class="inputblock-select">
+                            <select name="year">
+                                {% for year in years %}
+                                    <option {% if year == current_year %}selected="selected"{% endif %}>{{ year }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="inputblock secondary-style">
+                        <div class="inputblock-select">
+                            <select name="month">
+                                <option {% if not current_month %}selected="selected"{% endif %} value="">{{ 'Month'|trans({}, {context: 'event_archive'}) }}</option>
+                                {% for month in months %}
+                                    <option {% if month == current_month %}selected="selected"{% endif %} value="{{ month }}">{{ ('2000-' ~ month ~ '-01')|date('F') }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endif %}
+
+{% if items|length %}
+    <div class="event-months">
+        {% for month_name, month_events in items %}
+            <div class="event-months-item">
+                <h2 class="bordered-title">{{ month_name }}</h2>
+                <div class="events">
+                    {% for event in month_events %}
+                        <div class="events-item">
+                            <div class="event-meta custom-table">
+                                <div class="tr">
+                                    <div class="td">
+                                        {% set event_date = event.field_date_from.value|date('d') %}
+                                        {% set event_end_date = event.field_date_to.value|date('d') %}
+                                        {% set short_date = true %}
+
+                                        {% if event_date != event_end_date %}
+                                            {% set event_date = event_date ~ '-' ~ event_end_date %}
+                                            {% set short_date = false %}
+                                        {% endif %}
+
+                                        {% if short_date %}
+                                            <div class="date">{{ event_date }}</div>
+                                        {% else %}
+                                            <div class="date date-small">{{ event_date }}</div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="{{ path('entity.node.canonical', {node: event.id}) }}" class="title">{{ event.title.value }}</a>
+                            {% if event.field_lead_text.value %}
+                                <div class="description text-style">{{ event.field_lead_text.value|raw }}</div>
+                            {% endif %}
+                            <a href="{{ path('entity.node.canonical', {node: event.id}) }}" class="arrowed-link read-more">{{ 'Read More'|trans({}, {context: 'event list'}) }}</a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+{{ pager }}

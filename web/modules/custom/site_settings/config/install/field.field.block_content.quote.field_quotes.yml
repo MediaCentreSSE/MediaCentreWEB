@@ -1,0 +1,87 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.quote
+    - field.storage.block_content.field_quotes
+    - paragraphs.paragraphs_type.quote
+  module:
+    - entity_reference_revisions
+id: block_content.quote.field_quotes
+field_name: field_quotes
+entity_type: block_content
+bundle: quote
+label: Quotes
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      quote: quote
+    target_bundles_drag_drop:
+      quote:
+        enabled: true
+        weight: 21
+      additional_form_data:
+        weight: 22
+        enabled: false
+      calendar_event:
+        weight: 23
+        enabled: false
+      calendar_month:
+        weight: 24
+        enabled: false
+      calendar_season:
+        weight: 25
+        enabled: false
+      contact_group:
+        weight: 26
+        enabled: false
+      expandable_list_item:
+        weight: 27
+        enabled: false
+      file_attachment:
+        weight: 28
+        enabled: false
+      form_field:
+        weight: 29
+        enabled: false
+      gallery_image:
+        weight: 30
+        enabled: false
+      marker:
+        weight: 31
+        enabled: false
+      most_visited_column:
+        weight: 32
+        enabled: false
+      most_visited_row:
+        weight: 33
+        enabled: false
+      printed_matter:
+        weight: 34
+        enabled: false
+      promo_slide:
+        weight: 35
+        enabled: false
+      quick_link_grid:
+        weight: 36
+        enabled: false
+      quick_link_slide:
+        weight: 37
+        enabled: false
+      quick_link_social:
+        weight: 38
+        enabled: false
+      quick_links_promoted:
+        weight: 39
+        enabled: false
+      research_paper:
+        weight: 40
+        enabled: false
+field_type: entity_reference_revisions

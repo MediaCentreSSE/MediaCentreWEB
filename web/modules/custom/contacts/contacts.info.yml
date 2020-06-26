@@ -1,0 +1,25 @@
+name: Contacts
+description: 'Provides Contacts content type and related configuration. Outputs contact information, requisites, map.'
+type: module
+core: 8.x
+package: Custom
+dependencies:
+  - category_page
+  - content_page
+  - entity_reference_revisions
+  - field
+  - field_group
+  - frontpage
+  - image
+  - language
+  - link
+  - menu_ui
+  - metatag
+  - node
+  - options
+  - paragraphs
+  - path
+  - site_settings
+  - staff
+  - text
+  - user

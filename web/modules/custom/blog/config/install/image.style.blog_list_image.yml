@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: blog_list_image
+label: 'Blog list image (312x198)'
+effects:
+  20c8803e-5e51-48ee-b009-0844a9fd12bb:
+    uuid: 20c8803e-5e51-48ee-b009-0844a9fd12bb
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 312
+      height: 198

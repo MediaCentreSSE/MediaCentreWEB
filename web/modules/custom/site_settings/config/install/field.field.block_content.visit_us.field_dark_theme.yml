@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.visit_us
+    - field.storage.block_content.field_dark_theme
+id: block_content.visit_us.field_dark_theme
+field_name: field_dark_theme
+entity_type: block_content
+bundle: visit_us
+label: 'Dark theme'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

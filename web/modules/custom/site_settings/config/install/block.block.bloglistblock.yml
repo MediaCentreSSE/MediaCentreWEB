@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - blog_list
+    - ctools
+  theme:
+    - sseriga
+id: bloglistblock
+theme: sseriga
+region: content
+weight: 0
+provider: null
+plugin: blog_list_block
+settings:
+  id: blog_list_block
+  label: 'Blog list block'
+  provider: blog_list
+  label_display: '0'
+  context_mapping:
+    node: '@node.node_route_context:node'
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      blog_list: blog_list
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

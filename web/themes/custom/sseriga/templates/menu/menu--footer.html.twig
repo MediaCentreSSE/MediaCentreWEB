@@ -1,0 +1,42 @@
+{% import _self as macros %}
+
+<div class="top">
+    <div class="main-content-width centered padded">
+        <div class="row">
+            {% set column1 = items|slice(1, 1) %}
+            {% set column2 = items|slice(2, 1) %}
+            {% set column3 = items|slice(3, 3) %}
+            {% set column4 = items|slice(6) %}
+
+            <div class="col-12 col-sm-6 col-md-3">
+                {{ macros.footer_column(column1) }}
+            </div>
+            <div class="col-12 col-sm-6 col-md-3">
+                {{ macros.footer_column(column2) }}
+            </div>
+            <div class="col-12 col-sm-6 col-md-3">
+                {{ macros.footer_column(column3) }}
+            </div>
+            <div class="col-12 col-sm-6 col-md-3">
+                {{ macros.footer_column(column4) }}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% macro footer_column(items) %}
+    {% for item in items %}
+        {% if not item.url.toString %}
+            <a class="{{ item.attributes.class }}">{{ item.title }}</a>
+        {% else %}
+            {{ link(item.title, item.url, item.attributes) }}
+        {% endif %}
+
+        {% for item2 in item.below %}
+            {{ link(item2.title, item2.url, item2.attributes) }}
+            {% for item3 in item2.below %}
+                {{ link(item3.title, item3.url) }}
+            {% endfor %}
+        {% endfor %}
+    {% endfor %}
+{% endmacro %}

@@ -1,0 +1,6 @@
+services:
+  blog.blog_content_migrate:
+    class: Drupal\blog\Command\BlogContentMigrationCommand
+    arguments: ['@content_migration.manager']
+    tags:
+      - { name: drupal.command }

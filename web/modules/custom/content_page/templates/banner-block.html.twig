@@ -1,0 +1,17 @@
+{% if node %}
+    <div class="headline-block {% if depth == 2 %}headline-block-medium{% elseif depth > 2 %}headline-block-small{% endif %}" {% if node.field_banner.target_id %}style="background-image: url('{{ node.field_banner.target_id|style('banner') }}');"{% endif %}>
+        <div class="main-content-width centered">
+            <div class="overlay-middle"></div>
+            <div class="overlay-left"></div>
+            <div class="content-holder custom-table">
+                <div class="tr">
+                    <div class="td">
+                        <h1>{{ banner_title }}</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% else %}
+    <div class="headline-divider clearfix"></div>
+{% endif %}

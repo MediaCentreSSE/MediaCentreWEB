@@ -1,0 +1,10 @@
+<div class="widget-block similar-events">
+    <h2>{{ content.field_title.value }}</h2>
+    <div class="similar-events-list">
+        {% for link in content.field_links %}
+            <a href="{{ link.url }}">
+                <div class="title">{{ link.title ?: link.url }}</div>
+            </a>
+        {% endfor %}
+    </div>
+</div>

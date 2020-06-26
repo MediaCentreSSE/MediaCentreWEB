@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_icon_type
+    - paragraphs.paragraphs_type.quick_link_slide
+  module:
+    - options
+id: paragraph.quick_link_slide.field_icon_type
+field_name: field_icon_type
+entity_type: paragraph
+bundle: quick_link_slide
+label: 'Icon type'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: none
+default_value_callback: ''
+settings: {  }
+field_type: list_string

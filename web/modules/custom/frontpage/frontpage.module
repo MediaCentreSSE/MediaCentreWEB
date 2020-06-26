@@ -1,0 +1,59 @@
+<?php
+
+/**
+ * @file
+ * Contains frontpage.module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_theme().
+ */
+function frontpage_theme($existing, $type, $theme, $path) {
+  return [
+    'promo_banner_block' => [
+      'variables' => [
+        'node' => NULL
+      ],
+    ],
+    'quick_links_grid_block' => [
+      'variables' => [
+        'items' => []
+      ],
+    ],
+    'upcoming_events_latest_news_block' => [
+      'variables' => [
+        'events' => [],
+        'news' => [],
+      ],
+    ],
+    'quick_links_slider_block' => [
+      'variables' => [
+        'items' => []
+      ],
+    ],
+    'quick_links_social_block' => [
+      'variables' => [
+        'items' => []
+      ],
+    ],
+    'quick_links_promoted_block' => [
+      'variables' => [
+        'items' => [],
+        'embed_code' => '',
+      ],
+    ],
+    'most_visited_block' => [
+      'variables' => [
+        'items' => [],
+      ],
+    ],
+  ];
+}
+
+function frontpage_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if ($form_id == 'node_frontpage_edit_form') {
+    $form['#attached']['library'][] = 'frontpage/custom_admin';
+  }
+}

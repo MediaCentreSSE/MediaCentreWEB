@@ -1,0 +1,39 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_quick_links_promoted
+    - node.type.frontpage
+    - paragraphs.paragraphs_type.quick_links_promoted
+  module:
+    - entity_reference_revisions
+id: node.frontpage.field_quick_links_promoted
+field_name: field_quick_links_promoted
+entity_type: node
+bundle: frontpage
+label: 'Quick links - promoted'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      quick_links_promoted: quick_links_promoted
+    target_bundles_drag_drop:
+      quick_links_promoted:
+        enabled: true
+        weight: 5
+      quick_link_grid:
+        weight: 6
+        enabled: false
+      quick_link_slide:
+        weight: 7
+        enabled: false
+      quick_link_social:
+        weight: 8
+        enabled: false
+field_type: entity_reference_revisions

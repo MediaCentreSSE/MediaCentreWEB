@@ -1,0 +1,45 @@
+<div class="event-list-block mb-5 mb-lg-0">
+    <h1>{{ node.title.value }}</h1>
+
+    <div class="events-archive-wrapper">
+        <form method="get" id="archive-form">
+            <div class="title">{{ 'Events archive'|trans({}, {context: 'event list'}) }}</div>
+            <div class="row">
+                <div class="col">
+                    <div class="inputblock">
+                        <div class="inputblock-select">
+                            <select name="year">
+                                <option value="">{{ 'Year'|trans({}, {context: 'event list'}) }}</option>
+                                {% for year in years %}
+                                    <option {% if year == current_year %}selected="selected"{% endif %}>{{ year }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="inputblock">
+                        <div class="inputblock-select">
+                            <select name="month">
+                                <option {% if not current_month %}selected="selected"{% endif %} value="">{{ 'Month'|trans({}, {context: 'event list'}) }}</option>
+                                {% for month in months %}
+                                    <option {% if month == current_month %}selected="selected"{% endif %} value="{{ month }}">{{ ('2000-' ~ month ~ '-01')|date('F') }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    {% if node.field_lead_text.value %}
+        <div class="article-intro">{{ node.field_lead_text.value|raw }}</div>
+    {% endif %}
+
+    {% if items|length %}
+        {% include directory ~ '/templates/partials/event-list.html.twig' %}
+    {% endif %}
+
+    {{ pager }}
+</div>

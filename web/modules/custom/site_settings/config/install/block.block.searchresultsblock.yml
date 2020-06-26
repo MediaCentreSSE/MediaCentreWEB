@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - content_search
+    - ctools
+  theme:
+    - sseriga
+id: searchresultsblock
+theme: sseriga
+region: content
+weight: 0
+provider: null
+plugin: search_results_block
+settings:
+  id: search_results_block
+  label: 'Search results block'
+  provider: content_search
+  label_display: '0'
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      search_results: search_results
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

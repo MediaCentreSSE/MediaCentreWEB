@@ -1,0 +1,17 @@
+<div class="widget-block similar-events">
+    <h2>{{ content.field_title.value }}</h2>
+    <div class="similar-events-list">
+        {% for tweet in tweets %}
+            <a target="_blank" href="{{ 'https://twitter.com/' ~ tweet.user.screen_name ~ '/status/' ~ tweet.id_str  }}">
+                {% if tweet.created_at %}
+                    <div class="date">{{ tweet.created_at|date('d.m.Y') }}</div>
+                {% endif %}
+                <div class="title">
+                    {% if tweet.text %}
+                        {{ tweet.text|slice(0, tweet.entities.urls.0.indices.0)|trim }}
+                    {% endif %}
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+</div>

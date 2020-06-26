@@ -1,0 +1,13 @@
+<div class="poll">
+    <div class="vote-form">
+        <div class="title">{{ question }}</div>
+        <div class="answer-options">
+            {{ form.choice }}
+        </div>
+
+        {{ form.actions }}
+    </div>
+
+    {{ form|without('actions', 'choice', 'messages', 'question') }}
+    {{ form.messages }}
+</div>

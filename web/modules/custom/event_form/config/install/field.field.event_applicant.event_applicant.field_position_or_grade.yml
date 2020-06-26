@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.event_applicant.field_position_or_grade
+  module:
+    - event_form
+id: event_applicant.event_applicant.field_position_or_grade
+field_name: field_position_or_grade
+entity_type: event_applicant
+bundle: event_applicant
+label: 'Position or Grade'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,24 @@
+<div class="widget-block contact-us">
+    <div class="contactperson">
+        <div class="contactperson-info">
+            {% set contact_person = content.field_staff_member.entity %}
+            {% if contact_person.field_image.target_id %}
+                <div class="image-wrapper" style="background-image: url('{{ contact_person.field_image.target_id|style('contact_person') }}');"></div>
+            {% endif %}
+            <div class="info">
+                <div class="name">{{ contact_person.field_widget_name.value ?: contact_person.title.value }}</div>
+                {% if contact_person.field_position.value %}
+                    <div class="profession">{{ contact_person.field_position.value }}. <a href="{{ path('entity.node.canonical', {node: contact_person.id}) }}">{{ 'Read More'|trans({}, {context: 'contact_person'}) }}</a></div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="contact-info">
+            {% if contact_person.field_email.value %}
+                <a href="mailto:{{ contact_person.field_email.value }}">{{ contact_person.field_email.value }}</a>
+            {% endif %}
+            {% if contact_person.field_phone.value %}
+                <div>{{ contact_person.field_phone.value }}</div>
+            {% endif %}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+event_form:
+  js:
+    js/event_form.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/jquery.ui.datepicker
+
+event_applicant_list_admin:
+  js:
+    js/event_applicant_list_admin.js: {}

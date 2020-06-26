@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Default newsletter'
+id: default
+description: 'This is an example newsletter. Change it.'
+format: plain
+priority: 0
+receipt: true
+from_name: 'Stockholm School of Economics in Riga'
+subject: '[[simplenews-newsletter:name]] [node:title]'
+from_address: martinssvalkovskisefumo@gmail.com
+hyperlinks: false
+new_account: none
+opt_inout: single
+weight: 0

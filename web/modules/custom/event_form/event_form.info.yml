@@ -1,0 +1,20 @@
+name: 'Event form'
+type: module
+description: 'Contains event form output/features/services.'
+core: 8.x
+package: Custom
+dependencies:
+  - block_content
+  - content_page
+  - entity_reference_revisions
+  - event
+  - event_form
+  - field
+  - field_group
+  - language
+  - node
+  - options
+  - paragraphs
+  - site_settings
+  - user
+  - views

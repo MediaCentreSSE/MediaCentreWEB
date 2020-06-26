@@ -1,0 +1,10 @@
+site_settings.social_network_settings:
+  path: '/admin/config/services/social-networks'
+  defaults:
+    _form: '\Drupal\site_settings\Form\SocialNetworkSettingsForm'
+    _title: 'Social network settings'
+  requirements:
+    _permission: 'administer site configuration'
+
+route_callbacks:
+  - 'site_settings.manager:routes'

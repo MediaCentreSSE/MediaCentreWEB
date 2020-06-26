@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: most_visited
+label: 'Most visited (265xauto)'
+effects:
+  d43c3022-1fa9-4956-88c7-3a3f09b7172b:
+    uuid: d43c3022-1fa9-4956-88c7-3a3f09b7172b
+    id: image_scale
+    weight: 1
+    data:
+      width: 265
+      height: null
+      upscale: false

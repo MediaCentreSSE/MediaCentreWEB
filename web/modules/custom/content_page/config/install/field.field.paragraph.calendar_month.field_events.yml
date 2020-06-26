@@ -1,0 +1,51 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_events
+    - paragraphs.paragraphs_type.calendar_event
+    - paragraphs.paragraphs_type.calendar_month
+  module:
+    - entity_reference_revisions
+id: paragraph.calendar_month.field_events
+field_name: field_events
+entity_type: paragraph
+bundle: calendar_month
+label: Events
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      calendar_event: calendar_event
+    target_bundles_drag_drop:
+      calendar_month:
+        weight: 9
+        enabled: false
+      calendar_event:
+        enabled: true
+        weight: 10
+      most_visited_column:
+        weight: 11
+        enabled: false
+      most_visited_row:
+        weight: 12
+        enabled: false
+      quick_link_grid:
+        weight: 13
+        enabled: false
+      quick_link_slide:
+        weight: 14
+        enabled: false
+      quick_link_social:
+        weight: 15
+        enabled: false
+      quick_links_promoted:
+        weight: 16
+        enabled: false
+field_type: entity_reference_revisions

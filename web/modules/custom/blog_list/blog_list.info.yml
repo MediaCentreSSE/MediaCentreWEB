@@ -1,0 +1,21 @@
+name: 'Blog list'
+description: 'Provides Blog list content type and related configuration. Outputs a list of blog pages assigned to this list; output in a grid.'
+type: module
+core: 8.x
+package: Custom
+dependencies:
+  - category_page
+  - content_page
+  - event_form
+  - field
+  - field_group
+  - frontpage
+  - image
+  - language
+  - menu_ui
+  - metatag
+  - node
+  - options
+  - path
+  - site_settings
+  - user

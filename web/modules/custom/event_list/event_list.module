@@ -1,0 +1,29 @@
+<?php
+
+/**
+ * @file
+ * Contains event_list.module.
+ */
+
+/**
+ * Implements event_list_theme().
+ */
+function event_list_theme($existing, $type, $theme, $path) {
+  return [
+    'event_list_block' => [
+      'variables' => [
+        'items' => [],
+        'pager' => [
+          '#type' => 'pager',
+          '#quantity' => 5,
+        ],
+        'node' => NULL,
+        'total' => 0,
+        'years' => [],
+        'months' => [],
+        'current_year' => NULL,
+        'current_month' => NULL,
+      ],
+    ],
+  ];
+}

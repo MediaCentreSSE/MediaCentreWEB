@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: image_triple
+label: 'Image - triple (246x246)'
+effects:
+  9e9b5782-458e-427e-8711-b455af0bc172:
+    uuid: 9e9b5782-458e-427e-8711-b455af0bc172
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 246
+      height: 246

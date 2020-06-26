@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+/* ! if you exclude file extention, it will be included raw, rather than through @import */
+@import
+	"partials/variables",
+	"partials/mixins",
+	"partials/fonts",
+	"partials/icons",
+	"partials/globals",
+	"blocks/typography";
+

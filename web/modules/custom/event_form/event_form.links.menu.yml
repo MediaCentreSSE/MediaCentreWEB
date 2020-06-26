@@ -1,0 +1,13 @@
+# Event applicant menu items definition
+# entity.event_applicant.collection:
+#   title: 'Event applicant list'
+#   route_name: entity.event_applicant.collection
+#   description: 'List Event applicant entities'
+#   parent: system.admin_structure
+#   weight: 100
+
+event_applicant.admin.structure.settings:
+  title: 'Event applicant settings'
+  description: 'Configure Event applicant entities'
+  route_name: event_applicant.settings
+  parent: system.admin_structure

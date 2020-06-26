@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.twitter_feed
+id: block_content.twitter_feed
+target_entity_type_id: block_content
+target_bundle: twitter_feed
+default_langcode: site_default
+language_alterable: false

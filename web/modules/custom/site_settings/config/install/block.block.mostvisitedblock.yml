@@ -1,0 +1,29 @@
+langcode: en
+status: false
+dependencies:
+  module:
+    - ctools
+    - frontpage
+  theme:
+    - sseriga
+id: mostvisitedblock
+theme: sseriga
+region: content
+weight: -4
+provider: null
+plugin: most_visited
+settings:
+  id: most_visited
+  label: 'Most visited block'
+  provider: frontpage
+  label_display: '0'
+  context_mapping:
+    node: '@node.node_route_context:node'
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      frontpage: frontpage
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

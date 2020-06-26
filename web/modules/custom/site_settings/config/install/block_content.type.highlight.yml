@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: highlight
+label: Highlight
+revision: 0
+description: 'Contains a textual fragment with a selection of background styles.'

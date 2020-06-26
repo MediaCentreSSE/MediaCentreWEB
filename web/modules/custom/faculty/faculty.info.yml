@@ -1,0 +1,20 @@
+name: Faculty
+description: 'Provides Faculty content type and related configuration. Contains a list of staff, belonging to the "Faculty" category.'
+type: module
+package: Custom
+core: 8.x
+dependencies:
+  - category_page
+  - content_page
+  - field
+  - field_group
+  - frontpage
+  - image
+  - language
+  - menu_ui
+  - metatag
+  - node
+  - options
+  - path
+  - site_settings
+  - user

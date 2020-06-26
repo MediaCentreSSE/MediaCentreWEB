@@ -1,0 +1,18 @@
+{% if node.field_file_attachments|length %}
+    <div class="attachment-block">
+        <div class="attachments">
+            {% for attachment in node.field_file_attachments %}
+                {% set attachment = attachment.entity %}
+                {% set file = attachment.field_file.entity %}
+
+                <a download href="{{ file_url(file.uri.value) }}" class="attachments-item">
+                    <span class="name">{{ attachment.field_file.description ?: file.filename.value }}</span>
+                    <span class="type">{{ file.filename.value|split('.')|last }}</span>
+                    {% if file.filesize.value|length %}
+                        <span class="size">{{ (file.filesize.value / 1024 / 1024)|number_format(2, '.') ~ ' MB' }}</span>
+                    {% endif %}
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}

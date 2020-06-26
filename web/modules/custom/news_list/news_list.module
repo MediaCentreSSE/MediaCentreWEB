@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains news_list.module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function news_list_theme($existing, $type, $theme, $path) {
+  return [
+    'news_list_block' => [
+      'variables' => [
+        'items' => [],
+        'node' => NULL,
+        'pager' => [
+          '#type' => 'pager',
+          '#quantity' => 5,
+        ],
+      ],
+    ],
+  ];
+}

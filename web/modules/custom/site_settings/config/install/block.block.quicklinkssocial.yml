@@ -1,0 +1,29 @@
+langcode: en
+status: false
+dependencies:
+  module:
+    - ctools
+    - frontpage
+  theme:
+    - sseriga
+id: quicklinkssocial
+theme: sseriga
+region: content
+weight: -6
+provider: null
+plugin: quick_links_social
+settings:
+  id: quick_links_social
+  label: 'Quick links social'
+  provider: frontpage
+  label_display: '0'
+  context_mapping:
+    node: '@node.node_route_context:node'
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      frontpage: frontpage
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

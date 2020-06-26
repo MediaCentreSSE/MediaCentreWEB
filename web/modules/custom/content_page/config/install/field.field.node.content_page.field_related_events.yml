@@ -1,0 +1,93 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_related_events
+    - node.type.content_page
+    - paragraphs.paragraphs_type.linked_event
+  module:
+    - entity_reference_revisions
+id: node.content_page.field_related_events
+field_name: field_related_events
+entity_type: node
+bundle: content_page
+label: 'Related events'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      linked_event: linked_event
+    target_bundles_drag_drop:
+      linked_event:
+        enabled: true
+        weight: 23
+      additional_form_data:
+        weight: 24
+        enabled: false
+      calendar_event:
+        weight: 25
+        enabled: false
+      calendar_month:
+        weight: 26
+        enabled: false
+      calendar_season:
+        weight: 27
+        enabled: false
+      contact_group:
+        weight: 28
+        enabled: false
+      event_date:
+        weight: 29
+        enabled: false
+      expandable_list_item:
+        weight: 30
+        enabled: false
+      file_attachment:
+        weight: 31
+        enabled: false
+      form_field:
+        weight: 32
+        enabled: false
+      gallery_image:
+        weight: 33
+        enabled: false
+      marker:
+        weight: 34
+        enabled: false
+      most_visited_column:
+        weight: 35
+        enabled: false
+      most_visited_row:
+        weight: 36
+        enabled: false
+      printed_matter:
+        weight: 37
+        enabled: false
+      promo_slide:
+        weight: 38
+        enabled: false
+      quick_link_grid:
+        weight: 39
+        enabled: false
+      quick_link_slide:
+        weight: 40
+        enabled: false
+      quick_link_social:
+        weight: 41
+        enabled: false
+      quick_links_promoted:
+        weight: 42
+        enabled: false
+      quote:
+        weight: 43
+        enabled: false
+      research_paper:
+        weight: 44
+        enabled: false
+field_type: entity_reference_revisions

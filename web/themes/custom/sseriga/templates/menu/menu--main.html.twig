@@ -1,0 +1,55 @@
+<div class="menu-wrapper {{ open ? 'moved timed-void' : '' }}">
+    <div class="menu-mobile-button"></div>
+    <div class="menu-inner-wrapper">
+        <div class="menu-holder">
+            <div class="menu-mobile-toolbar cf">
+                <div class="menu-mobile-close"></div>
+            </div>
+            <nav class="menu cf">
+                {% for item in items %}
+                    <div class="menu-item">
+
+                        {% if item.below is empty %}
+                            {% if not item.url.toString %}
+                                <a class="{{ item.attributes.class }}">{{ item.title }}</a>
+                            {% else %}
+                                {{ link(item.title, item.url) }}
+                            {% endif %}
+                        {% else %}
+                            {% if not item.url.toString %}
+                                <a class="{{ item.attributes.class }}">{{ item.title }}<span class="submenu-toggler"></span></a>
+                            {% else %}
+                                <a href="{{ item.url }}" class="subtitle">{{ item.title }}<span class="submenu-toggler"></span></a>
+                            {% endif %}
+                        {% endif %}
+
+                        {% if item.below %}
+                            <div class="submenu-wrapper">
+                                <nav class="submenu">
+                                    {% for item2 in item.below %}
+                                        <div class="submenu-item">
+                                            {% if item2.below is empty %}
+                                                {{ link(item2.title, item2.url, item2.attributes) }}
+                                            {% else %}
+                                                <a href="{{ item2.url }}" class="subtitle">{{ item2.title }}<span class="submenu-toggler"></span></a>
+                                                <div class="submenu-wrapper">
+                                                    <div class="submenu">
+                                                        {% for item3 in item2.below %}
+                                                            <div class="submenu-item">
+                                                                {{ link(item3.title, item3.url) }}
+                                                            </div>
+                                                        {% endfor %}
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    {% endfor %}
+                                </nav>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </nav>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+.cookie-notification-block {
+	display: none;
+	position: fixed;
+	z-index: 999;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	background-color: $color-42;
+	padding-top: 24px;
+	padding-bottom: 24px;
+	font-family: $font_futurapt_book;
+	font-size: 20px;
+	line-height: 1.15;
+	color: $color-44;
+	.container {
+		position: relative;
+		max-width: 990px;
+	}
+	a {
+		text-decoration: underline;
+		&:hover {
+			text-decoration: none;
+		}
+	}
+	.description {
+		padding-top: 6px;
+	}
+	.button-give-consent {
+		white-space: nowrap;
+	}
+	.button-close {
+		float: right;
+		margin-top: -7px;
+		margin-bottom: 17px;
+		margin-right: -7px;
+		width: 30px;
+		height: 30px;
+		@include bgimgin("ic_cross_dark.svg");
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: 16px 16px;
+		background-color: transparent;
+		border: 0px;
+		cursor: pointer;
+		&:hover {
+			@include bgimgin("ic_cross_gold.svg");
+		}
+	}
+	&.active {
+		display: block;
+	}
+}
+
+@media screen and (max-width: 991px) {
+	.cookie-notification-block {
+		.container {
+			padding-left: 20px;
+			padding-right: 20px;
+		}
+	}
+}

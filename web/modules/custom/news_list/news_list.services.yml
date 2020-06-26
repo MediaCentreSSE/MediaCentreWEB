@@ -1,0 +1,4 @@
+services:
+  news_list.manager:
+    class: Drupal\news_list\NewsListManager
+    arguments: ['@entity_type.manager', '@request_stack']

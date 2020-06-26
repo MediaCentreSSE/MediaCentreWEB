@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_date_from
+    - paragraphs.paragraphs_type.linked_event
+  module:
+    - datetime
+id: paragraph.linked_event.field_date_from
+field_name: field_date_from
+entity_type: paragraph
+bundle: linked_event
+label: 'Date from'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

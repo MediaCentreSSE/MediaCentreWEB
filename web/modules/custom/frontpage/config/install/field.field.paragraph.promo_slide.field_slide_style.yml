@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_slide_style
+    - paragraphs.paragraphs_type.promo_slide
+  module:
+    - options
+id: paragraph.promo_slide.field_slide_style
+field_name: field_slide_style
+entity_type: paragraph
+bundle: promo_slide
+label: 'Slide style'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

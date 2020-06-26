@@ -1,0 +1,20 @@
+name: 'News list'
+description: 'Provides News list content type and related configuration. '
+type: module
+core: 8.x
+package: Custom
+dependencies:
+  - category_page
+  - content_page
+  - field
+  - field_group
+  - frontpage
+  - image
+  - language
+  - menu_ui
+  - metatag
+  - node
+  - options
+  - path
+  - site_settings
+  - user

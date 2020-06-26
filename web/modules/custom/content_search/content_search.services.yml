@@ -1,0 +1,8 @@
+services:
+  content_search.admin_manager:
+    class: Drupal\content_search\ContentSearchAdminManager
+    arguments: ['@content_search.manager', '@entity_type.manager']
+
+  content_search.manager:
+    class: Drupal\content_search\ContentSearchManager
+    arguments: ['@entity_type.manager', '@config.factory']

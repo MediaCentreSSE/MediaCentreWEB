@@ -1,0 +1,7 @@
+services:
+  staff.staff_contentmenu_add:
+    class: Drupal\staff\Command\StaffContentMenuCommand
+    arguments: ['@entity_type.manager']
+    tags:
+      - { name: drupal.command }
+

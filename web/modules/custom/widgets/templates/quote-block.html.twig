@@ -1,0 +1,16 @@
+{% if content.field_quotes|length %}
+    <div class="widget-block quotes">
+        {% for quote in content.field_quotes %}
+            {% set quote = quote.entity %}
+            <div class="quote-item">
+                {{ quote.field_text.value|raw }}
+                {% if quote.field_author.value %}
+                    <div class="author">{{ '— '|trans({}, {context: 'widgets'}) }}{{ quote.field_author.value }}</div>
+                {% endif %}
+                {% if quote.field_author_information %}
+                    <div class="when">{{ quote.field_author_information.value }}</div>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}

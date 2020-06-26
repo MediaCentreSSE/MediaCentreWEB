@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: banner
+label: 'Banner (2560xauto)'
+effects:
+  561e6356-4b91-4f45-a525-cf62f010908f:
+    uuid: 561e6356-4b91-4f45-a525-cf62f010908f
+    id: image_scale
+    weight: 1
+    data:
+      width: 2560
+      height: null
+      upscale: false

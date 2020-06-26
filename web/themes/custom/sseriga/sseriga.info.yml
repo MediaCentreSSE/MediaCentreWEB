@@ -1,0 +1,24 @@
+name: Stockholm School of Economics in Riga
+type: theme
+description: SSE Riga main public theme
+package: Custom
+core: 8.x
+base theme: false
+
+libraries-override:
+  system/base: false
+
+libraries:
+  - sseriga/global-css
+  - sseriga/global-js
+
+ckeditor_stylesheets:
+  - assets/dist/css/admin_style.css
+
+regions:
+  header: Header
+  banner: Banner
+  content_menu: Content menu
+  content: Content
+  sidebar: Sidebar
+  footer: Footer

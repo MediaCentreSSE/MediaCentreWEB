@@ -1,0 +1,35 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.most_visited_row.field_link
+    - field.field.paragraph.most_visited_row.field_title
+    - paragraphs.paragraphs_type.most_visited_row
+  module:
+    - link
+id: paragraph.most_visited_row.default
+targetEntityType: paragraph
+bundle: most_visited_row
+mode: default
+content:
+  field_link:
+    weight: 1
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_title:
+    weight: 0
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

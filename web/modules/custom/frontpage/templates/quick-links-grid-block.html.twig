@@ -1,0 +1,17 @@
+{% if items|length %}
+    <div class="main-content-width centered">
+        <div class="quicklink-blocks row-space cf">
+            {% for item in items %}
+                <a href="{{ item.field_link.0.url }}" class="quicklink-blocks-item">
+                    <div class="custom-table">
+                        <div class="tr">
+                            <div class="td">
+                                <h2>{{ item.field_title.value }}</h2>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}

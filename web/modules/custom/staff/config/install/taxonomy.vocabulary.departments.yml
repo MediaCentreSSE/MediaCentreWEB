@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+name: Departments
+vid: departments
+description: 'Contains departments for staff; meant for categorizing/filtering staff.'
+hierarchy: 0
+weight: 0

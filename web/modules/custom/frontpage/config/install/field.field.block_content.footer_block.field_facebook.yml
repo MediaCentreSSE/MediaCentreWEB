@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.footer_block
+    - field.storage.block_content.field_facebook
+  module:
+    - link
+id: block_content.footer_block.field_facebook
+field_name: field_facebook
+entity_type: block_content
+bundle: footer_block
+label: Facebook
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 0
+field_type: link

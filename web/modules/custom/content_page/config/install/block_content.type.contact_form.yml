@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: contact_form
+label: 'Contact form'
+revision: 0
+description: 'Allows for user defined contact form creation, for displaying in content pages.<br>Gets sent to recipients immediately after submission.'

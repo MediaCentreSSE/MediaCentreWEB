@@ -1,0 +1,29 @@
+{% if data.no_search %}
+    <h2>{{ 'Search'|trans({}, {context: 'search'}) }}</h2>
+    <div class="search-results-top cf">{{ 'Enter at least 3 characters to execute a search.'|trans({}, {context: 'search'}) }}</div>
+{% else %}
+    <h2>{{ 'Results for'|trans({}, {context: 'search'}) }} <span>{{ data.query }}</span></h2>
+
+    <div class="search-results-top cf">
+        {% set score_sort_path = path('content_search.search', {query: data.query, sort: 'relevance'}) %}
+        {% set date_sort_path = path('content_search.search', {query: data.query, sort: 'date'}) %}
+
+        {% if data.hits.total %}
+            <div class="sort-by">{{ 'Sort by:'|trans({}, {context: 'search'}) }} <a href="{{ score_sort_path }}" {% if data.sort == 'relevance' %}class="active"{% endif %}>{{ 'Relevance'|trans({}, {context: 'search'}) }}</a><a href="{{ date_sort_path }}" {% if data.sort == 'date' %}class="active"{% endif %}>{{ 'Date'|trans({}, {context: 'search'}) }}</a></div>
+        {% endif %}
+    </div>
+
+    <div class="search-results">
+        {% for hit in data.hits.hits %}
+            <div class="search-results-item">
+                <h3>{{ hit._source.title }}</h3>
+                {% if hit.main_highlight %}
+                    <div class="content text-style">{{ hit.main_highlight|raw }}</div>
+                {% endif %}
+                <a href="{{ path('entity.node.canonical', {node: hit._id}) }}" class="arrowed-link">{{ 'Read more'|trans({}, {context: 'search'}) }}</a>
+            </div>
+        {% endfor %}
+    </div>
+
+    {{ pager }}
+{% endif %}

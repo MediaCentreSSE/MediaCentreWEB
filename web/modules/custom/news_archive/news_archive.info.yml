@@ -1,0 +1,20 @@
+name: 'News archive'
+description: 'Provides News archive content type and related configuration. Outputs a list of news pages archived in this list.'
+type: module
+core: 8.x
+package: Custom
+dependencies:
+  - category_page
+  - content_page
+  - field
+  - field_group
+  - frontpage
+  - image
+  - language
+  - menu_ui
+  - metatag
+  - node
+  - options
+  - path
+  - site_settings
+  - user

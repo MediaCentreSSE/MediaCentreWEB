@@ -1,0 +1,40 @@
+<div class="staff-block">
+    {% if node.field_image.target_id %}
+        <img src="{{ node.field_image.target_id|style('staff') }}" alt="{{ node.title.value }}" class="staff-img" />
+    {% endif %}
+
+    <h1>{{ node.title.value }}</h1>
+
+    <div class="info">
+        {% if node.field_position.value %}
+            <span class="position">{{ node.field_position.value }} </span>
+        {% endif %}
+        {% if node.field_department.target_id %}
+            <span class="info">{{ node.field_department.entity.name.value }} </span>
+        {% endif %}
+    </div>
+
+    <div class="contact-info">
+        {% if node.field_email.value %}
+            <div class="email"><a href="mailto:{{ node.field_email.value }}" title="{{ 'E-mail:'|trans({}, {context: 'staff'}) }}">{{ node.field_email.value }}</a></div>
+        {% endif %}
+        {% if node.field_phone.value %}
+            <div class="phone">{{ node.field_phone.value }}</div>
+        {% endif %}
+        {% if node.field_website.0.url %}
+            <div class="website">{{ node.field_website.0.url }}</div>
+        {% endif %}
+    </div>
+
+    {% if node.field_body.value %}
+        <div class="about">
+            <div class="text-style">{{ node.field_body.value|raw }}</div>
+        </div>
+    {% endif %}
+</div>
+
+{% if contact_form %}
+    {{ contact_form }}
+{% endif %}
+
+{% include directory ~ '/templates/partials/file-attachments.html.twig' %}

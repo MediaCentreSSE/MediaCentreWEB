@@ -1,0 +1,7 @@
+{% if items|length %}
+    <nav class="submenu-navigation cf">
+        {% for item in items %}
+            <a href="{{ item.url }}" {% if item.in_active_trail %}class="active"{% endif %}>{{ item.title }}</a>
+        {% endfor %}
+    </nav>
+{% endif %}

@@ -1,0 +1,46 @@
+name: Site
+description: 'Provides site components.'
+type: module
+package: Custom
+core: 8.x
+dependencies:
+  - administration
+  - block
+  - block_content
+  - blog_list
+  - breadcrumbs
+  - category_page
+  - ckeditor
+  - content_page
+  - content_search
+  - ctools
+  - editor
+  - editor_file
+  - entity_reference_revisions
+  - event_archive
+  - event_form
+  - event_list
+  - faculty
+  - field
+  - field_group
+  - file
+  - filter
+  - frontpage
+  - image
+  - language
+  - link
+  - news_archive
+  - news_list
+  - node
+  - options
+  - paragraphs
+  - pathauto
+  - poll
+  - research
+  - staff
+  - svg_image
+  - system
+  - text
+  - user
+  - views
+  - widgets

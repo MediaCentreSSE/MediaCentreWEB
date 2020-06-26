@@ -1,0 +1,72 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_markers
+    - node.type.contacts
+    - paragraphs.paragraphs_type.marker
+  module:
+    - entity_reference_revisions
+id: node.contacts.field_markers
+field_name: field_markers
+entity_type: node
+bundle: contacts
+label: Markers
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      marker: marker
+    target_bundles_drag_drop:
+      marker:
+        enabled: true
+        weight: 16
+      calendar_event:
+        weight: 17
+        enabled: false
+      calendar_month:
+        weight: 18
+        enabled: false
+      calendar_season:
+        weight: 19
+        enabled: false
+      contact_group:
+        weight: 20
+        enabled: false
+      expandable_list_item:
+        weight: 21
+        enabled: false
+      file_attachment:
+        weight: 22
+        enabled: false
+      form_field:
+        weight: 23
+        enabled: false
+      gallery_image:
+        weight: 24
+        enabled: false
+      most_visited_column:
+        weight: 25
+        enabled: false
+      most_visited_row:
+        weight: 26
+        enabled: false
+      quick_link_grid:
+        weight: 27
+        enabled: false
+      quick_link_slide:
+        weight: 28
+        enabled: false
+      quick_link_social:
+        weight: 29
+        enabled: false
+      quick_links_promoted:
+        weight: 30
+        enabled: false
+field_type: entity_reference_revisions

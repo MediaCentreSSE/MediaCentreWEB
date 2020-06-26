@@ -1,0 +1,18 @@
+<div class="search-block">
+    <h1>{{ node.title.value }}</h1>
+    <div class="inputblock">
+        <label class="inputblock-label">{{ 'Search by name or position…'|trans({}, {context: 'administration'}) }}</label>
+        <div class="inputblock-input">
+            <input type="text" id="administration-filter"/>
+        </div>
+    </div>
+</div>
+
+<div id="administration-list" class="rowed-info-block">
+    {% for member in items %}
+        <a href="{{ path('entity.node.canonical', {node: member.id}) }}">
+            <div class="name" data-id="name">{{ member.title.value }}</div>
+            <div class="position" data-id="position">{{ member.field_position.value }}</div>
+        </a>
+    {% endfor %}
+</div>

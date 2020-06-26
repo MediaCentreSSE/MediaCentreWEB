@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.360_tour
+id: block_content.360_tour
+target_entity_type_id: block_content
+target_bundle: 360_tour
+default_langcode: site_default
+language_alterable: false

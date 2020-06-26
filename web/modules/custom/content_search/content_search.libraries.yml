@@ -1,0 +1,5 @@
+admin:
+  js:
+    js/content_search_admin.js: {}
+  dependencies:
+    - core/jquery

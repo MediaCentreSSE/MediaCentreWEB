@@ -1,0 +1,59 @@
+<?php
+
+/**
+ * @file
+ * Contains content_page.module.
+ */
+
+use Drupal\Core\Render\Markup;
+
+/**
+ * Implements hook_theme().
+ */
+function content_page_theme($existing, $type, $theme, $path) {
+  return [
+    'banner_block' => [
+      'variables' => [
+        'depth' => 0,
+        'node' => NULL,
+        'banner_title' => ''
+      ],
+    ],
+    'content_menu_block' => [
+      'variables' => [
+        'items' => [],
+      ],
+    ],
+    'subscription_form_block' => [
+      'variables' => [
+        'form' => NULL,
+      ],
+    ],
+    'contact_form_block' => [
+      'variables' => [
+        'form' => NULL,
+        'content' => NULL,
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_mail().
+ */
+function content_page_mail($key, &$message, $params) {
+  if ($key == 'custom_contact_form') {
+    $message['headers']['Content-Type'] = 'text/html';
+    $message['subject'] = $params['subject'];
+    $message['body'][] = Markup::create($params['body']);
+  }
+}
+
+/**
+ * Implements hook_editor_js_settings_alter
+ */
+function content_page_editor_js_settings_alter(array &$settings) {
+  foreach ($settings['editor']['formats'] as $name => $value) {
+    $settings['editor']['formats'][$name]['editorSettings']['font_names'] = 'FuturaPT-Book;FuturaPT-Demi;Futura-Med';
+  }
+}

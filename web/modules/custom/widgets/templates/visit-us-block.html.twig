@@ -1,0 +1,7 @@
+<a target="_blank" href="{{ content.field_link.0.url }}" class="widget-block visit-us-link {% if content.field_dark_theme.value %}dark-mode{% endif %}">
+    <div class="image-wrapper" style="background-image: url('{{ content.field_image.target_id|style('visit_us_widget_background') }}');"></div>
+    <h2>{{ content.field_title.value }}</h2>
+    {% if content.field_description.value %}
+        <div class="desc">{{ content.field_description.value|nl2br }}<i class="icon icon-marker-gold"></i></div>
+    {% endif %}
+</a>

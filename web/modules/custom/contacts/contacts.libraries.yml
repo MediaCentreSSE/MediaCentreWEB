@@ -1,0 +1,6 @@
+gmap:
+  js:
+    js/gmaps.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal

@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: staff
+label: 'Staff (180xauto)'
+effects:
+  76d3c44d-48f2-4778-903d-77de9890e0bb:
+    uuid: 76d3c44d-48f2-4778-903d-77de9890e0bb
+    id: image_scale
+    weight: 1
+    data:
+      width: 180
+      height: null
+      upscale: false

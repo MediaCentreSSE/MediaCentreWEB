@@ -1,0 +1,6 @@
+content_search.overview:
+  title: 'Search'
+  parent: system.admin_config_search
+  route_name: content_search.admin_form
+  description: 'Content search overview and action/config list.'
+  weight: -11

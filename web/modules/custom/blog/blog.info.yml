@@ -1,0 +1,29 @@
+name: Blog
+description: 'Provides Blog content type and related configuration. Contains blog list content pages.'
+type: module
+package: Custom
+core: 8.x
+dependencies:
+  - blog_list
+  - category_page
+  - content_page
+  - entity_reference_revisions
+  - event
+  - event_form
+  - field
+  - field_group
+  - file
+  - frontpage
+  - image
+  - language
+  - menu_ui
+  - metatag
+  - news
+  - node
+  - options
+  - paragraphs
+  - path
+  - site_settings
+  - svg_image
+  - text
+  - user

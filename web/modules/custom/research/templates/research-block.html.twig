@@ -1,0 +1,39 @@
+<div class="news-list-block mb-5 mb-lg-0 non-linked">
+	<h1>{{ node.title.value }}</h1>
+
+	{% if items|length %}
+		<div class="news-list">
+			{% for research_paper in items %}
+				<div class="news-item">
+					<div class="news-item-inner">
+						<div class="date">{{ research_paper.field_date.value|date('d.m.Y') }}</div>
+						<div class="title">{{ research_paper.field_title.value }}</div>
+						{% if research_paper.field_text.value %}
+							<div class="description text-style">
+								{{ research_paper.field_text.value|raw }}
+							</div>
+						{% endif %}
+
+						{% if research_paper.field_author.value %}
+							<div class="author text-style">{{ research_paper.field_author.value }}</div>
+						{% endif %}
+					</div>
+
+					{% if research_paper.field_file.target_id %}
+						{% set file = research_paper.field_file.entity %}
+						<div class="attachment-block">
+							<div class="attachments">
+								<a download href="{{ file_url(file.uri.value) }}" class="attachments-item">
+									<span class="type">{{ file.filename.value|split('.')|last }}</span>
+									<span class="size">{% if file.filesize.value|length %}{{ (file.filesize.value / 1024 / 1024)|number_format(2, '.') ~ 'MB' }}{% endif %}</span>
+								</a>
+							</div>
+						</div>
+					{% endif %}
+				</div>
+			{% endfor %}
+		</div>
+	{% endif %}
+
+	{{ pager }}
+</div>

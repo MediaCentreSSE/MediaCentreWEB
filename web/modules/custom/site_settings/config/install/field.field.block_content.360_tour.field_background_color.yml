@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.360_tour
+    - field.storage.block_content.field_background_color
+  module:
+    - options
+id: block_content.360_tour.field_background_color
+field_name: field_background_color
+entity_type: block_content
+bundle: 360_tour
+label: 'Background color'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,7 @@
+event_form.event_applicant_export:
+  path: '/admin/event_form/export'
+  defaults:
+    _controller: '\Drupal\event_form\Controller\EventFormAdminController::getEventApplicantExport'
+    _title: ''
+  requirements:
+    _permission: 'administer content'

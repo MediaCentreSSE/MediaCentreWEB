@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * @file
+ * Contains faculty.module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function faculty_theme($existing, $type, $theme, $path) {
+  return [
+    'faculty_list_block' => [
+      'variables' => [
+        'items' => [],
+      ],
+    ],
+  ];
+}

@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_column_2_text
+    - node.type.contacts
+  module:
+    - text
+id: node.contacts.field_column_2_text
+field_name: field_column_2_text
+entity_type: node
+bundle: contacts
+label: Text
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

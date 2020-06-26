@@ -1,0 +1,13 @@
+{% set background = '' %}
+{% if content.background is defined and content.background == 'transparent' %}
+    {% set background = 'transparent' %}
+{% endif %}
+{% if content.background is defined and content.background == 'blueish' %}
+    {% set background = 'blue-gray' %}
+{% endif %}
+<div class="widget-block visit-us {{ background }}">
+    {% if content.title|trim %}
+        <h2>{{ content.title }}</h2>
+    {% endif %}
+    <div class="text-style">{{ content.text|raw }}</div>
+</div>

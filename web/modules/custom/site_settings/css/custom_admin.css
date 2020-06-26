@@ -1,0 +1,13 @@
+.paragraphs-subform > .form-wrapper {
+    margin: 0.75em 0;
+}
+.custom-indent {
+    margin-left: 1.5em;
+}
+.custom-indent ul {
+    margin-left: 0;
+}
+.field--name-field-quick-links-slides .field--name-field-icon-svg,
+.field--name-field-quick-links-slides .field--name-field-image {
+    display: none;
+}

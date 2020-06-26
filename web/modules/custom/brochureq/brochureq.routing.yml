@@ -1,0 +1,7 @@
+brochureq.brochureqform:
+  path: '/brochureqform'
+  defaults:
+    _form: 'Drupal\brochureqform\Form\BrochureqForm'
+    _title: 'Brochure Questionnaire Form'
+  requirements:
+    _permission: 'access content'

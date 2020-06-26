@@ -1,0 +1,61 @@
+{% if years|length and months|length %}
+    <div class="search-block">
+        <form method="get" id="archive-form">
+            <div class="row">
+                <div class="col">
+                    <div class="inputblock secondary-style">
+                        <div class="inputblock-select">
+                            <select name="year">
+                                {% for year in years %}
+                                    <option {% if year == current_year %}selected="selected"{% endif %}>{{ year }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="inputblock secondary-style">
+                        <div class="inputblock-select">
+                            <select name="month">
+                                <option {% if not current_month %}selected="selected"{% endif %} value="">{{ 'Month'|trans({}, {context: 'news_archive'}) }}</option>
+                                {% for month in months %}
+                                    <option {% if month == current_month %}selected="selected"{% endif %} value="{{ month }}">{{ ('2000-' ~ month ~ '-01')|date('F') }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endif %}
+
+{% if items|length %}
+    <div class="news-months">
+        {% for month_name, month_news in items %}
+            <div class="news-months-item">
+                <h2 class="bordered-title">{{ month_name }}</h2>
+                <div class="news">
+                    {% for news in month_news %}
+                        <div class="news-item">
+                            <div class="news-meta custom-table">
+                                <div class="tr">
+                                    <div class="td">
+                                        <div class="date">{{ news.created.value|date('d.m.Y') }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="{{ path('entity.node.canonical', {node: news.id}) }}" class="title">{{ news.title.value }}</a>
+                            {% if news.field_lead_text.value %}
+                                <div class="description text-style">{{ news.field_lead_text.value|raw }}</div>
+                            {% endif %}
+                            <a href="{{ path('entity.node.canonical', {node: news.id}) }}" class="arrowed-link read-more">{{ 'Read More'|trans({}, {context: 'news list'}) }}</a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+{{ pager }}

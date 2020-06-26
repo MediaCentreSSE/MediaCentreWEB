@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.visit_us
+id: block_content.visit_us
+target_entity_type_id: block_content
+target_bundle: visit_us
+default_langcode: site_default
+language_alterable: false

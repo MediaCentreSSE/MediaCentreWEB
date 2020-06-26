@@ -1,0 +1,5 @@
+site_settings.action_method_name:
+  title: 'Social network settings'
+  parent: system.admin_config_services
+  route_name: site_settings.social_network_settings
+  description: 'Configure social networks.'

@@ -1,0 +1,42 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - content_page
+    - ctools
+  theme:
+    - sseriga
+id: contentmenublock
+theme: sseriga
+region: content_menu
+weight: -10
+provider: null
+plugin: content_menu_block
+settings:
+  id: content_menu_block
+  label: 'Content menu block'
+  provider: content_page
+  label_display: '0'
+  context_mapping:
+    node: '@node.node_route_context:node'
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      administration: administration
+      blog: blog
+      blog_list: blog_list
+      contacts: contacts
+      content_page: content_page
+      event: event
+      event_list: event_list
+      faculty: faculty
+      news: news
+      news_archive: news_archive
+      news_list: news_list
+      printed_matter: printed_matter
+      research: research
+      staff: staff
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

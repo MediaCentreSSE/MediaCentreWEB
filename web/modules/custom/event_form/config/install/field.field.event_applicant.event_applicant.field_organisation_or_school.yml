@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.event_applicant.field_organisation_or_school
+  module:
+    - event_form
+id: event_applicant.event_applicant.field_organisation_or_school
+field_name: field_organisation_or_school
+entity_type: event_applicant
+bundle: event_applicant
+label: 'Organisation or School'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

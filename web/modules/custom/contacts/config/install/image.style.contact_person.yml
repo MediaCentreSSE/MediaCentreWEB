@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: contact_person
+label: 'Contact person (500x500)'
+effects:
+  b3f45e1a-d5a3-48ba-b0eb-f4d744404216:
+    uuid: b3f45e1a-d5a3-48ba-b0eb-f4d744404216
+    id: image_scale
+    weight: 1
+    data:
+      width: 500
+      height: 500
+      upscale: false

@@ -1,0 +1,59 @@
+<h1>{{ node.title.value }}</h1>
+
+<div class="four-dimension-matrix">
+    <div class="when">
+        {% for event_date in node.field_dates %}
+            {% set event_date = event_date.entity %}
+            <div class="when-item">
+                {{
+                    event_date.field_date.value|date('l, F j, Y')
+                    ~ (event_date.field_time_from.value ? ', ' ~ event_date.field_time_from.value : '')
+                    ~ (event_date.field_time_to.value ? (' – ' ~ event_date.field_time_to.value) : '')
+                }}
+            </div>
+        {% endfor %}
+    </div>
+
+    {% if node.field_location.value %}
+        <div class="where">{{ node.field_location.value|nl2br }}</div>
+    {% endif %}
+</div>
+
+{% if node.field_lead_text.value %}
+    <div class="article-intro">{{ node.field_lead_text.value|raw }}</div>
+{% endif %}
+
+{% include directory ~ '/templates/partials/gallery.html.twig' %}
+
+{% include directory ~ '/templates/partials/event-list.html.twig' %}
+
+{% if node.field_summary.value %}
+    <div class="widget-block notable-thing">
+        {{ node.field_summary.value|raw }}
+    </div>
+{% endif %}
+
+{% if node.field_body.value %}
+    <div class="article">
+        <div class="article-body text-style">{{ node.field_body.value|raw }}</div>
+    </div>
+{% endif %}
+
+{% include directory ~ '/templates/partials/expandable-list.html.twig' %}
+
+{% if node.field_body_2.value %}
+    <div class="article">
+        <div class="article-body text-style">{{ node.field_body_2.value|raw }}</div>
+    </div>
+{% endif %}
+
+{% if event_form %}
+    {{ event_form }}
+{% endif %}
+
+{% if contact_form %}
+    {{ contact_form }}
+{% endif %}
+
+{% include directory ~ '/templates/partials/file-attachments.html.twig' %}
+{% include directory ~ '/templates/partials/sharing.html.twig' %}

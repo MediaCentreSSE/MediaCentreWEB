@@ -1,0 +1,5 @@
+name: 'Widgets'
+type: module
+description: 'Outputs custom blocks assigned a current node'
+core: 8.x
+package: 'Custom'

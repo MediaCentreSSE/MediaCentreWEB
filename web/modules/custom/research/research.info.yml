@@ -1,0 +1,26 @@
+name: Research
+description: 'Provides Research content type and related configuration. Contains paged research papers.'
+type: module
+core: 8.x
+package: Custom
+dependencies:
+  - category_page
+  - content_page
+  - datetime
+  - entity_reference_revisions
+  - field
+  - field_group
+  - file
+  - frontpage
+  - image
+  - language
+  - menu_ui
+  - metatag
+  - node
+  - options
+  - paragraphs
+  - path
+  - site_settings
+  - svg_image
+  - text
+  - user

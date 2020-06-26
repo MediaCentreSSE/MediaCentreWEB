@@ -1,0 +1,4 @@
+services:
+  event_form.manager:
+    class: Drupal\event_form\EventFormManager
+    arguments: ['@entity_type.manager', '@request_stack', '@plugin.manager.mail', '@form_builder', '@file_system', '@logger.factory', '@simplenews.subscription_manager']

@@ -1,0 +1,85 @@
+<!-- temporary content page if -->
+{% if node.title.value == 'Advanced Negotiations' %}
+	<!-- open programmes atveerums, technically tajaa ir iekshaa viss kas ir content page pieejams + fourth-dimension bloks no events atveeruma + unikāla poga, kas vediis uz unikaalu skatu (tur būs expanded mega forma) -->
+	<h1>{{ node.title.value }}</h1>
+
+	<!-- this on is static, as you can no doubt see, master obivan -->
+	<div class="four-dimension-matrix">
+		<div class="when">
+			<div>
+				16<sup>th</sup> August - 31<sup>st</sup> December, 2018
+			</div>
+			<div>
+				16<sup>th</sup> August - 31<sup>st</sup> December, 2018
+			</div>
+		</div>
+		<div class="where">SSE Riga, Soros Auditorium</div>
+	</div>
+
+	{% if node.field_lead_text.value %}
+	    <div class="article-intro text-style">{{ node.field_lead_text.value|raw }}</div>
+	{% endif %}
+
+	{% include directory ~ '/templates/partials/gallery.html.twig' %}
+
+	{% include directory ~ '/templates/partials/event-list.html.twig' %}
+
+	{% if node.field_body.value %}
+	    <div class="article">
+	        <div class="article-body text-style">{{ node.field_body.value|raw }}</div>
+	    </div>
+	{% endif %}
+
+	{% include directory ~ '/templates/partials/expandable-list.html.twig' %}
+
+	{% if node.field_body_2.value %}
+	    <div class="article">
+	        <div class="article-body text-style">{{ node.field_body_2.value|raw }}</div>
+	    </div>
+	{% endif %}
+
+	{% include directory ~ '/templates/partials/images-tripple-adjacent.html.twig' %}
+
+	{% if contact_form %}
+	    {{ contact_form }}
+	{% endif %}
+
+	{% include directory ~ '/templates/partials/footer-button.html.twig' %}
+	{% include directory ~ '/templates/partials/file-attachments.html.twig' %}
+	{% include directory ~ '/templates/partials/sharing.html.twig' %}
+{% else %}
+	<!-- original content-page -->
+	<h1>{{ node.title.value }}</h1>
+
+	{% if node.field_lead_text.value %}
+	    <div class="article-intro text-style">{{ node.field_lead_text.value|raw }}</div>
+	{% endif %}
+
+	{% include directory ~ '/templates/partials/gallery.html.twig' %}
+
+	{% include directory ~ '/templates/partials/event-list.html.twig' %}
+
+	{% if node.field_body.value %}
+	    <div class="article">
+	        <div class="article-body text-style">{{ node.field_body.value|raw }}</div>
+	    </div>
+	{% endif %}
+
+	{% include directory ~ '/templates/partials/expandable-list.html.twig' %}
+
+	{% if node.field_body_2.value %}
+	    <div class="article">
+	        <div class="article-body text-style">{{ node.field_body_2.value|raw }}</div>
+	    </div>
+	{% endif %}
+
+	{% include directory ~ '/templates/partials/images-tripple-adjacent.html.twig' %}
+
+	{% if contact_form %}
+	    {{ contact_form }}
+	{% endif %}
+
+	{% include directory ~ '/templates/partials/footer-button.html.twig' %}
+	{% include directory ~ '/templates/partials/file-attachments.html.twig' %}
+	{% include directory ~ '/templates/partials/sharing.html.twig' %}
+{% endif %}

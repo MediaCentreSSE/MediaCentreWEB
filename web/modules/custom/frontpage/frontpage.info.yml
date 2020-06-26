@@ -1,0 +1,29 @@
+name: Frontpage
+description: 'Provides Frontpage content type and related configuration.'
+type: module
+package: Custom
+core: 8.x
+dependencies:
+  - block
+  - block_content
+  - contacts
+  - ctools
+  - entity_reference_revisions
+  - event_list
+  - field
+  - field_group
+  - file
+  - frontpage
+  - image
+  - language
+  - link
+  - menu_ui
+  - metatag
+  - news_list
+  - node
+  - options
+  - paragraphs
+  - path
+  - system
+  - text
+  - user

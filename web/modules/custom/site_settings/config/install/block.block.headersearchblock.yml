@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - content_search
+  theme:
+    - sseriga
+id: headersearchblock
+theme: sseriga
+region: header
+weight: 0
+provider: null
+plugin: header_search_block
+settings:
+  id: header_search_block
+  label: 'Header search block'
+  provider: content_search
+  label_display: '0'
+  context_mapping:
+    node: '@node.node_route_context:node'
+visibility: {  }

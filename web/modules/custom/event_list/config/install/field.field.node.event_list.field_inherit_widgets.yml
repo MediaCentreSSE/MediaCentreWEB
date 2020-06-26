@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_inherit_widgets
+    - node.type.event_list
+id: node.event_list.field_inherit_widgets
+field_name: field_inherit_widgets
+entity_type: node
+bundle: event_list
+label: 'Inherit widgets'
+description: 'If checked, page will use its parent page''s widgets (if parent page exists). Any additional widgets, specific to this page, will be added after inherited widgets.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

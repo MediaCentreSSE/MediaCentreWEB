@@ -1,0 +1,80 @@
+{% if events|length or news|length %}
+	<div class="news-and-events-block row-space">
+		<div class="main-content-width centered padded">
+			<div class="row">
+				{% if events|length %}
+					<div class="col mb-5 mb-md-0">
+						<div class="event-list-block">
+							<h2>{{ 'Events'|trans({}, {context: 'frontpage'}) }}</h2>
+							<div class="events-list">
+								{% for event in events %}
+									<a href="{{ path('entity.node.canonical', {node: event.id}) }}" class="events-item">
+										<div class="row">
+											{% set start_month = event.field_date_from.value|date('M')|upper %}
+											{% set end_month = event.field_date_to.value|date('M')|upper %}
+
+											{% set start_date = event.field_date_from.value|date('j') %}
+											{% set end_date = event.field_date_to.value|date('j') %}
+
+											<div class="col">
+												{% if start_month == end_month and start_date == end_date %}
+													<span>{{ start_month }} {{ start_date }}</span>
+												{% elseif start_month == end_month and start_date != end_date %}
+													<span>{{ start_month }} {{ start_date }}</span> — <span>{{ end_date }}</span>
+												{% elseif start_month != end_month %}
+													<span>{{ start_month }} {{ start_date }}</span> — <span>{{ end_month }} {{ end_date }}</span>
+												{% endif %}
+											</div>
+											<div class="col">
+												<div class="title">{{ event.title.value }}</div>
+												<div class="when">
+													{% for event_date in event.field_dates %}
+														{% set event_date = event_date.entity %}
+														<div class="when-item">
+															{{
+																event_date.field_date.value|date('l, F j, Y')
+																~ (event_date.field_time_from.value ? ', ' ~ event_date.field_time_from.value : '')
+																~ (event_date.field_time_to.value ? (' – ' ~ event_date.field_time_to.value) : '')
+															}}
+														</div>
+													{% endfor %}
+												</div>
+												{% if event.field_location.value %}
+													<div class="where">{{ event.field_location.value|nl2br }}</div>
+												{% endif %}
+											</div>
+										</div>
+									</a>
+								{% endfor %}
+							</div>
+						</div>
+						<a href="{{ path('entity.node.canonical', {node: (events|first).field_event_list.target_id}) }}" class="more">{{ 'All Events'|trans({}, {context: 'frontpage'}) }}</a>
+					</div>
+				{% endif %}
+				{% if news|length %}
+					<div class="col">
+						<div class="news-list-block">
+							<h2>{{ 'News'|trans({}, {context: 'frontpage'}) }}</h2>
+							<div class="news-list">
+								{% for news_item in news %}
+									{% set news_item_url = path('entity.node.canonical', {node: news_item.id}) %}
+									<div class="news-item">
+										<a href="{{ news_item_url }}" class="news-item-inner {% if news_item_image %}has-image{% endif %}">
+											<div class="date">{{ news_item.created.value|date('d.m.Y') }}</div>
+											<div class="title">{{ news_item.title.value }}</div>
+											{% if news_item.field_lead_text.value %}
+												{# filter "|raw" comes last, to convert html entities to text #}
+												<div class="description">{{ news_item.field_lead_text.value|striptags|truncate(160, true, "...")|raw }}</div>
+											{% endif %}
+										</a>
+									</div>
+								{% endfor %}
+							</div>
+						</div>
+						<a href="{{ path('entity.node.canonical', {node: (news|first).field_news_list.target_id}) }}" class="more">{{ 'All News'|trans({}, {context: 'frontpage'}) }}</a>
+					</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+{% endif %}

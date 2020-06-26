@@ -1,0 +1,6 @@
+filter:
+  js:
+    js/faculty_filter.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal

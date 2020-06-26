@@ -1,0 +1,58 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.linked_event.field_address
+    - field.field.paragraph.linked_event.field_date_from
+    - field.field.paragraph.linked_event.field_date_to
+    - field.field.paragraph.linked_event.field_link
+    - field.field.paragraph.linked_event.field_title
+    - paragraphs.paragraphs_type.linked_event
+  module:
+    - datetime
+    - link
+id: paragraph.linked_event.default
+targetEntityType: paragraph
+bundle: linked_event
+mode: default
+content:
+  field_address:
+    weight: 3
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  field_date_from:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_date_to:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_link:
+    weight: 4
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_title:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

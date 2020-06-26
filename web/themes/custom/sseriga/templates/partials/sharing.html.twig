@@ -1,0 +1,18 @@
+{% if node.field_show_share_button.value %}
+    <div class="share-block cf">
+        <div class="title">{{ 'Share:'|trans({}, {context: 'social sharing'}) }}</div>
+        <nav class="social-media-wrapper cf">
+            {% set share_parameters = '?'
+              ~ 'url=' ~ current_path|escape('url')
+              ~ '&pubid=' ~ add_this_id
+              ~ '&title=' ~ (node.title.value ~ ' | ' ~ site_name)|escape('url')
+            %}
+
+            <a class="twitter" rel="nofollow" href="https://api.addthis.com/oexchange/0.8/forward/twitter/offer{{ share_parameters }}" target="_blank"></a>
+            <a class="facebook" rel="nofollow" href="https://api.addthis.com/oexchange/0.8/forward/facebook/offer{{ share_parameters }}" target="_blank"></a>
+
+            <a class="addthis_button" rel="nofollow" href="http://www.addthis.com/bookmark.php{{ share_parameters }}" target="_blank">{{ 'Share'|trans({}, {context: 'social sharing'}) }}</a>
+            <script type="text/javascript" data-src="http://s7.addthis.com/js/250/addthis_widget.js#pubid={{ add_this_id }}"></script>
+        </nav>
+    </div>
+{% endif %}

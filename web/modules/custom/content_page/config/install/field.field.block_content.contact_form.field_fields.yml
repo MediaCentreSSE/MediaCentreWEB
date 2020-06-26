@@ -1,0 +1,63 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.contact_form
+    - field.storage.block_content.field_fields
+    - paragraphs.paragraphs_type.form_field
+  module:
+    - entity_reference_revisions
+id: block_content.contact_form.field_fields
+field_name: field_fields
+entity_type: block_content
+bundle: contact_form
+label: Fields
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      form_field: form_field
+    target_bundles_drag_drop:
+      form_field:
+        enabled: true
+        weight: 13
+      calendar_event:
+        weight: 14
+        enabled: false
+      calendar_month:
+        weight: 15
+        enabled: false
+      calendar_season:
+        weight: 16
+        enabled: false
+      expandable_list_item:
+        weight: 17
+        enabled: false
+      file_attachment:
+        weight: 18
+        enabled: false
+      most_visited_column:
+        weight: 19
+        enabled: false
+      most_visited_row:
+        weight: 20
+        enabled: false
+      quick_link_grid:
+        weight: 21
+        enabled: false
+      quick_link_slide:
+        weight: 22
+        enabled: false
+      quick_link_social:
+        weight: 23
+        enabled: false
+      quick_links_promoted:
+        weight: 24
+        enabled: false
+field_type: entity_reference_revisions

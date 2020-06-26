@@ -1,0 +1,84 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_file_attachments
+    - node.type.staff
+    - paragraphs.paragraphs_type.file_attachment
+  module:
+    - entity_reference_revisions
+id: node.staff.field_file_attachments
+field_name: field_file_attachments
+entity_type: node
+bundle: staff
+label: 'File attachments'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      file_attachment: file_attachment
+    target_bundles_drag_drop:
+      additional_form_data:
+        weight: 20
+        enabled: false
+      calendar_event:
+        weight: 21
+        enabled: false
+      calendar_month:
+        weight: 22
+        enabled: false
+      calendar_season:
+        weight: 23
+        enabled: false
+      contact_group:
+        weight: 24
+        enabled: false
+      expandable_list_item:
+        weight: 25
+        enabled: false
+      file_attachment:
+        enabled: true
+        weight: 26
+      form_field:
+        weight: 27
+        enabled: false
+      gallery_image:
+        weight: 28
+        enabled: false
+      marker:
+        weight: 29
+        enabled: false
+      most_visited_column:
+        weight: 30
+        enabled: false
+      most_visited_row:
+        weight: 31
+        enabled: false
+      printed_matter:
+        weight: 32
+        enabled: false
+      promo_slide:
+        weight: 33
+        enabled: false
+      quick_links_promoted:
+        weight: 34
+        enabled: false
+      quick_link_grid:
+        weight: 35
+        enabled: false
+      quick_link_slide:
+        weight: 36
+        enabled: false
+      quick_link_social:
+        weight: 37
+        enabled: false
+      research_paper:
+        weight: 38
+        enabled: false
+field_type: entity_reference_revisions

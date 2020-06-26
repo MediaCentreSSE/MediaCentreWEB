@@ -1,0 +1,41 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.event_date.field_date
+    - field.field.paragraph.event_date.field_time_from
+    - field.field.paragraph.event_date.field_time_to
+    - paragraphs.paragraphs_type.event_date
+  module:
+    - datetime
+id: paragraph.event_date.default
+targetEntityType: paragraph
+bundle: event_date
+mode: default
+content:
+  field_date:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_time_from:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_time_to:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

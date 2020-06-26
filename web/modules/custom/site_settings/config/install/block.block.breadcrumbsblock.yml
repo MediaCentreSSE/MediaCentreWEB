@@ -1,0 +1,45 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - breadcrumbs
+    - ctools
+  theme:
+    - sseriga
+id: breadcrumbsblock
+theme: sseriga
+region: content_menu
+weight: -11
+provider: null
+plugin: breadcrumbs_block
+settings:
+  id: breadcrumbs_block
+  label: 'Breadcrumbs block'
+  provider: breadcrumbs
+  label_display: '0'
+  context_mapping:
+    node: '@node.node_route_context:node'
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      blog: blog
+      administration: administration
+      blog_list: blog_list
+      category_page: category_page
+      contacts: contacts
+      content_page: content_page
+      event: event
+      event_list: event_list
+      faculty: faculty
+      frontpage: frontpage
+      news: news
+      news_archive: news_archive
+      news_list: news_list
+      printed_matter: printed_matter
+      research: research
+      search_results: search_results
+      staff: staff
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

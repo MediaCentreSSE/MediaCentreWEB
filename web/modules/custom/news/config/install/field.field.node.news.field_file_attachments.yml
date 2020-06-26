@@ -1,0 +1,72 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_file_attachments
+    - node.type.news
+    - paragraphs.paragraphs_type.file_attachment
+  module:
+    - entity_reference_revisions
+id: node.news.field_file_attachments
+field_name: field_file_attachments
+entity_type: node
+bundle: news
+label: 'File attachments'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      file_attachment: file_attachment
+    target_bundles_drag_drop:
+      calendar_event:
+        weight: 16
+        enabled: false
+      calendar_month:
+        weight: 17
+        enabled: false
+      calendar_season:
+        weight: 18
+        enabled: false
+      contact_group:
+        weight: 19
+        enabled: false
+      expandable_list_item:
+        weight: 20
+        enabled: false
+      file_attachment:
+        enabled: true
+        weight: 21
+      form_field:
+        weight: 22
+        enabled: false
+      gallery_image:
+        weight: 23
+        enabled: false
+      marker:
+        weight: 24
+        enabled: false
+      most_visited_column:
+        weight: 25
+        enabled: false
+      most_visited_row:
+        weight: 26
+        enabled: false
+      quick_link_grid:
+        weight: 27
+        enabled: false
+      quick_link_slide:
+        weight: 28
+        enabled: false
+      quick_link_social:
+        weight: 29
+        enabled: false
+      quick_links_promoted:
+        weight: 30
+        enabled: false
+field_type: entity_reference_revisions

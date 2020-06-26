@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.poll
+id: block_content.poll
+target_entity_type_id: block_content
+target_bundle: poll
+default_langcode: site_default
+language_alterable: false

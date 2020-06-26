@@ -1,0 +1,30 @@
+{% if items|length %}
+    <div class="main-content-width centered">
+        <div class="expanded-socials-block row-space">
+            <div class="container-fluid">
+                <div class="row">
+                    {% for item in items %}
+                        <a
+                            href="{{ item.field_link.0.url }}"
+                            class="col {% if loop.first %}linkedin{% else %}facebook{% endif %}"
+                            {% if item.field_background_image.target_id %}
+                                style="background-image: url('{{ item.field_background_image.target_id|style('quick_links_social') }}')"
+                            {% endif %}
+                        >
+                            <div class="custom-table">
+                                <div class="tr">
+                                    <div class="td">
+                                        <h2>{{ item.field_title.value }}</h2>
+                                        {% if item.field_description.value %}
+                                            <h3>{{ item.field_description.value|nl2br }}</h3>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}

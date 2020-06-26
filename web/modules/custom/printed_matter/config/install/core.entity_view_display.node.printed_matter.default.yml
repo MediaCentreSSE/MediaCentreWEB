@@ -1,0 +1,111 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.printed_matter.field_banner
+    - field.field.node.printed_matter.field_content_menu
+    - field.field.node.printed_matter.field_inherit_widgets
+    - field.field.node.printed_matter.field_lead_text
+    - field.field.node.printed_matter.field_meta_tags
+    - field.field.node.printed_matter.field_printed_matter
+    - field.field.node.printed_matter.field_private_widget_background
+    - field.field.node.printed_matter.field_private_widget_text
+    - field.field.node.printed_matter.field_private_widget_title
+    - field.field.node.printed_matter.field_widgets
+    - node.type.printed_matter
+  module:
+    - entity_reference_revisions
+    - image
+    - metatag
+    - options
+    - text
+    - user
+id: node.printed_matter.default
+targetEntityType: node
+bundle: printed_matter
+mode: default
+content:
+  field_banner:
+    weight: 102
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_content_menu:
+    weight: 103
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_inherit_widgets:
+    weight: 108
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+  field_lead_text:
+    weight: 101
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_meta_tags:
+    weight: 110
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_empty_formatter
+    region: content
+  field_printed_matter:
+    type: entity_reference_revisions_entity_view
+    weight: 104
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_private_widget_background:
+    weight: 107
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_private_widget_text:
+    weight: 106
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_private_widget_title:
+    weight: 105
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_widgets:
+    weight: 109
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden:
+  langcode: true

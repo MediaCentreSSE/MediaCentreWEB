@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.footer_block
+    - field.storage.block_content.field_rss
+  module:
+    - link
+id: block_content.footer_block.field_rss
+field_name: field_rss
+entity_type: block_content
+bundle: footer_block
+label: RSS
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 0
+field_type: link

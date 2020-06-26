@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_news_list
+    - node.type.news
+    - node.type.news_archive
+    - node.type.news_list
+id: node.news.field_news_list
+field_name: field_news_list
+entity_type: node
+bundle: news
+label: 'News/Archive list'
+description: 'Select a news list or archive, in which to display this news page. If this news page isn''t required to appear in any news lists, use content type "Page".'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      news_archive: news_archive
+      news_list: news_list
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: news_archive
+field_type: entity_reference

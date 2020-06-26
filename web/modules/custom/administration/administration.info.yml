@@ -1,0 +1,20 @@
+name: Administration
+description: 'Provides Administration content type and related configuration. Contains a list of staff, belonging to the "Administration" category.'
+type: module
+core: 8.x
+package: Custom
+dependencies:
+  - category_page
+  - content_page
+  - field
+  - field_group
+  - frontpage
+  - image
+  - language
+  - menu_ui
+  - metatag
+  - node
+  - options
+  - path
+  - site_settings
+  - user

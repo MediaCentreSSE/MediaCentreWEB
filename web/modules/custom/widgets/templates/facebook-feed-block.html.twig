@@ -1,0 +1,19 @@
+<div class="widget-block similar-events">
+    <h2>{{ content.field_title.value }}</h2>
+    <div class="similar-events-list">
+        {% for post in posts %}
+            <a target="_blank" href="{{ post.url }}">
+                {% if post.created_time %}
+                    <div class="date">{{ post.created_time|date('d.m.Y') }}</div>
+                {% endif %}
+                <div class="title">
+                    {% if post.title %}
+                        {{ post.title }}
+                    {% else %}
+                        {{ post.description|length > 200 ? post.description|slice(0, 201)|split(' ')|slice(0, -1)|join(' ') ~ '…' : post.description }}
+                    {% endif %}
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+</div>

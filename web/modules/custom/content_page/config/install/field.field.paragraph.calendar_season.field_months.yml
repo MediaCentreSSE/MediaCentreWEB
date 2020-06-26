@@ -1,0 +1,54 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_months
+    - paragraphs.paragraphs_type.calendar_month
+    - paragraphs.paragraphs_type.calendar_season
+  module:
+    - entity_reference_revisions
+id: paragraph.calendar_season.field_months
+field_name: field_months
+entity_type: paragraph
+bundle: calendar_season
+label: Months
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      calendar_month: calendar_month
+    target_bundles_drag_drop:
+      calendar_season:
+        weight: 10
+        enabled: false
+      calendar_event:
+        weight: 11
+        enabled: false
+      calendar_month:
+        enabled: true
+        weight: 12
+      most_visited_column:
+        weight: 13
+        enabled: false
+      most_visited_row:
+        weight: 14
+        enabled: false
+      quick_link_grid:
+        weight: 15
+        enabled: false
+      quick_link_slide:
+        weight: 16
+        enabled: false
+      quick_link_social:
+        weight: 17
+        enabled: false
+      quick_links_promoted:
+        weight: 18
+        enabled: false
+field_type: entity_reference_revisions

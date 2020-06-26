@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - ctools
+    - event_list
+  theme:
+    - sseriga
+id: eventlistblock
+theme: sseriga
+region: content
+weight: -1
+provider: null
+plugin: event_list_block
+settings:
+  id: event_list_block
+  label: 'Event list block'
+  provider: event_list
+  label_display: '0'
+  context_mapping:
+    node: '@node.node_route_context:node'
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      event_list: event_list
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
