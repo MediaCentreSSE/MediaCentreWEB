@@ -3,8 +3,15 @@
 1. You may have to set 0400 permissions ```chmod 0400 ~/.ssh/id_rsa.sseriga*```
 2. Add an additional git remote ssh://mediacen@mediacentre.sseriga.edu:/home2/mediacen/mediacentre/.git
 3. Merge into production/master to update remote files
-4. ssh into mediacen@mediacentre.sseriga.edu
-5. Drupal is located in /home2/mediacen
+4. Ssh into mediacen@mediacentre.sseriga.edu
+5. Update remote repository
+```bash
+cd /home2/mediacen/mediacentre
+git merge master
+php ./composer.phar install
+./vendor/bin/drupal cr all
+```
+
 
 # Setup instructions
 0. Before starting to do something, pray that you will never ever meet Drupal famous "White screens of death"
