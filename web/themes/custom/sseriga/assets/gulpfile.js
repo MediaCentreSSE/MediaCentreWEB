@@ -5,6 +5,7 @@ var inlineimage = require('gulp-inline-image');
 var concat = require('gulp-concat');
 var rename = require('gulp-rename');
 var uglify = require('gulp-uglify'); // minifies js
+var terser = require('gulp-terser');
 var exec = require('child_process').exec;
 
 // paths
@@ -44,7 +45,7 @@ gulp.task('generate_js', function() {
 		.pipe(concat('scripts.js'))
 		.pipe(gulp.dest(js_dist_directory))
 		.pipe(rename('scripts.min.js'))
-		.pipe(uglify())
+		.pipe(terser())
 		.pipe(gulp.dest(js_dist_directory));
 });
 
