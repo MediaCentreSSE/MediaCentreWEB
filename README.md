@@ -1,13 +1,13 @@
 # Deployment instructions
 0. Download id_rsa.sseriga* certificates from cPanel to your local .ssh directory
 1. You may have to set 0400 permissions ```chmod 0400 ~/.ssh/id_rsa.sseriga*```
-2. Add an additional git remote ssh://mediacen@mediacentre.sseriga.edu:/home2/mediacen/mediacentre/.git
+2. Add a git remote "production" https://github.com/MediaCentreSSE/MediaCentreWEB.git
 3. Merge into production/master to update remote files
-4. Ssh into mediacen@mediacentre.sseriga.edu
-5. Update remote repository
+4. SSH into mediacen@mediacentre.sseriga.edu and deploy changes
 ```bash
+ssh -i ~/.ssh/id_rsa.sseriga mediacen@mediacentre.sseriga.edu
 cd /home2/mediacen/mediacentre
-git merge master
+git pull
 php ./composer.phar install
 ./vendor/bin/drupal cr all
 ```
